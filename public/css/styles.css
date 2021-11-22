@@ -55,49 +55,50 @@ body {
     justify-content: center;
     align-items: center;
   }
-  
-  form.login {
+
+  form {
     width: 70%;
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
     row-gap: 32px;
     column-gap: 22px;
+  }
   
+  form.login {
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas:
       "login login login"
-      "pw pw pw"
+      "pwd pwd pwd"
       "submit register ."
       "forgot forgot forgot";
   }
 
   form.register {
-    width: 70%;
-    display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
-    row-gap: 32px;
-    column-gap: 22px;
-  
     grid-template-areas:
       "login login login"
       "username username username"
-      "pw pw pw"
+      "pwd pwd pwd"
       "rpwd rpwd rpwd"
       "submit . .";
   }
 
   form.mail-verification {
-    width: 70%;
-    display: grid;
     grid-template-rows: 2fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    row-gap: 32px;
-    column-gap: 22px;
-
     grid-template-areas:
       "h2 h2 h2 h2"
       "code code code code"
+      "submit . . .";
+  }
+
+  form.new-pwd {
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      "pwd pwd pwd ."
+      "rpwd rpwd rpwd rpwd"
       "submit . . .";
   }
   
@@ -130,7 +131,7 @@ body {
   }
   
   .pwd {
-    grid-area: pw;
+    grid-area: pwd;
   }
 
   .rpwd {
