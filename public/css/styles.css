@@ -70,13 +70,35 @@ body {
       "submit register ."
       "forgot forgot forgot";
   }
+
+  form.register {
+    width: 70%;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 32px;
+    column-gap: 22px;
+  
+    grid-template-areas:
+      "login login login"
+      "username username username"
+      "pw pw pw"
+      "rpwd rpwd rpwd"
+      "submit . .";
+  }
   
   .email::placeholder,
-  .pwd::placeholder {
+  .pwd::placeholder,
+  .username::placeholder,
+  .rpwd::placeholder {
     font-family: Ink Free;
     font-size: 24px;
     color: #707070;
     text-align: left;
+  }
+
+  .username {
+    grid-area: username;
   }
   
   .email {
@@ -85,6 +107,10 @@ body {
   
   .pwd {
     grid-area: pw;
+  }
+
+  .rpwd {
+    grid-area: rpwd;
   }
   
   .input-style {
