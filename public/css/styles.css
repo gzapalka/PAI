@@ -86,15 +86,39 @@ body {
       "rpwd rpwd rpwd"
       "submit . .";
   }
+
+  form.mail-verification {
+    width: 70%;
+    display: grid;
+    grid-template-rows: 2fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 32px;
+    column-gap: 22px;
+
+    grid-template-areas:
+      "h2 h2 h2 h2"
+      "code code code code"
+      "submit . . .";
+  }
   
   .email::placeholder,
   .pwd::placeholder,
   .username::placeholder,
-  .rpwd::placeholder {
+  .rpwd::placeholder,
+  .number::placeholder,
+  h2 {
     font-family: Ink Free;
     font-size: 24px;
     color: #707070;
     text-align: left;
+  }
+
+  h2 {
+    grid-area: h2;  
+}
+
+  .code {
+    grid-area: code;
   }
 
   .username {
