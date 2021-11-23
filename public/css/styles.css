@@ -48,7 +48,7 @@ body {
     width: 100%;
     height: 400px;
     background: #faf4f4;
-    box-shadow: 0px 6px 6px #00000029;
+    box-shadow: 0 6px 6px #00000029;
     border: 1px solid #707070;
     border-radius: 90px;
     display: flex;
