@@ -12,26 +12,57 @@ class Transaction
     private string $categoryId;
     private string $debtId;
 
+
     /**
-     * @param $txnId String
+     * Constructor to insert data to database.
      * @param $amount Decimal
      * @param $comment String
      * @param $txnType TxnTypes determine if txn is debt or account type
      * @param $id String id of account or debt
+     * @return Transaction
      */
-    public function __construct(String $txnId, Decimal $amount, String $comment, TxnTypes $txnType, String $id)
+    public static function insertTransaction(Decimal $amount, String $comment, TxnTypes $txnType, String $id): Transaction
     {
-        $this->txnId = $txnId;
-        $this->amount = $amount;
-        $this->comment = $comment;
+        $instance = new self();
+        $instance->amount = $amount;
+        $instance->comment = $comment;
 
         if ($txnType == TxnTypes::ACCOUNT){
-            $this->categoryId = $id;
+            $instance->categoryId = $id;
         } elseif ($txnType == TxnTypes::DEBT) {
-            $this->debtId = $id;
+            $instance->debtId = $id;
         }
-
+        return $instance;
     }
+
+    /**
+     * Constructor to retrieve data from database.
+     * @param String $txnId
+     * @param Decimal $amount
+     * @param String $txnComment
+     * @param DateTime $create_time
+     * @param DateTime $edit_time
+     * @param String $categoryId
+     * @param String $debtId
+     * @return Transaction new instance retrieved from database
+     */
+    public static function retrieveConstructor(String $txnId, Decimal $amount, String $txnComment,
+                                               DateTime $create_time, DateTime $edit_time,String $categoryId,
+                                               String $debtId): Transaction
+    {
+        $instance = new self();
+        $instance->txnId = $txnId;
+        $instance->amount = $amount;
+        $instance->comment = $txnComment;
+        $instance->createTime = $create_time;
+        $instance->editTime = $edit_time;
+        $instance->categoryId = $categoryId;
+        $instance->debtId = $debtId;
+
+        return $instance;
+    }
+
+
 
     /**
      * @param Decimal $amount
