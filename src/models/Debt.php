@@ -1,25 +1,54 @@
 <?php
 
+use Decimal\Decimal;
+
 class Debt
 {
     private string $debtId;
     private string $debtName;
     private Decimal $amountStart;
     private Decimal $amountLeft;
-    private DataTime $createTime;
-    private DataTime $editTime;
+    private DateTime $createTime;
+    private DateTime $editTime;
     private string $userId;
 
+
     /**
+     * Constructor to insert data to database.
      * @param string $debtName
      * @param Decimal $amountStart
      * @param string $userId
+     * @return Debt new instance to insert to database
      */
-    public function __construct(string $debtName, Decimal $amountStart, string $userId)
+    public static function insertConstructor(string $debtName, Decimal $amountStart, string $userId): Debt
     {
-        $this->debtName = $debtName;
-        $this->amountStart = $amountStart;
-        $this->userId = $userId;
+        $instance = new self();
+        $instance->debtName = $debtName;
+        $instance->amountStart = $amountStart;
+        $instance->userId = $userId;
+        return $instance;
+    }
+
+    /**
+     * Constructor to retrieve data from database.
+     * @param string $debtId
+     * @param string $debtName
+     * @param Decimal $amountStart
+     * @param Decimal $amountLeft
+     * @param string $userId
+     * @return Debt new instance retrieved from database
+     */
+    public static function retrieveConstructor(
+        string  $debtId, string $debtName, Decimal $amountStart,
+        Decimal $amountLeft, string $userId): Debt
+    {
+        $instance = new self();
+        $instance->debtId = $debtId;
+        $instance->debtName = $debtName;
+        $instance->amountStart = $amountStart;
+        $instance->amountLeft = $amountLeft;
+        $instance->userId = $userId;
+        return $instance;
     }
 
     /**
@@ -79,17 +108,17 @@ class Debt
     }
 
     /**
-     * @return DataTime
+     * @return DateTime
      */
-    public function getCreateTime(): DataTime
+    public function getCreateTime(): DateTime
     {
         return $this->createTime;
     }
 
     /**
-     * @return DataTime
+     * @return DateTime
      */
-    public function getEditTime(): DataTime
+    public function getEditTime(): DateTime
     {
         return $this->editTime;
     }
