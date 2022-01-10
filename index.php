@@ -13,5 +13,4 @@ Router::get('', 'DefaultController');
 Router::get('register', 'DefaultController');
 Router::get('mailVerification', 'DefaultController');
 Router::post("login_user", 'SecurityController');
-
 Router::run($path);

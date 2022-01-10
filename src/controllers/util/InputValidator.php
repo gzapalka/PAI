@@ -4,7 +4,7 @@ class InputValidator
 {
     public static function validateEmail(string $email): bool
     {
-        return !filter_var($email, FILTER_VALIDATE_EMAIL) && self::validateProhibitedSigns($email);
+        return !filter_var($email, FILTER_VALIDATE_EMAIL);
         //email unique
     }
 

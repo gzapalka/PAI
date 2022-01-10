@@ -3,6 +3,7 @@
 require_once 'AppController.php';
 require_once __DIR__ . '/../models/Requests/LoginRequest.php';
 require_once __DIR__ . '/../repository/UserRepository.php';
+require_once 'util/InputValidator.php';
 
 class SecurityController extends AppController
 {
@@ -17,7 +18,13 @@ class SecurityController extends AppController
             $controller->displayLoginPageWithErrorMassage("Incorrect email");
         }
         else {
-            $user = new LoginRequest($_POST["email"], $_POST["password"]);
+            $userRepository = new UserRepository();
+            $user = $userRepository->getLoggedUser($email, $pwd);
+
+            if($user==null){
+                $controller->displayLoginPageWithErrorMassage("No such user");
+            }
+
             $url = "https://$_SERVER[HTTP_HOST]";
             header("Location: $url/mailVerification");
         }
