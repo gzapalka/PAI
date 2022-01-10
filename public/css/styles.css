@@ -9,16 +9,18 @@ body {
     display: flex;
     flex-direction: row;
   }
-  
+
   .left-container img {
     width: 100%;
     object-fit: contain;
+    align-self: center;
   }
-  
+
   .left-container {
     width: 50%;
+    display: flex;
   }
-  
+
   .logo h1 {
     font-family: Ink Free;
     font-size: calc(5vw + 3vh);
@@ -26,14 +28,14 @@ body {
     color: #f7f2f2;
     text-align: center;
   }
-  
+
   .right-container {
     width: 50%;
     height: 100%;
     display: flex;
     justify-content: center;
   }
-  
+
   .login-container {
     width: 75%;
     max-height: 100%;
@@ -41,9 +43,8 @@ body {
     justify-items: center;
     align-items: center;
     grid-template-rows: 2fr 4fr 1fr;
-    justify-self: center;
   }
-  
+
   .login-panel {
     width: 100%;
     height: 400px;
@@ -59,10 +60,10 @@ body {
   form {
     width: 70%;
     display: grid;
-    row-gap: 32px;
+    row-gap: calc(2vw + 1vh);
     column-gap: 22px;
   }
-  
+
   form.login {
     grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
@@ -101,7 +102,7 @@ body {
       "rpwd rpwd rpwd rpwd"
       "submit . . .";
   }
-  
+
   .email::placeholder,
   .pwd::placeholder,
   .username::placeholder,
@@ -115,7 +116,7 @@ body {
   }
 
   h2 {
-    grid-area: h2;  
+    grid-area: h2;
 }
 
   .code {
@@ -125,11 +126,11 @@ body {
   .username {
     grid-area: username;
   }
-  
+
   .email {
     grid-area: login;
   }
-  
+
   .pwd {
     grid-area: pwd;
   }
@@ -137,35 +138,35 @@ body {
   .rpwd {
     grid-area: rpwd;
   }
-  
+
   .input-style {
     font-family: Ink Free;
-    font-size: 24px;
+    font-size: calc(2vw + 1vh);
     background-color: #00000000;
     border: none;
     border-bottom: 1px solid #707070;
     max-height: 24px;
   }
-  
+
   .submit {
     grid-area: submit;
   }
-  
+
   .register {
     grid-area: register;
   }
-  
+
   .forgot {
     grid-area: forgot;
     font-family: Ink Free;
     color: #707070;
     font-size: 20px;
   }
-  
+
   *:focus {
     outline: none;
   }
-  
+
   a,
   a:hover,
   a:visited,
@@ -173,7 +174,7 @@ body {
     color: inherit;
     text-decoration: none;
   }
-  
+
   .login-button-style {
     border: 1px solid #707070;
     border-radius: 30px;
@@ -183,4 +184,15 @@ body {
     color: #707070;
     font-size: 20px;
   }
-  
+
+@media only screen and (max-device-width: 420px) {
+  body {
+    background: #244564;
+  }
+  .left-container {
+    display: none;
+  }
+  .right-container {
+    width: 100%;
+  }
+}
