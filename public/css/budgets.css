@@ -1,0 +1,51 @@
+header {
+    background: #244564;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 10%;
+    right: 0px;
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-areas:
+      "h1 h1 button"
+}
+
+content {
+    background: #faf4f4;
+    position: absolute;
+    top: 10%;
+    bottom: 15%;
+    left: 0px;
+    right: 0px;
+    overflow: auto;
+}
+
+footer {
+    background: #244564;
+    position: absolute;
+    bottom: 0px;
+    height: 10%;
+    left: 0px;
+    right: 0px;
+    overflow: hidden;
+}
+
+h1 {
+    font-family: Ink Free;
+    font-weight: lighter;
+    color: #f7f2f2;
+    text-align: center;
+    height: 50%;
+}
+
+button {
+    font-family: Ink Free;
+    font-size: calc(1vw + 1vh);
+    font-weight: lighter;
+    color: #f7f2f2;
+    text-align: center;
+    height: 75%;
+    border: none;
+    background: none;
+}
