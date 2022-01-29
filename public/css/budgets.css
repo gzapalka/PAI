@@ -8,14 +8,16 @@ header {
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
     grid-template-areas:
-      "h1 h1 button"
+      "h1 h1 button";
+    justify-items: center;
+    align-items: center;
 }
 
 content {
     background: #faf4f4;
     position: absolute;
     top: 10%;
-    bottom: 15%;
+    bottom: 10%;
     left: 0px;
     right: 0px;
     overflow: auto;
@@ -28,7 +30,39 @@ footer {
     height: 10%;
     left: 0px;
     right: 0px;
+    display: grid;
+    grid-template-columns: 3fr 2fr 3fr;
+    grid-template-areas:
+         "money_to_assign h1 contact_info";
+    justify-items: center;
+    align-items: center;
     overflow: hidden;
+}
+
+amount {
+    font-family: Ink Free;
+    font-weight: lighter;
+    color: #707070;
+    font-size: calc(1vw + 2vh);
+    text-justify: auto;
+    margin-left: 30%;
+}
+
+contact_info {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+         "h1 social_media h1"
+         "h1 social_media h1"
+         "h1 social_media h1";
+}
+
+social_media {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas:
+         "img h1";
 }
 
 h1 {
@@ -37,6 +71,14 @@ h1 {
     color: #f7f2f2;
     text-align: center;
     height: 50%;
+}
+
+h2 {
+    font-family: Ink Free;
+    font-weight: lighter;
+    color: #f7f2f2;
+    text-align: center;
+    font-size: calc(0.10vw + 1vh);
 }
 
 button {
@@ -48,4 +90,19 @@ button {
     height: 75%;
     border: none;
     background: none;
+}
+
+img {
+    margin-top: 20%;
+    width: auto;
+    max-height: 100%;
+}
+
+money_to_assign {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-areas:
+         "h1 amount h1";
+    justify-items: center;
+    align-items: center;
 }
