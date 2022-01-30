@@ -106,3 +106,105 @@ money_to_assign {
     justify-items: center;
     align-items: center;
 }
+
+bookmarks {
+    display: grid;
+    height: 5%;
+    width: 90%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+         "bookmark bookmark bookmark bookmark";
+    align-items: center;
+    margin-left: 5%;
+}
+
+bookmark {
+    font: normal normal normal 24px/32px Segoe UI;
+    letter-spacing: 0;
+    color: #244564;
+    border-radius: 30px;
+    text-align: center;
+    border: none;
+}
+
+.bookmark_container {
+    background-color:#E9E4E4;
+    height: 100%;
+    position: relative;
+}
+
+.budget_table {
+    display:table;
+    background-color: #faf4f4;
+    margin-left: 1%;
+    width: 98%;
+    border-radius: 10px;
+    margin-top: 1%;
+    border-collapse: collapse;
+}
+
+.break {
+    height: 1%;
+}
+
+.subtable {
+    display:table;
+    background-color: #faf4f4;
+    margin-left: 1%;
+    width: 98%;
+    border-radius: 30px;
+    margin-top: 1%;
+    border-collapse: collapse;
+}
+.category_name {
+    font-family: Segoe UI, serif;
+    color: #244564;
+    text-align: center;
+}
+
+.subcategory_name {
+    font-family: Segoe UI, serif;
+    color: #244564;
+    text-align: left;
+    font-size: 130%;
+}
+
+.sub_subcategory_name {
+    font-family: Segoe UI, serif;
+    color: #244564;
+    text-align: center;
+    font-size: 100%;
+    width: 30vw;
+}
+
+.sub_subcategory_assign {
+    font-family: Segoe UI, serif;
+    color: #244564;
+    text-align: center;
+    font-size: 100%;
+    width: 28vw;
+}
+
+.sub_subcategory_spent {
+    font-family: Segoe UI, serif;
+    color: #244564;
+    text-align: center;
+    font-size: 100%;
+    width: 20vw;
+}
+
+.sub_subcategory_left {
+    font-family: Segoe UI, serif;
+    color: #244564;
+    text-align: center;
+    font-size: 100%;
+    width: 10vw;
+}
+
+.sub_subcategory_percent {
+    font-family: Segoe UI, serif;
+    color: #244564;
+    text-align: center;
+    font-size: 100%;
+    width: 9vw;
+}
