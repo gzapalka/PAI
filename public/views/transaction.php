@@ -46,7 +46,7 @@
 
                 <label for="Date"><h3 style="text-align: left">Date</h3></label>
                 <label>
-                    <input type="text" placeholder="Enter Date" name="Date">
+                    <input type="date" placeholder="Enter Date" name="Date">
                 </label>
 
                 <label for="Comment"><h3 style="text-align: left">Comment</h3></label>
@@ -72,7 +72,7 @@
 
                 <label for="Date"><h3 style="text-align: left">Date</h3></label>
                 <label>
-                    <input type="text" placeholder="Enter Date" name="Date">
+                    <input type="date" placeholder="Enter Date" name="Date">
                 </label>
 
                 <label for="Comment"><h3 style="text-align: left">Comment</h3></label>
