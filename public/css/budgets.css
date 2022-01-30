@@ -1,0 +1,473 @@
+header {
+    background: #244564;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 10%;
+    right: 0;
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-areas:
+      "h1 h1 button";
+    justify-items: center;
+    align-items: center;
+}
+
+content {
+    background: #faf4f4;
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    left: 0;
+    right: 0;
+    overflow: auto;
+}
+
+footer {
+    background: #244564;
+    position: absolute;
+    bottom: 0;
+    height: 10%;
+    left: 0;
+    right: 0;
+    display: grid;
+    grid-template-columns: 3fr 2fr 3fr;
+    grid-template-areas:
+         "money_to_assign h1 contact_info";
+    justify-items: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+amount {
+    font-family: Ink Free, serif;
+    font-weight: lighter;
+    color: #707070;
+    font-size: calc(1vw + 2vh);
+    text-justify: auto;
+    margin-left: 30%;
+}
+
+contact_info {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+         "h1 social_media h1"
+         "h1 social_media h1"
+         "h1 social_media h1";
+}
+
+social_media {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas:
+         "social_media_logo h1";
+}
+
+h1 {
+    font-family: Ink Free, serif;
+    font-weight: lighter;
+    color: #f7f2f2;
+    text-align: center;
+    height: 50%;
+}
+
+h2 {
+    font-family: Ink Free, serif;
+    font-weight: lighter;
+    color: #f7f2f2;
+    text-align: center;
+    font-size: calc(0.10vw + 1vh);
+}
+
+button {
+
+}
+
+social_media_logo {
+    margin-top: 20%;
+    width: auto;
+    max-height: 100%;
+}
+
+money_to_assign {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-areas:
+         "h1 amount h1";
+    justify-items: center;
+    align-items: center;
+}
+
+bookmarks {
+    display: grid;
+    height: 5%;
+    width: 90%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+         "bookmark bookmark bookmark bookmark";
+    align-items: center;
+    margin-left: 5%;
+}
+
+bookmark {
+    font-family: Segoe UI, serif;
+    letter-spacing: 0;
+    color: #244564;
+    border-radius: 30px;
+    text-align: center;
+    border: none;
+    height: 2vh;
+}
+
+.bookmark_container {
+    background-color:#E9E4E4;
+    height: 100%;
+    position: relative;
+}
+
+.budget_table {
+    display:table;
+    background-color: #faf4f4;
+    margin-left: 1%;
+    width: 98%;
+    border-radius: 10px;
+    margin-top: 1%;
+    border-collapse: collapse;
+}
+
+.break {
+    height: 1%;
+}
+
+.subtable {
+    display:table;
+    background-color: #faf4f4;
+    margin-left: 1%;
+    width: 98%;
+    border-radius: 30px;
+    margin-top: 1%;
+    border-collapse: collapse;
+}
+.category_name {
+    font-family: Segoe UI, serif;
+    color: #244564;
+    text-align: center;
+}
+
+.subcategory_name {
+    font-family: Segoe UI, serif;
+    color: #244564;
+    text-align: left;
+    font-size: 130%;
+}
+
+.sub_subcategory_name {
+    font-family: Segoe UI, serif;
+    color: #244564;
+    text-align: center;
+    font-size: 100%;
+    width: 30vw;
+}
+
+.sub_subcategory_assign {
+    font-family: Segoe UI, serif;
+    color: #244564;
+    text-align: center;
+    font-size: 100%;
+    width: 28vw;
+}
+
+.sub_subcategory_spent {
+    font-family: Segoe UI, serif;
+    color: #244564;
+    text-align: center;
+    font-size: 100%;
+    width: 20vw;
+}
+
+.sub_subcategory_left {
+    font-family: Segoe UI, serif;
+    color: #244564;
+    text-align: center;
+    font-size: 100%;
+    width: 10vw;
+}
+
+.sub_subcategory_percent {
+    font-family: Segoe UI, serif;
+    color: #244564;
+    text-align: center;
+    font-size: 100%;
+    width: 9vw;
+}
+
+.statistic_container {
+    height: 100%;
+    position: relative;
+    background-color: cornsilk;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+         "statistic_left_container statistic_right_container";
+}
+
+.statistic_left_container {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "statistic"
+        "statistic";
+    justify-items: center;
+    align-items: center;
+}
+
+.statistic_right_container {
+}
+
+.statistic {
+    align-content: center;
+    justify-content: center;
+    display: flex;
+}
+
+.statistic_img {
+    width: auto;
+    max-height: 100%;
+    justify-items: center;
+    align-items: center;
+}
+
+h3 {
+    font-family: Segoe UI, serif;
+    color: #244564;
+}
+
+.settings_container {
+    height: 100%;
+    position: relative;
+    background-color: #D5E6F2;
+}
+
+.edit_button {
+    font-family: Segoe UI, serif;
+    font-weight: lighter;
+    text-align: center;
+    height: 4vh;
+    width: 2vw;
+}
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+    background-color: #555;
+    color: white;
+    padding: 16px 20px;
+
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    bottom: 23px;
+    right: 28px;
+    width: 280px;
+}
+
+.logout_button {
+    font-family: Ink Free, serif;
+    font-size: calc(1vw + 1vh);
+    font-weight: lighter;
+    color: #f7f2f2;
+    text-align: center;
+    height: 75%;
+    border: none;
+    background: none;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+}
+
+/* Add styles to the form container */
+.edit_txn_form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+}
+
+/* Full-width input fields */
+.edit_txn_form-container input[type=text], .edit_txn_form-container input[type=password] {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    color: #244564;
+    font-family: Segoe UI, serif;
+}
+
+/* When the inputs get focus, do something */
+.edit_txn_form-container input[type=text]:focus, .edit_txn_form-container input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+    color: #244564;
+    font-family: Segoe UI, serif;
+}
+
+/* Set a style for the submit/login button */
+.edit_txn_form-container .submit_btn {
+    background-color: #E9E4E4;
+    color: #244564;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+}
+
+.edit_txn_form-container .delete {
+    background-color: #F3E6D1;
+    color: #244564;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.edit_txn_form-container .cancel {
+    background-color: #D5E6F2;
+    color: #244564;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+}
+
+/* Add some hover effects to buttons */
+.edit_txn_form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+}
+
+h3 {
+    font-family: Segoe UI, serif;
+    text-align: center;
+    font-size: 100%;
+}
+
+.add_txn_btn {
+    cursor: pointer;
+    width: 10vh;
+    height: 5vh;
+    border-radius: 90px;
+    background: #244564;
+    margin-left: 5%;
+}
+
+/* Add styles to the form container */
+.add_txn_form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+}
+
+/* Full-width input fields */
+.add_txn_form-container input[type=text], .edit_txn_form-container input[type=password] {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    color: #244564;
+    font-family: Segoe UI, serif;
+}
+
+/* When the inputs get focus, do something */
+.add_txn_form-container input[type=text]:focus, .edit_txn_form-container input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+    color: #244564;
+    font-family: Segoe UI, serif;
+}
+
+/* Set a style for the submit/login button */
+.add_txn_form-container .submit_btn {
+    background-color: #E9E4E4;
+    color: #244564;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.add_txn_form-container .cancel {
+    background-color: #D5E6F2;
+    color: #244564;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+}
+
+/* Add some hover effects to buttons */
+.add_txn_form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+}
+
+.transaction_container {
+
+}
+
+/* Add styles to the form container */
+.delete_account_form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+}
+
+/* Set a style for the submit/login button */
+.delete_account_form-container .submit_btn {
+    background-color: #E9E4E4;
+    color: #244564;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.delete_account_form-container .cancel {
+    background-color: #D5E6F2;
+    color: #244564;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+}
+
+/* Add some hover effects to buttons */
+.delete_account_form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+}
+
+.delete_account_btn {
+    border: none;
+    background-color: transparent;
+    font-family: Segoe UI, Serif;
+    letter-spacing: 0;
+}
