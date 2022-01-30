@@ -7,7 +7,7 @@
 <header>
     <h1>Simple Budget</h1>
     <h1></h1>
-    <button>Log out</button>
+    <button class="logout_button">Log out</button>
 </header>
 <content>
     <bookmarks>

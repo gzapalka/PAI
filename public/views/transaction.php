@@ -7,7 +7,7 @@
 <header>
     <h1>Simple Budget</h1>
     <h1></h1>
-    <button>Log out</button>
+    <button class="logout_button">Log out</button>
 </header>
 <content>
     <bookmarks>
@@ -17,7 +17,46 @@
         <bookmark href="#" style="background-color:#D5E6F2;">Delete Account</bookmark>
     </bookmarks>
     <div class="transaction_container">
-        <div class="break"></div>
+        <button class="add_txn_btn" onclick="openAddTxnForm()">
+            <h1>Add</h1>
+        </button>
+        <div class="form-popup" id="addTxnForm">
+            <form action="/action_page.php" class="add_txn_form-container">
+                <label for="Category"><h3 style="text-align: left">Category</h3></label>
+                <input type="text" placeholder="Enter Category" name="Category">
+
+                <label for="Amount"><h3 style="text-align: left">Amount</h3></label>
+                <input type="text" placeholder="Enter Amount" name="Amount">
+
+                <label for="Date"><h3 style="text-align: left">Date</h3></label>
+                <input type="text" placeholder="Enter Date" name="Date">
+
+                <label for="Comment"><h3 style="text-align: left">Comment</h3></label>
+                <input type="text" placeholder="Enter Comment" name="Comment">
+
+                <button type="submit" class="submit_btn">Add transaction</button>
+                <button type="button" class="btn cancel" onclick="closeAddTxnForm()">Close</button>
+            </form>
+        </div>
+        <div class="form-popup" id="editTxnForm">
+            <form action="/action_page.php" class="edit_txn_form-container">
+                <label for="Category"><h3 style="text-align: left">Category</h3></label>
+                <input type="text" placeholder="Enter Category" name="Category">
+
+                <label for="Amount"><h3 style="text-align: left">Amount</h3></label>
+                <input type="text" placeholder="Enter Amount" name="Amount">
+
+                <label for="Date"><h3 style="text-align: left">Date</h3></label>
+                <input type="text" placeholder="Enter Date" name="Date">
+
+                <label for="Comment"><h3 style="text-align: left">Comment</h3></label>
+                <input type="text" placeholder="Enter Comment" name="Comment">
+
+                <button type="submit" class="submit_btn">Submit changes</button>
+                <button type="submit" class="btn delete">Delete transaction</button>
+                <button type="button" class="btn cancel" onclick="closeEditTxnForm()">Close</button>
+            </form>
+        </div>
         <table class="budget_table">
             <thead>
             <tr>
@@ -35,7 +74,7 @@
                 <td class="sub_subcategory_spent">2021-6-12</td>
                 <td class="sub_subcategory_left">Check Engine</td>
                 <td>
-                    <button class="edit_button">
+                    <button class="edit_button" onclick="openEditTxnForm()">
                         Edit
                     </button>
                 </td>
@@ -46,7 +85,7 @@
                 <td class="sub_subcategory_spent">2021-6-11</td>
                 <td class="sub_subcategory_left">Fill up</td>
                 <td>
-                    <button class="edit_button">
+                    <button class="edit_button" onclick="openEditTxnForm()">
                         Edit
                     </button>
                 </td>
@@ -57,7 +96,7 @@
                 <td class="sub_subcategory_spent">2021-6-12</td>
                 <td class="sub_subcategory_left">Monthly Ticket</td>
                 <td>
-                    <button class="edit_button">
+                    <button class="edit_button" onclick="openEditTxnForm()">
                         Edit
                     </button>
                 </td>
@@ -69,7 +108,7 @@
                 <td class="sub_subcategory_spent">2021-6-12</td>
                 <td class="sub_subcategory_left">Subscription</td>
                 <td>
-                    <button class="edit_button">
+                    <button class="edit_button" onclick="openEditTxnForm()">
                         Edit
                     </button>
                 </td>
@@ -80,7 +119,7 @@
                 <td class="sub_subcategory_spent">2021-6-12</td>
                 <td class="sub_subcategory_left">Pizza on date</td>
                 <td>
-                    <button class="edit_button">
+                    <button class="edit_button" onclick="openEditTxnForm()">
                         Edit
                     </button>
                 </td>
@@ -102,7 +141,7 @@
                 <td class="sub_subcategory_spent">2021-6-12</td>
                 <td class="sub_subcategory_left">Witcher 3</td>
                 <td>
-                    <button class="edit_button">
+                    <button class="edit_button" onclick="openEditTxnForm()">
                         Edit
                     </button>
                 </td>
@@ -113,7 +152,7 @@
                 <td class="sub_subcategory_spent">2021-6-12</td>
                 <td class="sub_subcategory_left">French Lessons</td>
                 <td>
-                    <button class="edit_button">
+                    <button class="edit_button" onclick="openEditTxnForm()">
                         Edit
                     </button>
                 </td>
@@ -156,4 +195,21 @@
         <h2>simplebudget@mail.com</h2>
     </contact_info>
 </footer>
+<script>
+    function openEditTxnForm() {
+        document.getElementById("editTxnForm").style.display = "block";
+    }
+
+    function openAddTxnForm() {
+        document.getElementById("addTxnForm").style.display = "block";
+    }
+
+    function closeEditTxnForm() {
+        document.getElementById("editTxnForm").style.display = "none";
+    }
+
+    function closeAddTxnForm() {
+        document.getElementById("addTxnForm").style.display = "none";
+    }
+</script>
 </body>

@@ -82,14 +82,7 @@ h2 {
 }
 
 button {
-    font-family: Ink Free, serif;
-    font-size: calc(1vw + 1vh);
-    font-weight: lighter;
-    color: #f7f2f2;
-    text-align: center;
-    height: 75%;
-    border: none;
-    background: none;
+
 }
 
 social_media_logo {
@@ -246,7 +239,7 @@ bookmark {
 }
 
 h3 {
-    font: normal normal normal 24px/32px Segoe UI;
+    font-family: Segoe UI, serif;
     color: #244564;
 }
 
@@ -254,4 +247,183 @@ h3 {
     height: 100%;
     position: relative;
     background-color: #D5E6F2;
+}
+
+.edit_button {
+    font-family: Segoe UI, serif;
+    font-weight: lighter;
+    text-align: center;
+    height: 4vh;
+    width: 2vw;
+}
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+    background-color: #555;
+    color: white;
+    padding: 16px 20px;
+
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    bottom: 23px;
+    right: 28px;
+    width: 280px;
+}
+
+.logout_button {
+    font-family: Ink Free, serif;
+    font-size: calc(1vw + 1vh);
+    font-weight: lighter;
+    color: #f7f2f2;
+    text-align: center;
+    height: 75%;
+    border: none;
+    background: none;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+}
+
+/* Add styles to the form container */
+.edit_txn_form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+}
+
+/* Full-width input fields */
+.edit_txn_form-container input[type=text], .edit_txn_form-container input[type=password] {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    color: #244564;
+    font-family: Segoe UI, serif;
+}
+
+/* When the inputs get focus, do something */
+.edit_txn_form-container input[type=text]:focus, .edit_txn_form-container input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+    color: #244564;
+    font-family: Segoe UI, serif;
+}
+
+/* Set a style for the submit/login button */
+.edit_txn_form-container .submit_btn {
+    background-color: #E9E4E4;
+    color: #244564;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+}
+
+.edit_txn_form-container .delete {
+    background-color: #F3E6D1;
+    color: #244564;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.edit_txn_form-container .cancel {
+    background-color: #D5E6F2;
+    color: #244564;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+}
+
+/* Add some hover effects to buttons */
+.edit_txn_form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+}
+
+h3 {
+    font-family: Segoe UI, serif;
+    text-align: center;
+    font-size: 100%;
+}
+
+.add_txn_btn {
+    cursor: pointer;
+    width: 10vh;
+    height: 5vh;
+    border-radius: 90px;
+    background: #244564;
+    margin-left: 5%;
+}
+
+/* Add styles to the form container */
+.add_txn_form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+}
+
+/* Full-width input fields */
+.add_txn_form-container input[type=text], .edit_txn_form-container input[type=password] {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    color: #244564;
+    font-family: Segoe UI, serif;
+}
+
+/* When the inputs get focus, do something */
+.add_txn_form-container input[type=text]:focus, .edit_txn_form-container input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+    color: #244564;
+    font-family: Segoe UI, serif;
+}
+
+/* Set a style for the submit/login button */
+.add_txn_form-container .submit_btn {
+    background-color: #E9E4E4;
+    color: #244564;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.add_txn_form-container .cancel {
+    background-color: #D5E6F2;
+    color: #244564;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+}
+
+/* Add some hover effects to buttons */
+.add_txn_form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+}
+
+.transaction_container {
+
 }
