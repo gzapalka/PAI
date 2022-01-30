@@ -249,3 +249,9 @@ h3 {
     font: normal normal normal 24px/32px Segoe UI;
     color: #244564;
 }
+
+.settings_container {
+    height: 100%;
+    position: relative;
+    background-color: #D5E6F2;
+}

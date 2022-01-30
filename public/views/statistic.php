@@ -14,7 +14,7 @@
         <bookmark href="#" style="background-color:#E9E4E4;">Budget</bookmark>
         <bookmark href="#" style="background-color:cornsilk;">Statistic</bookmark>
         <bookmark href="#" style="background-color:#F3E6D1;">Transaction</bookmark>
-        <bookmark href="#" style="background-color:#D5E6F2;">Settings</bookmark>
+        <bookmark href="#" style="background-color:#D5E6F2;">Delete Account</bookmark>
     </bookmarks>
     <div class="statistic_container">
         <div class="statistic_left_container">
