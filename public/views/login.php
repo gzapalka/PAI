@@ -14,7 +14,7 @@
           <h1>SimpleBudget</h1>
         </div>
         <div class="login-panel">
-          <form name="login" class="login" action="login" method="POST">
+          <form name="login" class="login" action="login_user" method="POST">
               <label>
                   <input class="email input-style" name="email" id="email" type="text" placeholder="email" onblur="ValidateEmail(document.login.email)">
               </label>

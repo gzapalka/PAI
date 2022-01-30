@@ -57,6 +57,10 @@ class UserRepository extends Repository
     function addUser(User $user)
     {
         $stmt = $this->database->connect()->prepare('
+            INSERT INTO pwd (username, email) VALUES (:username, :email)
+        ');
+
+        $stmt = $this->database->connect()->prepare('
             INSERT INTO user (username, email) VALUES (:username, :email)
         ');
 

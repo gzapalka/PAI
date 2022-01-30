@@ -31,10 +31,25 @@ class SecurityController extends AppController
         die();
     }
 
-    public function register_user()
+    public function register()
     {
-        $url = "https://$_SERVER[HTTP_HOST]";
-        header("Location: $url/register");
-        die();
+        if (!$this->isPost()) {
+            return $this->render('register');
+        }
+
+        $email = $_POST['email'];
+        $name = $_POST['username'];
+        $password = $_POST['password'];
+        $confirmedPassword = $_POST['repeat_password'];
+
+        if ($password !== $confirmedPassword) {
+            return $this->render('register', ['messages' => ['Please provide proper password']]);
+        }
+
+        $user = new User($name, $email, password_hash($password));
+
+        $this->userRepository->addUser($user);
+
+        return $this->render('login', ['messages' => ['You\'ve been succesfully registrated!']]);
     }
 }
