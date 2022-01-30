@@ -11,10 +11,10 @@
 </header>
 <content>
     <bookmarks>
-        <bookmark style="background-color:#E9E4E4;">Budget</bookmark>
-        <bookmark style="background-color:#F8F4F4;">Statistic</bookmark>
-        <bookmark style="background-color:#F3E6D1;">Transaction</bookmark>
-        <bookmark style="background-color:#D5E6F2;">Settings</bookmark>
+        <bookmark href="#" style="background-color:#E9E4E4;">Budget</bookmark>
+        <bookmark href="#" style="background-color:#F8F4F4;">Statistic</bookmark>
+        <bookmark href="#" style="background-color:#F3E6D1;">Transaction</bookmark>
+        <bookmark href="#" style="background-color:#D5E6F2;">Settings</bookmark>
     </bookmarks>
     <div class="bookmark_container">
         <div class="break"></div>
@@ -171,19 +171,25 @@
     <contact_info>
         <h2>About us</h2>
         <social_media>
-            <img src="../img/fb.png" alt="FB">
+            <social_media_logo>
+                <img src="../img/fb.png" alt="FB">
+            </social_media_logo>
             <h2>Facebook</h2>
         </social_media>
         <h2>123 street City, 09-732</h2>
         <h2>Contact</h2>
         <social_media>
-            <img src="../img/ig.png" alt="IG">
+            <social_media_logo>
+                <img src="../img/ig.png" alt="IG">
+            </social_media_logo>
             <h2>Instagram</h2>
         </social_media>
         <h2>+48 025 657 129</h2>
         <h2>Term & Policy</h2>
         <social_media>
-            <img src="../img/tt.png" alt="TT">
+            <social_media_logo>
+                <img src="../img/tt.png" alt="TT">
+            </social_media_logo>
             <h2>Twitter</h2>
         </social_media>
         <h2>simplebudget@mail.com</h2>

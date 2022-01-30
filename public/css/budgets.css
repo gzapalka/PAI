@@ -92,7 +92,7 @@ button {
     background: none;
 }
 
-img {
+social_media_logo {
     margin-top: 20%;
     width: auto;
     max-height: 100%;
@@ -207,4 +207,45 @@ bookmark {
     text-align: center;
     font-size: 100%;
     width: 9vw;
+}
+
+.statistic_container {
+    height: 100%;
+    position: relative;
+    background-color: cornsilk;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+         "statistic_left_container statistic_right_container";
+}
+
+.statistic_left_container {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "statistic"
+        "statistic";
+    justify-items: center;
+    align-items: center;
+}
+
+.statistic_right_container {
+}
+
+.statistic {
+    align-content: center;
+    justify-content: center;
+    display: flex;
+}
+
+.statistic_img {
+    width: auto;
+    max-height: 100%;
+    justify-items: center;
+    align-items: center;
+}
+
+h3 {
+    font: normal normal normal 24px/32px Segoe UI;
+    color: #244564;
 }
