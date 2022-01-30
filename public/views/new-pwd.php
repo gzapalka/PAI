@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <head>
-  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="public/css/styles.css">
   <title>SimpleBudget</title>
 </head>
 <body>
   <div class="container">
     <div class="left-container">
-      <img src="../img/Logo2.png">
+      <img src="public/img/Logo2.png">
     </div>
     <div class="right-container">
       <div class="login-container">
