@@ -14,12 +14,22 @@
         <bookmark href="#" style="background-color:#E9E4E4;">Budget</bookmark>
         <bookmark href="#" style="background-color: cornsilk;">Statistic</bookmark>
         <bookmark href="#" style="background-color:#F3E6D1;">Transaction</bookmark>
-        <bookmark href="#" style="background-color:#D5E6F2;">Delete Account</bookmark>
+        <bookmark style="background-color:#D5E6F2;">
+            <button class="delete_account_btn" onclick="submitDeleteAccount()">
+                Delete Account
+            </button>
+        </bookmark>
     </bookmarks>
     <div class="bookmark_container">
         <div class="break"></div>
+        <div class="form-popup" id="deleteAccountForm">
+            <form action="/action_page.php" class="delete_account_form-container">
+                <h1 style="color: #244564; height: 100%">Are you sure?</h1>
+                <button type="submit" class="submit_btn">Delete account</button>
+                <button type="button" class="btn cancel" onclick="closeSubmitDeleteAccount()">Close</button>
+            </form>
+        </div>
         <table class="budget_table">
-            <col><col><col><col><col>
             <thead>
                 <tr>
                     <th class="category_name">Category</th>
@@ -195,4 +205,15 @@
         <h2>simplebudget@mail.com</h2>
     </contact_info>
 </footer>
+
+<script>
+    function submitDeleteAccount() {
+        document.getElementById("deleteAccountForm").style.display = "block";
+    }
+
+    function closeSubmitDeleteAccount() {
+        document.getElementById("deleteAccountForm").style.display = "none";
+    }
+</script>
+
 </body>

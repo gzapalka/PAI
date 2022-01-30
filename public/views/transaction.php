@@ -14,25 +14,45 @@
         <bookmark href="#" style="background-color:#E9E4E4;">Budget</bookmark>
         <bookmark href="#" style="background-color: cornsilk;">Statistic</bookmark>
         <bookmark href="#" style="background-color:#F3E6D1;">Transaction</bookmark>
-        <bookmark href="#" style="background-color:#D5E6F2;">Delete Account</bookmark>
+        <bookmark style="background-color:#D5E6F2;">
+            <button class="delete_account_btn" onclick="submitDeleteAccount()">
+                Delete Account
+            </button>
+        </bookmark>
     </bookmarks>
     <div class="transaction_container">
         <button class="add_txn_btn" onclick="openAddTxnForm()">
             <h1>Add</h1>
         </button>
+        <div class="form-popup" id="deleteAccountForm">
+            <form action="/action_page.php" class="delete_account_form-container">
+                <h1 style="color: #244564; height: 100%">Are you sure?</h1>
+                <button type="submit" class="submit_btn">Delete account</button>
+                <button type="button" class="btn cancel" onclick="closeSubmitDeleteAccount()">Close</button>
+            </form>
+        </div>
         <div class="form-popup" id="addTxnForm">
             <form action="/action_page.php" class="add_txn_form-container">
+
                 <label for="Category"><h3 style="text-align: left">Category</h3></label>
-                <input type="text" placeholder="Enter Category" name="Category">
+                <label>
+                    <input type="text" placeholder="Enter Category" name="Category">
+                </label>
 
                 <label for="Amount"><h3 style="text-align: left">Amount</h3></label>
-                <input type="text" placeholder="Enter Amount" name="Amount">
+                <label>
+                    <input type="text" placeholder="Enter Amount" name="Amount">
+                </label>
 
                 <label for="Date"><h3 style="text-align: left">Date</h3></label>
-                <input type="text" placeholder="Enter Date" name="Date">
+                <label>
+                    <input type="text" placeholder="Enter Date" name="Date">
+                </label>
 
                 <label for="Comment"><h3 style="text-align: left">Comment</h3></label>
-                <input type="text" placeholder="Enter Comment" name="Comment">
+                <label>
+                    <input type="text" placeholder="Enter Comment" name="Comment">
+                </label>
 
                 <button type="submit" class="submit_btn">Add transaction</button>
                 <button type="button" class="btn cancel" onclick="closeAddTxnForm()">Close</button>
@@ -41,16 +61,24 @@
         <div class="form-popup" id="editTxnForm">
             <form action="/action_page.php" class="edit_txn_form-container">
                 <label for="Category"><h3 style="text-align: left">Category</h3></label>
-                <input type="text" placeholder="Enter Category" name="Category">
+                <label>
+                    <input type="text" placeholder="Enter Category" name="Category">
+                </label>
 
                 <label for="Amount"><h3 style="text-align: left">Amount</h3></label>
-                <input type="text" placeholder="Enter Amount" name="Amount">
+                <label>
+                    <input type="text" placeholder="Enter Amount" name="Amount">
+                </label>
 
                 <label for="Date"><h3 style="text-align: left">Date</h3></label>
-                <input type="text" placeholder="Enter Date" name="Date">
+                <label>
+                    <input type="text" placeholder="Enter Date" name="Date">
+                </label>
 
                 <label for="Comment"><h3 style="text-align: left">Comment</h3></label>
-                <input type="text" placeholder="Enter Comment" name="Comment">
+                <label>
+                    <input type="text" placeholder="Enter Comment" name="Comment">
+                </label>
 
                 <button type="submit" class="submit_btn">Submit changes</button>
                 <button type="submit" class="btn delete">Delete transaction</button>
@@ -210,6 +238,14 @@
 
     function closeAddTxnForm() {
         document.getElementById("addTxnForm").style.display = "none";
+    }
+
+    function submitDeleteAccount() {
+        document.getElementById("deleteAccountForm").style.display = "block";
+    }
+
+    function closeSubmitDeleteAccount() {
+        document.getElementById("deleteAccountForm").style.display = "none";
     }
 </script>
 </body>

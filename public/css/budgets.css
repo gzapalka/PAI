@@ -112,12 +112,13 @@ bookmarks {
 }
 
 bookmark {
-    font: normal normal normal 24px/32px Segoe UI;
+    font-family: Segoe UI, serif;
     letter-spacing: 0;
     color: #244564;
     border-radius: 30px;
     text-align: center;
     border: none;
+    height: 2vh;
 }
 
 .bookmark_container {
@@ -426,4 +427,47 @@ h3 {
 
 .transaction_container {
 
+}
+
+/* Add styles to the form container */
+.delete_account_form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+}
+
+/* Set a style for the submit/login button */
+.delete_account_form-container .submit_btn {
+    background-color: #E9E4E4;
+    color: #244564;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.delete_account_form-container .cancel {
+    background-color: #D5E6F2;
+    color: #244564;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+}
+
+/* Add some hover effects to buttons */
+.delete_account_form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+}
+
+.delete_account_btn {
+    border: none;
+    background-color: transparent;
+    font-family: Segoe UI, Serif;
+    letter-spacing: 0;
 }
