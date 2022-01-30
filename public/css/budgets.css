@@ -62,7 +62,7 @@ social_media {
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-template-areas:
-         "img h1";
+         "social_media_logo h1";
 }
 
 h1 {
