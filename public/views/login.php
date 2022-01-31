@@ -15,21 +15,19 @@
         </div>
         <div class="login-panel">
           <form name="login" class="login" action="login_user" method="POST">
-              <label>
                   <input class="email input-style" name="email" id="email" type="text" placeholder="email" onblur="ValidateEmail(document.login.email)">
-              </label>
                   <input class="pwd input-style" id="password" name="password" type="password" placeholder="password" onblur="enableLogin()">
             <button class="submit login-button-style" type="submit" id="login-button" disabled="disabled">login</button>
-            <button class="register login-button-style" type="">join us!</button>
+            <button class="register login-button-style" href="register">join us!</button>
+              <div class="error-code">
+                  <?php if(isset($message)) {
+                      echo $message;
+                  }
+                  ?>
+              </div>
           </form>
         </div>
       </div>
-        <div class="error-code">
-            <?php if(isset($message)) {
-                echo $message;
-            }
-            ?>
-        </div>
     </div>
   </div>
 
