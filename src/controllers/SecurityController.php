@@ -26,8 +26,7 @@ class SecurityController extends AppController
             $controller->displayLoginPageWithErrorMassage("Incorrect email");
         }
         else {
-            $userRepository = new UserRepository();
-            $user = $userRepository->getLoggedUser($email, $pwd);
+            $user = $this->repository->getLoggedUser($email, $pwd);
 
             if($user==null){
                 $controller->displayLoginPageWithErrorMassage("No such user");
@@ -49,10 +48,20 @@ class SecurityController extends AppController
         $name = $_POST['username'];
         $password = $_POST['password'];
         $confirmedPassword = $_POST['repeat_password'];
+        $controller = new DefaultController();
+
+        $controller->displayLoginPageWithErrorMassage("Email already used!");
+         if(!$this->repository->isEmailUnique($email)) {
+             $controller->displayLoginPageWithErrorMassage("Email already used!");
+             return;
+         }
 
         if ($password !== $confirmedPassword) {
-            return $this->render('register', ['messages' => ['Please provide proper password']]);
+            $controller->displayLoginPageWithErrorMassage("Pwds must match!");
+            return;
         }
+
+        die();
 
         $user = User::insertConstructor($name, $email, password_hash($password, PASSWORD_BCRYPT));
 

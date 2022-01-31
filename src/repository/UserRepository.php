@@ -77,4 +77,22 @@ class UserRepository extends Repository
         $stmt->execute();
 
     }
+
+    public function isEmailUnique(string $email): bool {
+        $connection = $this->database->connect();
+        $stmt = $connection->prepare('
+            SELECT * FROM user_account WHERE email = :email;
+        ');
+
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user == false) {
+            return true;
+        }
+
+        return false;
+    }
 }

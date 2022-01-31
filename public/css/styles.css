@@ -75,14 +75,15 @@ body {
   }
 
   form.register {
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas:
       "login login login"
       "username username username"
       "pwd pwd pwd"
       "rpwd rpwd rpwd"
-      "submit . .";
+      "submit . ."
+      "error-code . .";
   }
 
   form.mail-verification {
