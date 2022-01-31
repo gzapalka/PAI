@@ -24,6 +24,12 @@
           </form>
         </div>
       </div>
+        <div class="error-code">
+            <?php if(isset($message)) {
+                echo $message;
+            }
+            ?>
+        </div>
     </div>
   </div>
 
