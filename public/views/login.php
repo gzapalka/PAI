@@ -18,7 +18,7 @@
                   <input class="email input-style" name="email" id="email" type="text" placeholder="email" onblur="ValidateEmail(document.login.email)">
                   <input class="pwd input-style" id="password" name="password" type="password" placeholder="password" onblur="enableLogin()">
             <button class="submit login-button-style" type="submit" id="login-button" disabled="disabled">login</button>
-              <button class="register login-button-style" href="register">
+              <button class="register login-button-style">
                   <a href="register">Join us!</a>
               </button>
               <div class="error-code">
@@ -51,21 +51,13 @@
     inputs.forEach((input) => {
         input.addEventListener('input', () => {
             let name = event.target.getAttribute('name');
-            if (event.target.value.length > 0) {
-                inputValidator[name] = true;
-            } else {
-                inputValidator[name] = false;
-            };
+            inputValidator[name] = event.target.value.length > 0;
 
             let allTrue = Object.keys(inputValidator).every((item) => {
                 return inputValidator[item] === true
             });
 
-            if (allTrue) {
-                buttonSend.disabled = false;
-            } else {
-                buttonSend.disabled = true;
-            }
+            buttonSend.disabled = !allTrue;
         })
     })
 
@@ -88,11 +80,7 @@
     }
 
     function enableLogin(){
-        if (document.forms["login"]["email"].value != "" && document.forms["login"]["password"].value != "") {
-            document.getElementById("login-button").disabled = false;
-        } else {
-            document.getElementById("login-button").disabled = true;
-        }
+        document.getElementById("login-button").disabled = !(document.forms["login"]["email"].value !== "" && document.forms["login"]["password"].value !== "");
     }
 </script>
 </body>
