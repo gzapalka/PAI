@@ -53,21 +53,27 @@ class UserRepository extends Repository
         );
     }
 
-    public
-    function addUser(User $user)
+    public function addUser(User $user)
     {
-        $stmt = $this->database->connect()->prepare('
-            INSERT INTO pwd (username, email) VALUES (:username, :email)
+        $connection = $this->database->connect();
+        $stmt = $connection->prepare('
+            INSERT INTO pwd (pwd_hash) VALUES (:pwd_hash)
         ');
 
-        $stmt = $this->database->connect()->prepare('
-            INSERT INTO user (username, email) VALUES (:username, :email)
+        $pwd_hash = $user->getPassword();
+        $stmt->bindParam(':pwd_hash', $pwd_hash);
+        $stmt->execute();
+
+        $stmt = $connection->prepare('
+            INSERT INTO user_account (username, email, pwd_id) VALUES (:username, :email, :pwd_id)
         ');
 
+        $lastId = $connection->lastInsertId();
         $email = $user->getEmail();
         $userName = $user->getUserName();
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':username', $userName);
+        $stmt->bindParam(':pwd_id', $lastId);
         $stmt->execute();
 
     }

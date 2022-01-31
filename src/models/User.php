@@ -88,4 +88,12 @@ class User
         return $this->createTime;
     }
 
+    /**
+     * @return string
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
 }

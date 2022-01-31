@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <head>
-  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="public/css/styles.css">
   <title>SimpleBudget</title>
 </head>
 <body>
   <div class="container">
     <div class="left-container">
-      <img src="../img/Logo2.png">
+      <img src="public/img/Logo2.png">
     </div>
     <div class="right-container">
       <div class="login-container">
@@ -14,12 +14,12 @@
           <h1>SimpleBudget</h1>
         </div>
         <div class="login-panel">
-          <form class="register" name="register" action="register" method="POST">
+          <form class="register" name="register" action="register_user" method="POST">
             <input class="email input-style" name="email" type="text" placeholder="email" onblur="ValidateEmail(document.register.email)">
             <input class="username input-style" name="username" type="text" placeholder="username">
             <input class="pwd input-style" id="pwd" name="password" type="password" placeholder="password" onblur="ValidatePassword(document.register.password)">
             <input class="rpwd input-style" name="repeat_password" type="password" placeholder="repeat password" onblur="ValidatePasswords(document.register.password, document.register.repeat_password)">
-            <button class="submit login-button-style" id="joinUsButton" type="submit" disabled="disabled">join us!</button>
+            <button class="submit login-button-style" id="joinUsButton" type="submit">join us!</button>
           </form>
         </div>
       </div>

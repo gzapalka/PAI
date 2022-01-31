@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" href="../css/budgets.css">
+    <link rel="stylesheet" href="public/css/budgets.css">
     <title>SimpleBudget</title>
 </head>
 <body>
@@ -200,7 +200,7 @@
         <h2>About us</h2>
         <social_media>
             <social_media_logo>
-                <img src="../img/fb.png" alt="FB">
+                <img src="public/img/fb.png" alt="FB">
             </social_media_logo>
             <h2>Facebook</h2>
         </social_media>
@@ -208,7 +208,7 @@
         <h2>Contact</h2>
         <social_media>
             <social_media_logo>
-                <img src="../img/ig.png" alt="IG">
+                <img src="public/img/ig.png" alt="IG">
             </social_media_logo>
             <h2>Instagram</h2>
         </social_media>
@@ -216,7 +216,7 @@
         <h2>Term & Policy</h2>
         <social_media>
             <social_media_logo>
-                <img src="../img/tt.png" alt="TT">
+                <img src=public/tt.png" alt="TT">
             </social_media_logo>
             <h2>Twitter</h2>
         </social_media>

@@ -3,10 +3,18 @@
 require_once 'AppController.php';
 require_once __DIR__ . '/../models/Requests/LoginRequest.php';
 require_once __DIR__ . '/../repository/UserRepository.php';
+require_once __DIR__ . '/../models/User.php';
 require_once 'util/InputValidator.php';
 
 class SecurityController extends AppController
 {
+    private UserRepository $repository;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->repository = new UserRepository();
+    }
 
     public function login_user()
     {
@@ -31,7 +39,7 @@ class SecurityController extends AppController
         die();
     }
 
-    public function register()
+    public function register_user()
     {
         if (!$this->isPost()) {
             return $this->render('register');
@@ -46,9 +54,9 @@ class SecurityController extends AppController
             return $this->render('register', ['messages' => ['Please provide proper password']]);
         }
 
-        $user = new User($name, $email, password_hash($password));
+        $user = User::insertConstructor($name, $email, password_hash($password, PASSWORD_BCRYPT));
 
-        $this->userRepository->addUser($user);
+        $this->repository->addUser($user);
 
         return $this->render('login', ['messages' => ['You\'ve been succesfully registrated!']]);
     }
