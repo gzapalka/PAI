@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS user_account
 (
     user_id     SERIAL NOT NULL,
     username    VARCHAR(16)  NOT NULL,
-    email       VARCHAR(255) NULL,
+    email       VARCHAR(255) NULL UNIQUE,
     pwd_id      INT          NOT NULL,
     create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (user_id),

@@ -18,7 +18,9 @@
                   <input class="email input-style" name="email" id="email" type="text" placeholder="email" onblur="ValidateEmail(document.login.email)">
                   <input class="pwd input-style" id="password" name="password" type="password" placeholder="password" onblur="enableLogin()">
             <button class="submit login-button-style" type="submit" id="login-button" disabled="disabled">login</button>
-            <button class="register login-button-style" href="register">join us!</button>
+              <button class="register login-button-style" href="register">
+                  <a href="register">Join us!</a>
+              </button>
               <div class="error-code">
                   <?php if(isset($message)) {
                       echo $message;
