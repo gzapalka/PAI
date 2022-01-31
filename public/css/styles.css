@@ -22,7 +22,7 @@ body {
   }
 
   .logo h1 {
-    font-family: Ink Free;
+    font-family: Ink Free, serif;
     font-size: calc(5vw + 3vh);
     font-weight: lighter;
     color: #f7f2f2;

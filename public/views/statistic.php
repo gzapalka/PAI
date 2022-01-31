@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" href="../css/budgets.css">
+    <link rel="stylesheet" href="public/css/budgets.css">
     <title>SimpleBudget</title>
 </head>
 <body>
@@ -31,19 +31,19 @@
         <div class="statistic_left_container">
             <div class="statistic">
                 <div class="statistic_img">
-                    <img src="../img/expenditures_income.jpg" alt="EI">
+                    <img src="public/img/expenditures_income.jpg" alt="EI">
                 </div>
             </div>
             <div class="statistic">
                 <div class="statistic_img">
-                    <img src="../img/expenditures_income.jpg" alt="EI">
+                    <img src="public/img/expenditures_income.jpg" alt="EI">
                 </div>
             </div>
         </div>
         <div class="statistic_right_container">
             <div class="statistic">
                 <div class="statistic_img">
-                    <img src="../img/months.jpg" alt="EI">
+                    <img src="public/img/months.jpg" alt="EI">
                 </div>
             </div>
         </div>
@@ -59,19 +59,19 @@
     <contact_info>
         <h2>About us</h2>
         <social_media>
-            <img src="../img/fb.png" alt="FB">
+            <img src="public/img/fb.png" alt="FB">
             <h2>Facebook</h2>
         </social_media>
         <h2>123 street City, 09-732</h2>
         <h2>Contact</h2>
         <social_media>
-            <img src="../img/ig.png" alt="IG">
+            <img src="public/img/ig.png" alt="IG">
             <h2>Instagram</h2>
         </social_media>
         <h2>+48 025 657 129</h2>
         <h2>Term & Policy</h2>
         <social_media>
-            <img src="../img/tt.png" alt="TT">
+            <img src="public/img/tt.png" alt="TT">
             <h2>Twitter</h2>
         </social_media>
         <h2>simplebudget@mail.com</h2>
