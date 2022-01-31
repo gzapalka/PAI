@@ -5,7 +5,8 @@ class User
     private string $userId;
     private string $userName;
     private string $email;
-    private DateTime $createTime;
+    private string $password;
+    private string $createTime;
 
     /**
      * Constructor to insert data to database.
@@ -13,11 +14,12 @@ class User
      * @param String $email the email of user
      * @return User new instance to insert to database
      */
-    public static function insertConstructor(string $userName, string $email): User
+    public static function insertConstructor(string $userName, string $email, string $password): User
     {
         $instance = new self();
         $instance->userName = $userName;
         $instance->email = $email;
+        $instance->password = $password;
         return $instance;
     }
 
@@ -28,7 +30,7 @@ class User
      * @param String $email the email of user
      * @return User new instance retrieved from database
      */
-    public static function retrieveConstructor(string $userId, string $userName, string $email, DateTime $createTime): User
+    public static function retrieveConstructor(string $userId, string $userName, string $email, string $createTime): User
     {
         $instance = new self();
         $instance->userId = $userId;
@@ -79,11 +81,19 @@ class User
     }
 
     /**
-     * @return DateTime
+     * @return string
      */
-    public function getCreateTime(): DateTime
+    public function getCreateTime(): string
     {
         return $this->createTime;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
     }
 
 }
