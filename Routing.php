@@ -23,7 +23,8 @@ class Router {
 
         $controller = self::$routes[$action];
         $object = new $controller;
-        $action = $action ?: 'login';
+        $action = $action ?: 'login_user';
+        $action = $action ?: 'register_user';
 
         $object->$action();
     }

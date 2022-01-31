@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <head>
-  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="public/css/styles.css">
   <title>SimpleBudget</title>
 </head>
 <body>
   <div class="container">
     <div class="left-container">
-      <img src="../img/Logo2.png" alt="Logo">
+      <img src="public/img/Logo2.png" alt="Logo">
     </div>
     <div class="right-container">
       <div class="login-container">
@@ -14,7 +14,7 @@
           <h1>SimpleBudget</h1>
         </div>
         <div class="login-panel">
-          <form name="login" class="login" action="login" method="POST">
+          <form name="login" class="login" action="login_user" method="POST">
               <label>
                   <input class="email input-style" name="email" id="email" type="text" placeholder="email" onblur="ValidateEmail(document.login.email)">
               </label>

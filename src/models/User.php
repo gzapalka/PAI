@@ -5,6 +5,7 @@ class User
     private string $userId;
     private string $userName;
     private string $email;
+    private string $password;
     private DateTime $createTime;
 
     /**
@@ -13,11 +14,12 @@ class User
      * @param String $email the email of user
      * @return User new instance to insert to database
      */
-    public static function insertConstructor(string $userName, string $email): User
+    public static function insertConstructor(string $userName, string $email, string $password): User
     {
         $instance = new self();
         $instance->userName = $userName;
         $instance->email = $email;
+        $instance->password = $password;
         return $instance;
     }
 
@@ -84,6 +86,14 @@ class User
     public function getCreateTime(): DateTime
     {
         return $this->createTime;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
     }
 
 }
