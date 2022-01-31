@@ -58,10 +58,11 @@ body {
   }
 
   form {
-    width: 70%;
+    height: 70%;
+    width: 80%;
     display: grid;
     row-gap: calc(2vw + 1vh);
-    column-gap: 22px;
+    column-gap: 1vw;
   }
 
   form.login {
@@ -71,7 +72,7 @@ body {
       "login login login"
       "pwd pwd pwd"
       "submit register ."
-      "forgot forgot forgot";
+      "error-code error-code error-code ";
   }
 
   form.register {
@@ -110,8 +111,8 @@ body {
   .rpwd::placeholder,
   .number::placeholder,
   h2 {
-    font-family: Ink Free;
-    font-size: 24px;
+    font-family: Ink Free, serif;
+    font-size: 5vh;
     color: #707070;
     text-align: left;
   }
@@ -141,12 +142,11 @@ body {
   }
 
   .input-style {
-    font-family: Ink Free;
+    font-family: Ink Free, serif;
     font-size: calc(2vw + 1vh);
     background-color: #00000000;
     border: none;
     border-bottom: 1px solid #707070;
-    max-height: 24px;
   }
 
   .submit {
@@ -159,7 +159,7 @@ body {
 
   .forgot {
     grid-area: forgot;
-    font-family: Ink Free;
+    font-family: Ink Free, serif;
     color: #707070;
     font-size: 20px;
   }
@@ -181,9 +181,9 @@ body {
     border-radius: 30px;
     background: none;
     text-align: center;
-    font-family: Ink Free;
+    font-family: Ink Free, serif;
     color: #707070;
-    font-size: 20px;
+    font-size: 5vh;
   }
 
 @media only screen and (max-device-width: 420px) {
@@ -196,4 +196,11 @@ body {
   .right-container {
     width: 100%;
   }
+}
+
+.error-code {
+  font-family: Ink Free, Serif, serif;
+  font-size: 5vh;
+  color: #707070;
+  text-align: left;
 }
