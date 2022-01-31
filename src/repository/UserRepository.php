@@ -8,13 +8,12 @@ class UserRepository extends Repository
     public function getLoggedUser(string $email, string $pwd): ?User
     {
         $stmt = $this->database->connect()->prepare('
-            SELECT pwd.user_id, username, email, create_time
-            FROM pai."user" JOIN pai."pwd" ON "user".user_id = pwd.user_id
-            WHERE pai."user".email LIKE :email AND pai.pwd.pwd_hash LIKE :pwd;
+                SELECT user_id, username, email, create_time, pwd_hash
+                FROM user_account JOIN pwd ON user_account.pwd_id = pwd.pwd_id
+                WHERE user_account.email = :email;
         ');
 
         $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':pwd', $pwd);
         $stmt->execute();
 
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -23,11 +22,15 @@ class UserRepository extends Repository
             return null;
         }
 
+        if (!password_verify($pwd, $user['pwd_hash'])) {
+            return null;
+        }
+
         return User::retrieveConstructor(
-            $user['userId'],
+            $user['user_id'],
             $user['email'],
             $user['username'],
-            $user['create_time'],
+            $user['create_time']
         );
     }
 
@@ -65,7 +68,7 @@ class UserRepository extends Repository
         $stmt->execute();
 
         $stmt = $connection->prepare('
-            INSERT INTO user_account (username, email, pwd_id) VALUES (:username, :email, :pwd_id)
+            INSERT INTO user_account (username, email, "pwd_id") VALUES (:username, :email, :pwd_id)
         ');
 
         $lastId = $connection->lastInsertId();

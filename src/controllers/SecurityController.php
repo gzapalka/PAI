@@ -18,24 +18,30 @@ class SecurityController extends AppController
 
     public function login_user()
     {
+        if (!$this->isPost()) {
+            return $this->render('login');
+        }
+
         $email = $_POST["email"];
         $pwd = $_POST["password"];
         $controller = new DefaultController();
 
+
         if (InputValidator::validateEmail($email)) {
             $controller->displayLoginPageWithErrorMassage("Incorrect email");
-        }
-        else {
-            $user = $this->repository->getLoggedUser($email, $pwd);
+        } else {
+            $userRepository = new UserRepository();
+            $user = $userRepository->getLoggedUser($email, $pwd);
 
-            if($user==null){
+            if ($user == null) {
                 $controller->displayLoginPageWithErrorMassage("No such user");
+            } else {
+                $controller->displayLoginPageWithErrorMassage("You're in!");
             }
-
-            $url = "https://$_SERVER[HTTP_HOST]";
-            header("Location: $url/mailVerification");
+//
+//            $url = "https://$_SERVER[HTTP_HOST]";
+//            header("Location: $url/mailVerification");
         }
-        die();
     }
 
     public function register_user()
@@ -60,8 +66,6 @@ class SecurityController extends AppController
             $controller->displayLoginPageWithErrorMassage("Pwds must match!");
             return;
         }
-
-        die();
 
         $user = User::insertConstructor($name, $email, password_hash($password, PASSWORD_BCRYPT));
 
