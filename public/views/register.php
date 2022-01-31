@@ -20,6 +20,12 @@
             <input class="pwd input-style" id="pwd" name="password" type="password" placeholder="password" onblur="ValidatePassword(document.register.password)">
             <input class="rpwd input-style" name="repeat_password" type="password" placeholder="repeat password" onblur="ValidatePasswords(document.register.password, document.register.repeat_password)">
             <button class="submit login-button-style" id="joinUsButton" type="submit">join us!</button>
+              <div class="error-code">
+                  <?php if(isset($message)) {
+                      echo $message;
+                  }
+                  ?>
+              </div>
           </form>
         </div>
       </div>
