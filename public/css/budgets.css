@@ -6,11 +6,9 @@ header {
     height: 10%;
     right: 0;
     display: grid;
-    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-columns: 3fr 2fr 1fr;
     grid-template-areas:
       "h1 h1 button";
-    justify-items: center;
-    align-items: center;
 }
 
 content {
@@ -34,35 +32,39 @@ footer {
     grid-template-columns: 3fr 2fr 3fr;
     grid-template-areas:
          "money_to_assign h1 contact_info";
-    justify-items: center;
-    align-items: center;
     overflow: hidden;
 }
 
-amount {
-    font-family: Ink Free, serif;
-    font-weight: lighter;
-    color: #707070;
-    font-size: calc(1vw + 2vh);
-    text-justify: auto;
-    margin-left: 30%;
-}
+/*amount {*/
+/*    font-family: Ink Free, serif;*/
+/*    font-weight: lighter;*/
+/*    color: #707070;*/
+/*    height: 80%;*/
+/*    width: 100%;*/
+/*    text-justify: auto;*/
+/*    margin-left: 30%;*/
+/*}*/
 
 contact_info {
+    height: 50%;
     display: grid;
+    grid-template-rows: 1fr 1fr;
     grid-template-columns: 2fr 1fr 2fr;
-    grid-template-rows: 1fr 1fr 1fr;
     grid-template-areas:
-         "h1 social_media h1"
-         "h1 social_media h1"
-         "h1 social_media h1";
+         "h2 social_media h2"
+         "h2 social_media h2";
 }
 
-social_media {
+.social_media {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 3fr;
     grid-template-areas:
-         "social_media_logo h1";
+         "img h2";
+}
+
+.social_media_img {
+    height: 50%;
+    margin-top: 30%;
 }
 
 h1 {
@@ -70,7 +72,7 @@ h1 {
     font-weight: lighter;
     color: #f7f2f2;
     text-align: center;
-    height: 50%;
+    font-size: 150%;
 }
 
 h2 {
@@ -78,26 +80,18 @@ h2 {
     font-weight: lighter;
     color: #f7f2f2;
     text-align: center;
-    font-size: calc(0.10vw + 1vh);
+    font-size: 60%;
 }
 
 button {
 
 }
 
-social_media_logo {
-    margin-top: 20%;
-    width: auto;
-    max-height: 100%;
-}
-
 money_to_assign {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
     grid-template-areas:
-         "h1 amount h1";
-    justify-items: center;
-    align-items: center;
+         "h1 h1 h1";
 }
 
 bookmarks {
@@ -118,7 +112,7 @@ bookmark {
     border-radius: 30px;
     text-align: center;
     border: none;
-    height: 2vh;
+    height: auto;
 }
 
 .bookmark_container {
@@ -224,19 +218,15 @@ bookmark {
 }
 
 .statistic_right_container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 .statistic {
     align-content: center;
     justify-content: center;
     display: flex;
-}
-
-.statistic_img {
-    width: auto;
-    max-height: 100%;
-    justify-items: center;
-    align-items: center;
 }
 
 h3 {
@@ -274,11 +264,9 @@ h3 {
 
 .logout_button {
     font-family: Ink Free, serif;
-    font-size: calc(1vw + 1vh);
     font-weight: lighter;
     color: #f7f2f2;
-    text-align: center;
-    height: 75%;
+    height: 80%;
     border: none;
     background: none;
 }
@@ -470,4 +458,10 @@ h3 {
     background-color: transparent;
     font-family: Segoe UI, Serif;
     letter-spacing: 0;
+}
+
+.ei {
+    max-width: 80%;
+    /*height: auto;*/
+    margin-left: 10%;
 }
