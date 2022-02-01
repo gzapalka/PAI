@@ -6,30 +6,40 @@ require_once __DIR__ . '/../models/Transaction.php';
 class TransactionRepository extends Repository
 {
 
-    public function getTxn(string $txnId): ?Transaction
+    public function getAllUsersTxns(string $userId): ?array
     {
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM public.transaction WHERE transaction_id = :txnId
+            select c.name, t.amount, t.create_time, t.comment from transaction t
+                join category c on c.category_id = t.category_id
+                join user_account ua on ua.user_id = c.user_id
+                where c.user_id = :userId;
         ');
 
-        $stmt->bindParam(':txnId', $txnId);
+        $stmt->bindParam(':userId', $userId);
         $stmt->execute();
 
-        $txn = $stmt->fetch(PDO::FETCH_ASSOC);
+        $txns = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        if ($txn == false) {
+        if ($txns == false) {
             return null;
         }
 
-        return Transaction::retrieveConstructor(
-            $txn['transaction_id'],
-            $txn['amount'],
-            $txn['txn_comment'],
-            $txn['create_time'],
-            $txn['edit_time'],
-            $txn['category_id'],
-            $txn['debt_id'],
-        );
+        $myList = [];
+        foreach ($txns as $txn) {
+            $myList[] = [
+                $txn['name'],
+                $txn['amount'],
+                str_replace('00:00:00', '', $txn['create_time']),
+                $txn['comment']
+            ];
+        }
+
+        return $myList;
+    }
+
+    private function mapTxnToString($userTxn){
+
+
     }
 
     public function addTxn(Transaction $transaction)
@@ -51,6 +61,16 @@ class TransactionRepository extends Repository
             $stmt->bindParam(':debt_id', $debtId);
             $stmt->bindParam(':date', $date);
 
+        $stmt->execute();
+    }
+
+    public function deleteAllUserTxns(int $userId) {
+        $stmt = $this->database->connect()->prepare('
+            DELETE FROM transaction WHERE category_id in 
+                (SELECT category_id FROM category where user_id = :userId);
+        ');
+
+        $stmt->bindParam(':userId', $userId);
         $stmt->execute();
     }
 

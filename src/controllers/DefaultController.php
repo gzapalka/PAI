@@ -22,7 +22,12 @@ class DefaultController extends AppController
 
     public function transaction()
     {
-        $this->render('transaction');
+        $repository = new TransactionRepository();
+        $sessionUtil = new SessionUtil();
+
+        $userId = $sessionUtil->getLoggedUser();
+        $transactions = $repository->getAllUsersTxns($userId);
+        $this->render('transaction', ['transactions' => $transactions]);
     }
 
     public function statistic()

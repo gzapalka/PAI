@@ -13,6 +13,7 @@ class SecurityController extends AppController
 {
     private UserRepository $userRepository;
     private CategoryRepository $categoryRepository;
+    private TransactionRepository $transactionRepository;
     private SessionUtil $sessionUtil;
 
     public function __construct()
@@ -20,6 +21,7 @@ class SecurityController extends AppController
         parent::__construct();
         $this->userRepository = new UserRepository();
         $this->categoryRepository = new CategoryRepository();
+        $this->transactionRepository = new TransactionRepository();
         $this->sessionUtil = new SessionUtil();
     }
 
@@ -93,8 +95,11 @@ class SecurityController extends AppController
              $this->render('login');
              return;
          }
+         $this->transactionRepository->deleteAllUserTxns($userId);
          $this->categoryRepository->deleteCategoriesByUser($userId);
          $this->userRepository->deleteUser($userId);
          $this->render('login');
     }
+
+
 }
