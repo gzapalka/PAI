@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="../css/budgets.css">
     <title>SimpleBudget</title>
 </head>
-<body style="overflow: auto">
+<body>
 <header>
     <h1>Simple Budget</h1>
     <h1></h1>
@@ -17,7 +17,9 @@
             </button>
         </bookmark>
         <bookmark style="background-color:cornsilk;">
-            <button class="bookmark_btn">Statistic</button>
+            <button class="bookmark_btn">
+                <a href="statistic">Statistic</a>
+            </button>
         </bookmark>
         <bookmark style="background-color:#F3E6D1;">
             <button class="bookmark_btn">
@@ -85,7 +87,7 @@
         </div>
     </div>
 </content>
-<footer class = "website">
+<footer class="website">
     <money_to_assign>
         <h1>Money: </h1>
         <h1 style="color: #555555">0.00</h1>
@@ -107,7 +109,7 @@
         <h2>simple@mail.com</h2>
     </contact_info>
 </footer>
-<footer class = "footer_mobile">
+<footer class="footer_mobile">
     <money_to_assign>
         <h1>Money: </h1>
         <h1 style="color: #555555">0.00</h1>

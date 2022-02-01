@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" href="public/css/budgets.css">
+    <link rel="stylesheet" href="../css/budgets.css">
     <title>SimpleBudget</title>
 </head>
 <body>
@@ -10,13 +10,45 @@
     <button class="logout_button">Log out</button>
 </header>
 <content>
-    <bookmarks>
-        <bookmark href="#" style="background-color:#E9E4E4;">Budget</bookmark>
-        <bookmark href="#" style="background-color: cornsilk;">Statistic</bookmark>
-        <bookmark href="#" style="background-color:#F3E6D1;">Transaction</bookmark>
+    <bookmarks class="website">
+        <bookmark style="background-color:#E9E4E4;">
+            <button class="bookmark_btn">
+                <a href="transaction">Budget</a>
+            </button>
+        </bookmark>
+        <bookmark style="background-color:cornsilk;">
+            <button class="bookmark_btn">
+                <a href="statistic">Statistic</a>
+            </button>
+        </bookmark>
+        <bookmark style="background-color:#F3E6D1;">
+            <button class="bookmark_btn">
+                <a href="transaction">Transaction</a>
+            </button>
+        </bookmark>
         <bookmark style="background-color:#D5E6F2;">
-            <button class="delete_account_btn" onclick="submitDeleteAccount()">
+            <button class="bookmark_btn" onclick="submitDeleteAccount()">
                 Delete Account
+            </button>
+        </bookmark>
+    </bookmarks>
+    <bookmarks class="bookmarks_mobile">
+        <bookmark style="background-color:#E9E4E4;">
+            <button class="bookmark_btn">
+                <a href="transaction">$</a>
+            </button>
+        </bookmark>
+        <bookmark style="background-color:cornsilk;">
+            <button class="bookmark_btn">%</button>
+        </bookmark>
+        <bookmark style="background-color:#F3E6D1;">
+            <button class="bookmark_btn">
+                <a href="transaction">+/-</a>
+            </button>
+        </bookmark>
+        <bookmark style="background-color:#D5E6F2;">
+            <button class="bookmark_btn" onclick="submitDeleteAccount()">
+                Del
             </button>
         </bookmark>
     </bookmarks>
@@ -189,39 +221,34 @@
         </table>
     </div>
 </content>
-<footer>
+<footer class="website">
     <money_to_assign>
-        <h1>Money to assign:</h1>
-        <amount>0.00</amount>
+        <h1>Money: </h1>
+        <h1 style="color: #555555">0.00</h1>
         <h1>zł</h1>
     </money_to_assign>
     <h1></h1>
     <contact_info>
         <h2>About us</h2>
-        <social_media>
-            <social_media_logo>
-                <img src="public/img/fb.png" alt="FB">
-            </social_media_logo>
-            <h2>Facebook</h2>
-        </social_media>
+        <div class="social_media">
+            <img class="social_media_img" src="../img/fb.png" alt="FB">
+            <h2>FB</h2>
+        </div class="social_media">
         <h2>123 street City, 09-732</h2>
         <h2>Contact</h2>
-        <social_media>
-            <social_media_logo>
-                <img src="public/img/ig.png" alt="IG">
-            </social_media_logo>
-            <h2>Instagram</h2>
-        </social_media>
-        <h2>+48 025 657 129</h2>
-        <h2>Term & Policy</h2>
-        <social_media>
-            <social_media_logo>
-                <img src=public/tt.png" alt="TT">
-            </social_media_logo>
-            <h2>Twitter</h2>
-        </social_media>
-        <h2>simplebudget@mail.com</h2>
+        <div class="social_media">
+            <img class="social_media_img" src="../img/ig.png" alt="IG">
+            <h2>IG</h2>
+        </div>
+        <h2>simple@mail.com</h2>
     </contact_info>
+</footer>
+<footer class="footer_mobile">
+    <money_to_assign>
+        <h1>Money: </h1>
+        <h1 style="color: #555555">0.00</h1>
+        <h1>zł</h1>
+    </money_to_assign>
 </footer>
 <script>
     function openEditTxnForm() {
