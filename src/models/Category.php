@@ -1,14 +1,13 @@
 <?php
 
-use Decimal\Decimal;
 
 class Category
 {
     private string $categoryId;
     private string $categoryName;
-    private Decimal $amountAssigned;
-    private Decimal $amountSpent;
-    private Decimal $amountLast;
+    private float $amountAssigned;
+    private float $amountSpent;
+    private float $amountLast;
     private DateTime $createTime;
     private DateTime $editTime;
     private string $userId;
@@ -16,16 +15,18 @@ class Category
     /**
      * Constructor to insert data to database.
      * @param string $categoryName
-     * @param Decimal $amountAssigned
+     * @param float $amountAssigned
      * @param string $userId
      * @return Category new instance to insert to database
      */
-    public static function insertConstructor(string $categoryName, Decimal $amountAssigned,string $userId): Category
+    public static function insertConstructor(string $categoryName, float $amountAssigned,string $userId): Category
     {
         $instance = new self();
         $instance->categoryName = $categoryName;
         $instance->amountAssigned = $amountAssigned;
         $instance->userId = $userId;
+        $instance->amountLast = 0.00;
+        $instance->amountSpent = 0.00;
         return $instance;
     }
 
@@ -33,15 +34,15 @@ class Category
      * Constructor to retrieve data from database.
      * @param string $categoryId
      * @param string $categoryName
-     * @param Decimal $amountAssigned
-     * @param Decimal $amountSpent
-     * @param Decimal $amountLast
+     * @param float $amountAssigned
+     * @param float $amountSpent
+     * @param float $amountLast
      * @param string $userId
      * @return Category new instance retrieved from database
      */
     public static function retrieveConstructor(
-        string $categoryId, string $categoryName, Decimal $amountAssigned,
-        Decimal $amountSpent, Decimal $amountLast, string $userId): Category
+        string $categoryId, string $categoryName, float $amountAssigned,
+        float $amountSpent, float $amountLast, string $userId): Category
     {
         $instance = new self();
         $instance->categoryId = $categoryId;
@@ -55,33 +56,33 @@ class Category
 
 
     /**
-     * @return Decimal
+     * @return float
      */
-    public function getAmountSpent(): Decimal
+    public function getAmountSpent(): float
     {
         return $this->amountSpent;
     }
 
     /**
-     * @param Decimal $amountSpent
+     * @param float $amountSpent
      */
-    public function setAmountSpent(Decimal $amountSpent): void
+    public function setAmountSpent(float $amountSpent): void
     {
         $this->amountSpent = $amountSpent;
     }
 
     /**
-     * @return Decimal
+     * @return float
      */
-    public function getAmountLast(): Decimal
+    public function getAmountLast(): float
     {
         return $this->amountLast;
     }
 
     /**
-     * @param Decimal $amountLast
+     * @param float $amountLast
      */
-    public function setAmountLast(Decimal $amountLast): void
+    public function setAmountLast(float $amountLast): void
     {
         $this->amountLast = $amountLast;
     }
@@ -144,17 +145,17 @@ class Category
     }
 
     /**
-     * @return Decimal
+     * @return float
      */
-    public function getAmountAssigned(): Decimal
+    public function getAmountAssigned(): float
     {
         return $this->amountAssigned;
     }
 
     /**
-     * @param Decimal $amountAssigned
+     * @param float $amountAssigned
      */
-    public function setAmountAssigned(Decimal $amountAssigned)
+    public function setAmountAssigned(float $amountAssigned)
     {
         $this->amountAssigned = $amountAssigned;
     }

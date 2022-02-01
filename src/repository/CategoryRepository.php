@@ -5,12 +5,15 @@ require_once __DIR__ . '/../models/Category.php';
 
 class CategoryRepository extends Repository
 {
-    public function getCategory(User $user, string $name): ?Category
+    const defaultCategories = ["Rent", "Water", "Energy", "Groceries", "Internet",
+        "Car", "Fuel", "Bus Ticket", "Netflix", "Dinning Out", "Clubbing", "Gaming", "School Fees"];
+    public function getCategory(int $userId, string $name): ?Category
     {
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM public.category WHERE user_id = :user_id AND name =:name
+            SELECT user_id, category_id, name, amount_assigned, amount_spent, amount_last
+            FROM category WHERE user_id = :user_id AND name =:name
         ');
-        $userId = $user->getUserId();
+
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':user_id', $userId);
         $stmt->execute();
@@ -22,28 +25,49 @@ class CategoryRepository extends Repository
         }
 
         return Category::retrieveConstructor(
-            $category['categoryId'],
+            $category['category_id'],
             $category['name'],
-            $category['amountAssigned'],
-            $category['amountSpent'],
-            $category['amountLast'],
-            $category['userId'],
+            $category['amount_assigned'],
+            $category['amount_spent'],
+            $category['amount_last'],
+            $category['user_id'],
         );
     }
 
     public function addCategory(Category $category)
     {
         $stmt = $this->database->connect()->prepare('
-            INSERT INTO user (name, amount_assigned, user_id) VALUES (:categoryName, :amountAssigned, :userId)
+            INSERT INTO category (name, amount_assigned, user_id, amount_spent, amount_last)
+             VALUES (:categoryName, :amountAssigned, :userId, :amountSpent, :amountLast)
         ');
 
         $userId = $category->getUserId();
         $decimal = $category->getAmountSpent();
         $categoryName = $category->getCategoryName();
+        $amountSpent = $category->getAmountSpent();
+        $amountLast = $category->getAmountLast();
         $stmt->bindParam(':userId', $userId);
         $stmt->bindParam(':categoryName', $categoryName);
-        $stmt->bindParam(':amountSpent', $decimal);
+        $stmt->bindParam(':amountAssigned', $decimal);
+        $stmt->bindParam(':amountSpent', $amountSpent);
+        $stmt->bindParam(':amountLast', $amountLast);
         $stmt->execute();
 
+    }
+
+    public function addCategoryForNewUser(int $userId) {
+       foreach (self::defaultCategories as $categoryName){
+           $category = Category::insertConstructor($categoryName, 0.00, $userId);
+           $this->addCategory($category);
+       }
+    }
+
+    public function deleteCategoriesByUser(int $userId) {
+        $stmt = $this->database->connect()->prepare('
+            DELETE FROM category WHERE user_id = :userId;
+        ');
+
+        $stmt->bindParam(':userId', $userId);
+        $stmt->execute();
     }
 }

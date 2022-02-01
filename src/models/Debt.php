@@ -1,13 +1,12 @@
 <?php
 
-use Decimal\Decimal;
 
 class Debt
 {
     private string $debtId;
     private string $debtName;
-    private Decimal $amountStart;
-    private Decimal $amountLeft;
+    private float $amountStart;
+    private float $amountLeft;
     private DateTime $createTime;
     private DateTime $editTime;
     private string $userId;
@@ -16,11 +15,11 @@ class Debt
     /**
      * Constructor to insert data to database.
      * @param string $debtName
-     * @param Decimal $amountStart
+     * @param float $amountStart
      * @param string $userId
      * @return Debt new instance to insert to database
      */
-    public static function insertConstructor(string $debtName, Decimal $amountStart, string $userId): Debt
+    public static function insertConstructor(string $debtName, float $amountStart, string $userId): Debt
     {
         $instance = new self();
         $instance->debtName = $debtName;
@@ -33,14 +32,14 @@ class Debt
      * Constructor to retrieve data from database.
      * @param string $debtId
      * @param string $debtName
-     * @param Decimal $amountStart
-     * @param Decimal $amountLeft
+     * @param float $amountStart
+     * @param float $amountLeft
      * @param string $userId
      * @return Debt new instance retrieved from database
      */
     public static function retrieveConstructor(
-        string  $debtId, string $debtName, Decimal $amountStart,
-        Decimal $amountLeft, string $userId): Debt
+        string  $debtId, string $debtName, float $amountStart,
+        float $amountLeft, string $userId): Debt
     {
         $instance = new self();
         $instance->debtId = $debtId;
@@ -60,9 +59,9 @@ class Debt
     }
 
     /**
-     * @param Decimal $amountLeft
+     * @param float $amountLeft
      */
-    public function setAmountLeft(Decimal $amountLeft): void
+    public function setAmountLeft(float $amountLeft): void
     {
         $this->amountLeft = $amountLeft;
     }
@@ -92,17 +91,17 @@ class Debt
     }
 
     /**
-     * @return Decimal
+     * @return float
      */
-    public function getAmountStart(): Decimal
+    public function getAmountStart(): float
     {
         return $this->amountStart;
     }
 
     /**
-     * @return Decimal
+     * @return float
      */
-    public function getAmountLeft(): Decimal
+    public function getAmountLeft(): float
     {
         return $this->amountLeft;
     }

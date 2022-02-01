@@ -5,7 +5,7 @@ require_once __DIR__ . '/../models/User.php';
 
 class UserRepository extends Repository
 {
-    public function getLoggedUser(string $email, string $pwd): ?User
+    public function getUser(string $email, string $pwd): ?User
     {
         $stmt = $this->database->connect()->prepare('
                 SELECT user_id, username, email, create_time, pwd_hash
@@ -34,29 +34,21 @@ class UserRepository extends Repository
         );
     }
 
-    public function getUser(string $email): ?User
-    {
+    public function deleteUser(int $userId) {
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM public.user WHERE email = :email
+            DELETE FROM session WHERE "userId" = :user_id;
         ');
-        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':user_id', $userId);
         $stmt->execute();
 
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($user == false) {
-            return null;
-        }
-
-        return User::retrieveConstructor(
-            $user['userId'],
-            $user['email'],
-            $user['username'],
-            $user['create_time'],
-        );
+        $stmt = $this->database->connect()->prepare('
+            DELETE FROM user_account WHERE user_id = :user_id;
+        ');
+        $stmt->bindParam(':user_id', $userId);
+        $stmt->execute();
     }
 
-    public function addUser(User $user)
+    public function addUser(User $user): int
     {
         $connection = $this->database->connect();
         $stmt = $connection->prepare('
@@ -79,6 +71,7 @@ class UserRepository extends Repository
         $stmt->bindParam(':pwd_id', $lastId);
         $stmt->execute();
 
+        return $connection->lastInsertId();
     }
 
     public function isEmailUnique(string $email): bool {

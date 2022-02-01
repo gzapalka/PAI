@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS pwd (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS user_account
 (
-    user_id     SERIAL NOT NULL,
+    user_id     SERIAL NOT NULL UNIQUE,
     username    VARCHAR(16)  NOT NULL,
     email       VARCHAR(255) NULL UNIQUE,
     pwd_id      INT          NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS user_account
 -- Table `mydb`.`category`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS category (
-                                        category_id SERIAL NOT NULL,
+                                        category_id SERIAL NOT NULL UNIQUE,
                                         name VARCHAR(255) NOT NULL,
     amount_assigned DECIMAL NOT NULL,
     user_id INT NOT NULL,
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS debt (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS transaction
 (
-    transaction_id SERIAL      NOT NULL,
+    transaction_id SERIAL      NOT NULL UNIQUE,
     amount         DECIMAL     NOT NULL,
     comment        VARCHAR(45) NULL,
     create_time    TIMESTAMP   NULL,
@@ -72,3 +72,17 @@ CREATE TABLE IF NOT EXISTS transaction
     FOREIGN KEY (category_id) REFERENCES category (category_id),
     FOREIGN KEY (debt_debt_id) REFERENCES debt (debt_id)
     );
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`session`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS session
+(
+    session_id SERIAL NOT NULL UNIQUE,
+    token VARCHAR(32) NOT NULL UNIQUE,
+    user_id INT NOT NULL,
+    expire TIMESTAMP NOT NULL,
+    PRIMARY KEY (session_id),
+    FOREIGN KEY (user_id) REFERENCES user_account (user_id)
+);

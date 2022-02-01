@@ -15,13 +15,36 @@ class DefaultController extends AppController
         $this->render('register');
     }
 
+    public function budget()
+    {
+        $this->render('budget');
+    }
+
+    public function transaction()
+    {
+        $this->render('transaction');
+    }
+
+    public function statistic()
+    {
+        $this->render('statistic');
+    }
+
     public function mailVerification()
     {
         $this->render("mailVerification");
     }
 
-    public function displayLoginPageWithErrorMassage(string $message){
-        $this->render('login', ['message' => $message]);
+//    public function displayLoginPageWithErrorMassage(string $message){
+//        $this->render('login', ['message' => $message]);
+//    }
+
+    public function displayPageWithErrorMassage(string $template,string $message){
+        $this->render($template, ['message' => $message]);
+    }
+
+    public function login_user(){
+        $this->render("login");
     }
 
 }

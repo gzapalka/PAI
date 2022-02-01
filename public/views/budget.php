@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" href="../css/budgets.css">
+    <link rel="stylesheet" href="public/css/budgets.css">
     <title>SimpleBudget</title>
 </head>
 <body>
@@ -11,13 +11,13 @@
 </header>
 <header class="mobile_header">
     <h1>Simple Budget</h1>
-    <button class="logout_button">Log out</button>
+    <button class="logout_button" type="submit">Log out</button>
 </header>
 <content>
     <bookmarks class="website">
         <bookmark style="background-color:#E9E4E4;">
             <button class="bookmark_btn">
-                <a href="transaction">Budget</a>
+                <a href="budget">Budget</a>
             </button>
         </bookmark>
         <bookmark style="background-color:cornsilk;">
@@ -59,8 +59,8 @@
     <div class="bookmark_container">
         <div class="break"></div>
         <div class="form-popup" id="deleteAccountForm">
-            <form action="/action_page.php" class="delete_account_form-container">
-                <h1 style="color: #244564; height: 100%">Are you sure?</h1>
+            <form action="delete_account" method="POST" class="delete_account_form-container">
+                <h1 style="color: #244564; height: 0.00%">Are you sure?</h1>
                 <button type="submit" class="submit_btn">Delete account</button>
                 <button type="button" class="btn cancel" onclick="closeSubmitDeleteAccount()">Close</button>
             </form>
@@ -87,38 +87,38 @@
                         <tbody>
                         <tr>
                             <td class="sub_subcategory">Rent</td>
-                            <td class="sub_subcategory">650.00</td>
-                            <td class="sub_subcategory">650.00</td>
                             <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">100</td>
+                            <td class="sub_subcategory">0.00</td>
+                            <td class="sub_subcategory">0.00</td>
+                            <td class="sub_subcategory">0.00</td>
                         </tr>
                         <tr>
                             <td class="sub_subcategory">Water</td>
-                            <td class="sub_subcategory">650.00</td>
-                            <td class="sub_subcategory">650.00</td>
                             <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">100</td>
+                            <td class="sub_subcategory">0.00</td>
+                            <td class="sub_subcategory">0.00</td>
+                            <td class="sub_subcategory">0.00</td>
                         </tr>
                         <tr>
                             <td class="sub_subcategory">Energy</td>
-                            <td class="sub_subcategory">650.00</td>
-                            <td class="sub_subcategory">650.00</td>
                             <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">100</td>
+                            <td class="sub_subcategory">0.00</td>
+                            <td class="sub_subcategory">0.00</td>
+                            <td class="sub_subcategory">0.00</td>
                         <tr>
                         <tr>
                             <td class="sub_subcategory">Groceries</td>
-                            <td class="sub_subcategory">650.00</td>
-                            <td class="sub_subcategory">650.00</td>
                             <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">100</td>
+                            <td class="sub_subcategory">0.00</td>
+                            <td class="sub_subcategory">0.00</td>
+                            <td class="sub_subcategory">0.00</td>
                         </tr>
                         <tr>
                             <td class="sub_subcategory">Internet</td>
-                            <td class="sub_subcategory">650.00</td>
-                            <td class="sub_subcategory">650.00</td>
                             <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">100</td>
+                            <td class="sub_subcategory">0.00</td>
+                            <td class="sub_subcategory">0.00</td>
+                            <td class="sub_subcategory">0.00</td>
                         </tr>
                         </tbody>
                     </table>
@@ -133,24 +133,24 @@
                         </thead>
                         <tr>
                             <td class="sub_subcategory">Car</td>
-                            <td class="sub_subcategory">1200.00</td>
-                            <td class="sub_subcategory">200.00</td>
-                            <td class="sub_subcategory">1000.00</td>
-                            <td class="sub_subcategory">16</td>
+                            <td class="sub_subcategory">0.00</td>
+                            <td class="sub_subcategory">0.00</td>
+                            <td class="sub_subcategory">0.00</td>
+                            <td class="sub_subcategory">0.00</td>
                         </tr>
                         <tr>
                             <td class="sub_subcategory">Fuel</td>
-                            <td class="sub_subcategory">650.00</td>
-                            <td class="sub_subcategory">650.00</td>
                             <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">100</td>
+                            <td class="sub_subcategory">0.00</td>
+                            <td class="sub_subcategory">0.00</td>
+                            <td class="sub_subcategory">0.00</td>
                         </tr>
                         <tr>
                             <td class="sub_subcategory">Bus Ticket</td>
-                            <td class="sub_subcategory">650.00</td>
-                            <td class="sub_subcategory">650.00</td>
                             <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">100</td>
+                            <td class="sub_subcategory">0.00</td>
+                            <td class="sub_subcategory">0.00</td>
+                            <td class="sub_subcategory">0.00</td>
                         <tr>
                     </table>
                 </td>
@@ -165,31 +165,31 @@
                         </thead>
                         <tr>
                             <td class="sub_subcategory">Netflix</td>
-                            <td class="sub_subcategory">1200.00</td>
-                            <td class="sub_subcategory">200.00</td>
-                            <td class="sub_subcategory">1000.00</td>
-                            <td class="sub_subcategory">16</td>
+                            <td class="sub_subcategory">0.00</td>
+                            <td class="sub_subcategory">0.00</td>
+                            <td class="sub_subcategory">0.00</td>
+                            <td class="sub_subcategory">0.00</td>
                         </tr>
                         <tr>
                             <td class="sub_subcategory">Dinning Out</td>
-                            <td class="sub_subcategory">650.00</td>
-                            <td class="sub_subcategory">650.00</td>
                             <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">100</td>
+                            <td class="sub_subcategory">0.00</td>
+                            <td class="sub_subcategory">0.00</td>
+                            <td class="sub_subcategory">0.00</td>
                         </tr>
                         <tr>
                             <td class="sub_subcategory">Clubbing</td>
-                            <td class="sub_subcategory">650.00</td>
-                            <td class="sub_subcategory">650.00</td>
                             <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">100</td>
+                            <td class="sub_subcategory">0.00</td>
+                            <td class="sub_subcategory">0.00</td>
+                            <td class="sub_subcategory">0.00</td>
                         <tr>
                         <tr>
                             <td class="sub_subcategory">Gaming</td>
-                            <td class="sub_subcategory">650.00</td>
-                            <td class="sub_subcategory">650.00</td>
                             <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">100</td>
+                            <td class="sub_subcategory">0.00</td>
+                            <td class="sub_subcategory">0.00</td>
+                            <td class="sub_subcategory">0.00</td>
                         <tr>
                     </table>
                 </td>
@@ -204,10 +204,10 @@
                         </thead>
                         <tr>
                             <td class="sub_subcategory">School Fees</td>
-                            <td class="sub_subcategory">1200.00</td>
-                            <td class="sub_subcategory">200.00</td>
-                            <td class="sub_subcategory">1000.00</td>
-                            <td class="sub_subcategory">16</td>
+                            <td class="sub_subcategory">0.00</td>
+                            <td class="sub_subcategory">0.00</td>
+                            <td class="sub_subcategory">0.00</td>
+                            <td class="sub_subcategory">0.00</td>
                         </tr>
                     </table>
                 </td>
@@ -226,13 +226,13 @@
     <contact_info>
         <h2>About us</h2>
         <div class="social_media">
-            <img class="social_media_img" src="../img/fb.png" alt="FB">
+            <img class="social_media_img" src="public/img/fb.png" alt="FB">
             <h2>FB</h2>
         </div class="social_media">
         <h2>123 street City, 09-732</h2>
         <h2>Contact</h2>
         <div class="social_media">
-            <img class="social_media_img" src="../img/ig.png" alt="IG">
+            <img class="social_media_img" src="public/img/ig.png" alt="IG">
             <h2>IG</h2>
         </div>
         <h2>simple@mail.com</h2>

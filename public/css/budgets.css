@@ -457,6 +457,16 @@ table {
     display: none;
 }
 
+.inputCategory {
+    pointer-events: none;
+}
+
+.error-code {
+    font-family: Ink Free, Serif, serif;
+    color: darkred;
+    text-align: left;
+}
+
 @media only screen and (max-device-width: 420px) {
     .website {
         display: none;
@@ -533,5 +543,7 @@ table {
         grid-template-areas:
       "h1 button";
     }
+
+
 
 }

@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" href="../css/budgets.css">
+    <link rel="stylesheet" href="public/css/budgets.css">
     <title>SimpleBudget</title>
 </head>
 <body>
 <header class="website">
     <h1>Simple Budget</h1>
-    <h1></h1>
+    <h1><div class="error-code">
+            <?php if(isset($message)) {
+                echo $message;
+            }
+            ?>
+        </div></h1>
     <button class="logout_button">Log out</button>
 </header>
 <header class="mobile_header">
@@ -17,7 +22,7 @@
     <bookmarks class="website">
         <bookmark style="background-color:#E9E4E4;">
             <button class="bookmark_btn">
-                <a href="transaction">Budget</a>
+                <a href="budget">Budget</a>
             </button>
         </bookmark>
         <bookmark style="background-color:cornsilk;">
@@ -61,33 +66,49 @@
             <h1>Add</h1>
         </button>
         <div class="form-popup" id="deleteAccountForm">
-            <form action="/action_page.php" class="delete_account_form-container">
+            <form class="form-popup" id="deleteAccountForm" action="delete_account" method="POST">
                 <h1 style="color: #244564; height: 100%">Are you sure?</h1>
                 <button type="submit" class="submit_btn">Delete account</button>
                 <button type="button" class="btn cancel" onclick="closeSubmitDeleteAccount()">Close</button>
             </form>
         </div>
         <div class="form-popup" id="addTxnForm">
-            <form action="/action_page.php" class="add_txn_form-container">
+            <form action="add_txn" class="add_txn_form-container" method="POST">
 
                 <label for="Category"><h3 style="text-align: left">Category</h3></label>
                 <label>
-                    <input type="text" placeholder="Enter Category" name="Category">
+                    <textarea class="inputCategory" id="inputCategory" name="category" placeholder="Select from dropdown menu ->"></textarea>
+                    <select id="dropdown" class="category_dropdown">
+                        <option value="Rent">Rent</option>
+                        <option value="Water">Water</option>
+                        <option value="Energy">Energy</option>
+                        <option value="Groceries">Groceries</option>
+                        <option value="Internet">Internet</option>
+                        <option value="Car">Car</option>
+                        <option value="Bus Tickets">Bus Tickets</option>
+                        <option value="Fuel">Fuel</option>
+                        <option value="Netflix">Netflix</option>
+                        <option value="Dinning_out">Dinning_out</option>
+                        <option value="Clubbing">Clubbing</option>
+                        <option value="Gaming">Gaming</option>
+                        <option value="School Fees">School Fees</option>
+                    </select>
+
                 </label>
 
                 <label for="Amount"><h3 style="text-align: left">Amount</h3></label>
                 <label>
-                    <input type="text" placeholder="Enter Amount" name="Amount">
+                    <input id="add_amount" type="number" placeholder="0.00" name="amount" onblur="checkIfDecimal()">
                 </label>
 
                 <label for="Date"><h3 style="text-align: left">Date</h3></label>
                 <label>
-                    <input type="date" placeholder="Enter Date" name="Date">
+                    <input type="date" placeholder="Enter Date" name="date">
                 </label>
 
                 <label for="Comment"><h3 style="text-align: left">Comment</h3></label>
                 <label>
-                    <input type="text" placeholder="Enter Comment" name="Comment">
+                    <input type="text" placeholder="Enter Comment" name="comment">
                 </label>
 
                 <button type="submit" class="submit_btn">Add transaction</button>
@@ -95,7 +116,7 @@
             </form>
         </div>
         <div class="form-popup" id="editTxnForm">
-            <form action="/action_page.php" class="edit_txn_form-container">
+            <form id="edit_txn" action="edit_txn" class="edit_txn_form-container">
                 <label for="Category"><h3 style="text-align: left">Category</h3></label>
                 <label>
                     <input type="text" placeholder="Enter Category" name="Category">
@@ -103,21 +124,21 @@
 
                 <label for="Amount"><h3 style="text-align: left">Amount</h3></label>
                 <label>
-                    <input type="text" placeholder="Enter Amount" name="Amount">
+                    <input id="edit_Amount" type="number" placeholder="Enter Amount" name="amount" onchange="checkIfDecimal()">
                 </label>
 
                 <label for="Date"><h3 style="text-align: left">Date</h3></label>
                 <label>
-                    <input type="date" placeholder="Enter Date" name="Date">
+                    <input type="date" placeholder="Enter Date" name="date">
                 </label>
 
                 <label for="Comment"><h3 style="text-align: left">Comment</h3></label>
                 <label>
-                    <input type="text" placeholder="Enter Comment" name="Comment">
+                    <input type="text" placeholder="Enter Comment" name="comment">
                 </label>
 
                 <button type="submit" class="submit_btn">Submit changes</button>
-                <button type="submit" class="btn delete">Delete transaction</button>
+                <button type="submit" class="btn delete" >Delete transaction</button>
                 <button type="button" class="btn cancel" onclick="closeEditTxnForm()">Close</button>
             </form>
         </div>
@@ -235,13 +256,13 @@
     <contact_info>
         <h2>About us</h2>
         <div class="social_media">
-            <img class="social_media_img" src="../img/fb.png" alt="FB">
+            <img class="social_media_img" src="public/img/fb.png" alt="FB">
             <h2>FB</h2>
         </div class="social_media">
         <h2>123 street City, 09-732</h2>
         <h2>Contact</h2>
         <div class="social_media">
-            <img class="social_media_img" src="../img/ig.png" alt="IG">
+            <img class="social_media_img" src="public/img/ig.png" alt="IG">
             <h2>IG</h2>
         </div>
         <h2>simple@mail.com</h2>
@@ -277,6 +298,26 @@
 
     function closeSubmitDeleteAccount() {
         document.getElementById("deleteAccountForm").style.display = "none";
+    }
+
+    var mytextbox = document.getElementById('inputCategory');
+    var mydropdown = document.getElementById('dropdown');
+
+    mydropdown.onchange = function(){
+        mytextbox.value = this.value;
+        mytextbox.innerHTML = this.value;
+    }
+
+    function isDecimal(input){
+        let regex = new RegExp('^[-+][0-9]+\.[0-9][0-9]$');
+        return (regex.test(input));
+    }
+
+    function checkIfDecimal() {
+        if (!isDecimal(document.getElementById("add_amount").value)) {
+            alert("Please input a decimal!")
+            document.getElementById("add_amount").value = "0.00";
+        }
     }
 </script>
 </body>
