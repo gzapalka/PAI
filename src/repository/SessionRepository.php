@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../controllers/exceptions/NoSuchUserException.php';
 
 class SessionRepository extends Repository
 {
@@ -30,7 +31,7 @@ class SessionRepository extends Repository
     /**
      * @throws NoSuchUserException
      */
-    public function getLoggedUser(): string
+    public function getLoggedUser(): int
     {
         $tokenValue = $_COOKIE["Token"];
         $stmt = $this->database->connect()->prepare('
@@ -49,7 +50,7 @@ class SessionRepository extends Repository
             throw new NoSuchUserException();
         }
 
-        return $userId;
+        return $userId['userId'];
     }
 
 }

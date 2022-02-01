@@ -35,19 +35,21 @@ class TransactionRepository extends Repository
     public function addTxn(Transaction $transaction)
     {
         $categoryId = $transaction->getCategoryId();
-        $debtId = $transaction->getDebtId();
+        $debtId = 0; //$transaction->getDebtId();
         $amountAssigned = $transaction->getAmount();
         $comment = $transaction->getComment();
+        $date = $transaction->getCreateTime()->format('Y-m-d H:i:s');
 
             $stmt = $this->database->connect()->prepare('
-            INSERT INTO user (amount, txn_comment, category_id, debt_id) 
-            VALUES (:amount, :txn_comment, :category_id, :debt_id)
+            INSERT INTO transaction (amount, comment, category_id, debt_debt_id, create_time, edit_time)
+            VALUES (:amount, :comment, :category_id, :debt_id, :date, LOCALTIMESTAMP)
         ');
 
             $stmt->bindParam(':amount', $amountAssigned);
-            $stmt->bindParam(':txn_comment', $comment);
+            $stmt->bindParam(':comment', $comment);
             $stmt->bindParam(':category_id', $categoryId);
             $stmt->bindParam(':debt_id', $debtId);
+            $stmt->bindParam(':date', $date);
 
         $stmt->execute();
     }

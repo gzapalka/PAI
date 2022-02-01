@@ -59,7 +59,7 @@
 
     <div class="statistic_container">
         <div class="form-popup" id="deleteAccountForm">
-            <form action="/action_page.php" class="delete_account_form-container">
+            <div class="form-popup" id="deleteAccountForm" action="delete_account" method="POST">
                 <h1 style="color: #244564; height: 100%">Are you sure?</h1>
                 <button type="submit" class="submit_btn">Delete account</button>
                 <button type="button" class="btn cancel" onclick="closeSubmitDeleteAccount()">Close</button>

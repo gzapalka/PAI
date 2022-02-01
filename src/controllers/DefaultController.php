@@ -35,8 +35,16 @@ class DefaultController extends AppController
         $this->render("mailVerification");
     }
 
-    public function displayLoginPageWithErrorMassage(string $message){
-        $this->render('login', ['message' => $message]);
+//    public function displayLoginPageWithErrorMassage(string $message){
+//        $this->render('login', ['message' => $message]);
+//    }
+
+    public function displayPageWithErrorMassage(string $template,string $message){
+        $this->render($template, ['message' => $message]);
+    }
+
+    public function login_user(){
+        $this->render("login");
     }
 
 }

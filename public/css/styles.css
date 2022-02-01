@@ -200,7 +200,6 @@ body {
 
 .error-code {
   font-family: Ink Free, Serif, serif;
-  font-size: 5vh;
-  color: #707070;
+  color: darkred;
   text-align: left;
 }

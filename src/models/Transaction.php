@@ -1,11 +1,11 @@
 <?php
 
-use Decimal\Decimal;
+require_once __DIR__ . '/../models/TxnTypes.php';
 
 class Transaction
 {
     private string $txnId;
-    private Decimal $amount;
+    private float $amount;
     private string $comment;
     private DateTime $createTime;
     private DateTime $editTime;
@@ -15,22 +15,25 @@ class Transaction
 
     /**
      * Constructor to insert data to database.
-     * @param $amount Decimal
+     * @param $amount float
      * @param $comment String
-     * @param $txnType TxnTypes determine if txn is debt or account type
+     * @param $txnType int determine if txn is debt or account type
      * @param $id String id of account or debt
      * @return Transaction
      */
-    public static function insertTransaction(Decimal $amount, String $comment, TxnTypes $txnType, String $id): Transaction
+    public static function insertTransaction(float $amount, String $comment, int $txnType, String $id, DateTime $date): Transaction
     {
         $instance = new self();
         $instance->amount = $amount;
         $instance->comment = $comment;
+        $instance->createTime = $date;
 
         if ($txnType == TxnTypes::ACCOUNT){
             $instance->categoryId = $id;
+//            $instance->debtId = null;
         } elseif ($txnType == TxnTypes::DEBT) {
             $instance->debtId = $id;
+            $instance->categoryId = null;
         }
         return $instance;
     }
@@ -38,7 +41,7 @@ class Transaction
     /**
      * Constructor to retrieve data from database.
      * @param String $txnId
-     * @param Decimal $amount
+     * @param float $amount
      * @param String $txnComment
      * @param DateTime $create_time
      * @param DateTime $edit_time
@@ -46,7 +49,7 @@ class Transaction
      * @param String $debtId
      * @return Transaction new instance retrieved from database
      */
-    public static function retrieveConstructor(String $txnId, Decimal $amount, String $txnComment,
+    public static function retrieveConstructor(String $txnId, float $amount, String $txnComment,
                                                DateTime $create_time, DateTime $edit_time,String $categoryId,
                                                String $debtId): Transaction
     {
@@ -65,9 +68,9 @@ class Transaction
 
 
     /**
-     * @param Decimal $amount
+     * @param float $amount
      */
-    public function setAmount(Decimal $amount)
+    public function setAmount(float $amount)
     {
         $this->amount = $amount;
     }
@@ -106,9 +109,9 @@ class Transaction
     }
 
     /**
-     * @return Decimal
+     * @return float
      */
-    public function getAmount(): Decimal
+    public function getAmount(): float
     {
         return $this->amount;
     }
@@ -148,9 +151,10 @@ class Transaction
     /**
      * @return String
      */
-    public function getDebtId(): string
+    public function getDebtId(): ?string
     {
-        return $this->debtId;
+//        return $this->debtId;
+        return null;
     }
 
 

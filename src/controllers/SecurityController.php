@@ -3,19 +3,23 @@
 require_once 'AppController.php';
 require_once __DIR__ . '/../models/Requests/LoginRequest.php';
 require_once __DIR__ . '/../repository/UserRepository.php';
+require_once __DIR__ . '/../repository/CategoryRepository.php';
 require_once __DIR__ . '/../models/User.php';
+require_once 'exceptions/NoSuchUserException.php';
 require_once 'util/InputValidator.php';
 require_once 'util/SessionUtil.php';
 
 class SecurityController extends AppController
 {
-    private UserRepository $repository;
+    private UserRepository $userRepository;
+    private CategoryRepository $categoryRepository;
     private SessionUtil $sessionUtil;
 
     public function __construct()
     {
         parent::__construct();
-        $this->repository = new UserRepository();
+        $this->userRepository = new UserRepository();
+        $this->categoryRepository = new CategoryRepository();
         $this->sessionUtil = new SessionUtil();
     }
 
@@ -29,31 +33,27 @@ class SecurityController extends AppController
         $pwd = $_POST["password"];
         $controller = new DefaultController();
 
-
         if (!InputValidator::validateEmail($email)) {
-            $controller->displayLoginPageWithErrorMassage("Incorrect email!");
+            $controller->displayPageWithErrorMassage("login","Incorrect email!");
             return;
         }
 
         $userRepository = new UserRepository();
-        $user = $userRepository->getLoggedUser($email, $pwd);
+        $user = $userRepository->getUser($email, $pwd);
 
         if ($user == null) {
-            $controller->displayLoginPageWithErrorMassage("No such user");
+            $controller->displayPageWithErrorMassage('login',"No such user");
             return;
-        } else {
-            $controller->displayLoginPageWithErrorMassage("You're in!");
         }
 
         try {
             $this->sessionUtil->createNewSession($user);
         } catch (Exception $e) {
-            $controller->displayLoginPageWithErrorMassage("Unable to create a session");
+            $controller->displayPageWithErrorMassage('login',"Unable to create a session");
             return;
         }
 
         $this->render('budget');
-
     }
 
     public function register_user()
@@ -68,21 +68,33 @@ class SecurityController extends AppController
         $confirmedPassword = $_POST['repeat_password'];
         $controller = new DefaultController();
 
-        $controller->displayLoginPageWithErrorMassage("Email already used!");
-         if(!$this->repository->isEmailUnique($email)) {
-             $controller->displayLoginPageWithErrorMassage("Email already used!");
+         if(!$this->userRepository->isEmailUnique($email)) {
+             $controller->displayPageWithErrorMassage('register',"Email already used!");
              return;
          }
 
         if ($password !== $confirmedPassword) {
-            $controller->displayLoginPageWithErrorMassage("Pwds must match!");
+            $controller->displayPageWithErrorMassage('register',"Pwds must match!");
             return;
         }
 
         $user = User::insertConstructor($name, $email, password_hash($password, PASSWORD_BCRYPT));
 
-        $this->repository->addUser($user);
+        $userId = $this->userRepository->addUser($user);
+        $this->categoryRepository->addCategoryForNewUser($userId);
 
         return $this->render('login', ['messages' => ['You\'ve been succesfully registrated!']]);
+    }
+
+    public function delete_account() {
+         try {
+             $userId = $this->sessionUtil->getLoggedUser();
+         } catch (NoSuchUserException $e) {
+             $this->render('login');
+             return;
+         }
+         $this->categoryRepository->deleteCategoriesByUser($userId);
+         $this->userRepository->deleteUser($userId);
+         $this->render('login');
     }
 }
