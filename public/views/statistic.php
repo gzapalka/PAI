@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" href="../css/budgets.css">
+    <link rel="stylesheet" href="public/css/budgets.css">
     <title>SimpleBudget</title>
 </head>
 <body>
@@ -17,7 +17,7 @@
     <bookmarks class="website">
         <bookmark style="background-color:#E9E4E4;">
             <button class="bookmark_btn">
-                <a href="transaction">Budget</a>
+                <a href="budget">Budget</a>
             </button>
         </bookmark>
         <bookmark style="background-color:cornsilk;">
@@ -67,26 +67,26 @@
         </div>
         <div class="statistic_left_container">
             <div class="statistic">
-                <img class="statistic_img" src="../img/expenditures_income.jpg" alt="EI">
+                <img class="statistic_img" src="public/img/expenditures_income.jpg" alt="EI">
             </div>
             <div class="statistic">
-                <img class="statistic_img" src="../img/expenditures_income.jpg" alt="EI">
+                <img class="statistic_img" src="public/img/expenditures_income.jpg" alt="EI">
             </div>
         </div>
         <div class="statistic_right_container">
             <div class="statistic">
-                <img class="statistic_img" src="../img/months.jpg" alt="EI">
+                <img class="statistic_img" src="public/img/months.jpg" alt="EI">
             </div>
         </div>
         <div class="statistic_mobile">
             <div class="statistic">
-                <img class="statistic_img" src="../img/expenditures_income.jpg" alt="EI">
+                <img class="statistic_img" src="public/img/expenditures_income.jpg" alt="EI">
             </div>
             <div class="statistic">
-                <img class="statistic_img" src="../img/expenditures_income.jpg" alt="EI">
+                <img class="statistic_img" src="public/img/expenditures_income.jpg" alt="EI">
             </div>
             <div class="statistic">
-                <img class="statistic_img" src="../img/months.jpg" alt="EI">
+                <img class="statistic_img" src="public/img/months.jpg" alt="EI">
             </div>
         </div>
     </div>
@@ -101,13 +101,13 @@
     <contact_info>
         <h2>About us</h2>
         <div class="social_media">
-            <img class="social_media_img" src="../img/fb.png" alt="FB">
+            <img class="social_media_img" src="public/img/fb.png" alt="FB">
             <h2>FB</h2>
         </div class="social_media">
         <h2>123 street City, 09-732</h2>
         <h2>Contact</h2>
         <div class="social_media">
-            <img class="social_media_img" src="../img/ig.png" alt="IG">
+            <img class="social_media_img" src="public/img/ig.png" alt="IG">
             <h2>IG</h2>
         </div>
         <h2>simple@mail.com</h2>

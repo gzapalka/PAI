@@ -15,6 +15,21 @@ class DefaultController extends AppController
         $this->render('register');
     }
 
+    public function budget()
+    {
+        $this->render('budget');
+    }
+
+    public function transaction()
+    {
+        $this->render('transaction');
+    }
+
+    public function statistic()
+    {
+        $this->render('statistic');
+    }
+
     public function mailVerification()
     {
         $this->render("mailVerification");
