@@ -6,11 +6,9 @@ header {
     height: 10%;
     right: 0;
     display: grid;
-    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-columns: 3fr 2fr 1fr;
     grid-template-areas:
       "h1 h1 button";
-    justify-items: center;
-    align-items: center;
 }
 
 content {
@@ -31,38 +29,38 @@ footer {
     left: 0;
     right: 0;
     display: grid;
-    grid-template-columns: 3fr 2fr 3fr;
+    grid-template-columns: 3fr 1fr 4fr;
     grid-template-areas:
          "money_to_assign h1 contact_info";
-    justify-items: center;
-    align-items: center;
     overflow: hidden;
 }
 
-amount {
-    font-family: Ink Free, serif;
-    font-weight: lighter;
-    color: #707070;
-    font-size: calc(1vw + 2vh);
-    text-justify: auto;
-    margin-left: 30%;
-}
-
 contact_info {
+    height: 50%;
     display: grid;
+    grid-template-rows: 1fr 1fr;
     grid-template-columns: 2fr 1fr 2fr;
-    grid-template-rows: 1fr 1fr 1fr;
     grid-template-areas:
-         "h1 social_media h1"
-         "h1 social_media h1"
-         "h1 social_media h1";
+         "h2 social_media h2"
+         "h2 social_media h2";
 }
 
-social_media {
+.mobile_header {
+    display: none;
+}
+
+.social_media {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 3fr;
     grid-template-areas:
-         "social_media_logo h1";
+         "img h2";
+}
+
+.social_media_img {
+    /*height: 50%;*/
+    /*margin-top: 30%;*/
+    max-height: 50%;
+    margin-top: 10%;
 }
 
 h1 {
@@ -70,7 +68,7 @@ h1 {
     font-weight: lighter;
     color: #f7f2f2;
     text-align: center;
-    height: 50%;
+    font-size: 150%;
 }
 
 h2 {
@@ -78,26 +76,19 @@ h2 {
     font-weight: lighter;
     color: #f7f2f2;
     text-align: center;
-    font-size: calc(0.10vw + 1vh);
+    font-size: 50%;
+    height: 100%;
 }
 
 button {
 
 }
 
-social_media_logo {
-    margin-top: 20%;
-    width: auto;
-    max-height: 100%;
-}
-
 money_to_assign {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
     grid-template-areas:
-         "h1 amount h1";
-    justify-items: center;
-    align-items: center;
+         "h1 h1 h1";
 }
 
 bookmarks {
@@ -116,25 +107,40 @@ bookmark {
     letter-spacing: 0;
     color: #244564;
     border-radius: 30px;
-    text-align: center;
     border: none;
-    height: 2vh;
+    height: auto;
+    font-size: 50%;
+    text-align: center;
 }
 
 .bookmark_container {
     background-color:#E9E4E4;
     height: 100%;
     position: relative;
+    overflow: auto;
 }
 
 .budget_table {
     display:table;
     background-color: #faf4f4;
-    margin-left: 1%;
-    width: 98%;
     border-radius: 10px;
     margin-top: 1%;
-    border-collapse: collapse;
+    margin-left: 1%;
+    width: 98%;
+}
+
+.transaction_table {
+    display:table;
+    border-radius: 10px;
+    margin-top: 1%;
+    margin-left: 1%;
+    width: 98%;
+    align-items: center;
+}
+
+table {
+    overflow: scroll;
+    min-width: 350px;
 }
 
 .break {
@@ -146,61 +152,34 @@ bookmark {
     background-color: #faf4f4;
     margin-left: 1%;
     width: 98%;
-    border-radius: 30px;
     margin-top: 1%;
-    border-collapse: collapse;
 }
+
+.subtable thead {
+    background-color: #D5E6F2;
+    width: 100%;
+}
+
 .category_name {
     font-family: Segoe UI, serif;
     color: #244564;
     text-align: center;
+    width: 20%;
 }
 
 .subcategory_name {
     font-family: Segoe UI, serif;
     color: #244564;
-    text-align: left;
     font-size: 130%;
 }
 
-.sub_subcategory_name {
+.sub_subcategory {
     font-family: Segoe UI, serif;
     color: #244564;
     text-align: center;
     font-size: 100%;
-    width: 30vw;
-}
-
-.sub_subcategory_assign {
-    font-family: Segoe UI, serif;
-    color: #244564;
-    text-align: center;
-    font-size: 100%;
-    width: 28vw;
-}
-
-.sub_subcategory_spent {
-    font-family: Segoe UI, serif;
-    color: #244564;
-    text-align: center;
-    font-size: 100%;
-    width: 20vw;
-}
-
-.sub_subcategory_left {
-    font-family: Segoe UI, serif;
-    color: #244564;
-    text-align: center;
-    font-size: 100%;
-    width: 10vw;
-}
-
-.sub_subcategory_percent {
-    font-family: Segoe UI, serif;
-    color: #244564;
-    text-align: center;
-    font-size: 100%;
-    width: 9vw;
+    width: 20%;
+    line-break: normal;
 }
 
 .statistic_container {
@@ -224,24 +203,15 @@ bookmark {
 }
 
 .statistic_right_container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 .statistic {
     align-content: center;
     justify-content: center;
     display: flex;
-}
-
-.statistic_img {
-    width: auto;
-    max-height: 100%;
-    justify-items: center;
-    align-items: center;
-}
-
-h3 {
-    font-family: Segoe UI, serif;
-    color: #244564;
 }
 
 .settings_container {
@@ -251,13 +221,9 @@ h3 {
 }
 
 .edit_button {
-    font-family: Segoe UI, serif;
     font-weight: lighter;
-    text-align: center;
     height: 4vh;
-    width: 2vw;
 }
-
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button {
     background-color: #555;
@@ -274,11 +240,9 @@ h3 {
 
 .logout_button {
     font-family: Ink Free, serif;
-    font-size: calc(1vw + 1vh);
     font-weight: lighter;
     color: #f7f2f2;
-    text-align: center;
-    height: 75%;
+    height: 80%;
     border: none;
     background: none;
 }
@@ -357,11 +321,6 @@ h3 {
     opacity: 1;
 }
 
-h3 {
-    font-family: Segoe UI, serif;
-    text-align: center;
-    font-size: 100%;
-}
 
 .add_txn_btn {
     cursor: pointer;
@@ -370,6 +329,9 @@ h3 {
     border-radius: 90px;
     background: #244564;
     margin-left: 5%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
 }
 
 /* Add styles to the form container */
@@ -426,7 +388,7 @@ h3 {
 }
 
 .transaction_container {
-
+    overflow: auto;
 }
 
 /* Add styles to the form container */
@@ -465,9 +427,111 @@ h3 {
     opacity: 1;
 }
 
-.delete_account_btn {
+.bookmark_btn {
     border: none;
     background-color: transparent;
-    font-family: Segoe UI, Serif;
-    letter-spacing: 0;
+}
+
+.statistic_img {
+    max-width: 80%;
+    margin-left: 10%;
+}
+
+.mobile {
+    display: none;
+}
+
+.statistic_mobile {
+    display: none;
+}
+
+.footer_mobile {
+    display: none;
+}
+
+.bookmarks_mobile {
+    display: none;
+}
+
+.mobile_transaction {
+    display: none;
+}
+
+@media only screen and (max-device-width: 420px) {
+    .website {
+        display: none;
+    }
+
+    body {
+        background: #244564;
+    }
+    .statistic_left_container {
+        display: none;
+    }
+    .statistic_right_container {
+        display: none;
+    }
+
+    .statistic_container {
+        display: flex;
+    }
+
+    .statistic_mobile {
+        display: grid;
+        grid-template-rows: 1fr 1fr 2fr;
+        grid-template-areas:
+            "statistic"
+            "statistic"
+            "statistic";
+        overflow: auto;
+        align-items: center;
+        justify-items: center;
+    }
+
+    .statistic_img {
+        max-height: 80%;
+        margin-top: 10%;
+        margin-left: 0;
+    }
+
+    .bookmarks_mobile {
+        display: grid;
+        height: 5%;
+        width: 90%;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+         "bookmark bookmark bookmark bookmark";
+        align-items: center;
+        margin-left: 5%;
+    }
+
+    .footer_mobile {
+        display: flex;
+        justify-content: center;
+    }
+
+    .edit_button {
+        font-family: Segoe UI, serif;
+        font-weight: lighter;
+        text-align: center;
+        height: 4vh;
+    }
+
+    .mobile_transaction {
+        display: flex;
+    }
+
+    .mobile_header {
+        background: #244564;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 10%;
+        right: 0;
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        grid-template-areas:
+      "h1 button";
+    }
+
 }
