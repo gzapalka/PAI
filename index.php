@@ -17,6 +17,9 @@ Router::get('budget', "DefaultController");
 Router::get('statistic', "DefaultController");
 Router::get('register_user', "DefaultController");
 Router::get('login_user', "DefaultController");
+
+Router::get('add_txn', "DefaultController");
+
 Router::post('register_user', 'SecurityController');
 Router::post("login_user", 'SecurityController');
 Router::post("delete_account", 'SecurityController');

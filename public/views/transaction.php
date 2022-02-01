@@ -330,15 +330,15 @@
     }
 
     function isDecimal(input){
-        let regex = new RegExp(' ^ [-+][0 - 9] + \.[0 - 9][0 - 9]$');
+        let regex = new RegExp(' ^ [-+][0 - 9]\.[0 - 9][0 - 9]$');
         return (regex.test(input));
     }
 
     function checkIfDecimal() {
-        if (!isDecimal(document.getElementById("add_amount").value)) {
-            alert("Please input a decimal!")
-            document.getElementById("add_amount").value = "0.00";
-        }
+        // if (!isDecimal(document.getElementById("add_amount").value)) {
+        //     alert("Please input a decimal!")
+        //     document.getElementById("add_amount").value = "0.00";
+        // }
     }
 </script>
 </body>

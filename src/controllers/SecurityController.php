@@ -55,7 +55,8 @@ class SecurityController extends AppController
             return;
         }
 
-        $this->render('budget');
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/budget");
     }
 
     public function register_user()
@@ -85,6 +86,8 @@ class SecurityController extends AppController
         $userId = $this->userRepository->addUser($user);
         $this->categoryRepository->addCategoryForNewUser($userId);
 
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/login");
         return $this->render('login', ['messages' => ['You\'ve been succesfully registrated!']]);
     }
 
@@ -98,7 +101,9 @@ class SecurityController extends AppController
          $this->transactionRepository->deleteAllUserTxns($userId);
          $this->categoryRepository->deleteCategoriesByUser($userId);
          $this->userRepository->deleteUser($userId);
-         $this->render('login');
+
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/login");
     }
 
 
