@@ -5,15 +5,18 @@ require_once __DIR__ . '/../models/Requests/LoginRequest.php';
 require_once __DIR__ . '/../repository/UserRepository.php';
 require_once __DIR__ . '/../models/User.php';
 require_once 'util/InputValidator.php';
+require_once 'util/SessionUtil.php';
 
 class SecurityController extends AppController
 {
     private UserRepository $repository;
+    private SessionUtil $sessionUtil;
 
     public function __construct()
     {
         parent::__construct();
         $this->repository = new UserRepository();
+        $this->sessionUtil = new SessionUtil();
     }
 
     public function login_user()
@@ -27,21 +30,30 @@ class SecurityController extends AppController
         $controller = new DefaultController();
 
 
-        if (InputValidator::validateEmail($email)) {
-            $controller->displayLoginPageWithErrorMassage("Incorrect email");
-        } else {
-            $userRepository = new UserRepository();
-            $user = $userRepository->getLoggedUser($email, $pwd);
-
-            if ($user == null) {
-                $controller->displayLoginPageWithErrorMassage("No such user");
-            } else {
-                $controller->displayLoginPageWithErrorMassage("You're in!");
-            }
-//
-//            $url = "https://$_SERVER[HTTP_HOST]";
-//            header("Location: $url/mailVerification");
+        if (!InputValidator::validateEmail($email)) {
+            $controller->displayLoginPageWithErrorMassage("Incorrect email!");
+            return;
         }
+
+        $userRepository = new UserRepository();
+        $user = $userRepository->getLoggedUser($email, $pwd);
+
+        if ($user == null) {
+            $controller->displayLoginPageWithErrorMassage("No such user");
+            return;
+        } else {
+            $controller->displayLoginPageWithErrorMassage("You're in!");
+        }
+
+        try {
+            $this->sessionUtil->createNewSession($user);
+        } catch (Exception $e) {
+            $controller->displayLoginPageWithErrorMassage("Unable to create a session");
+            return;
+        }
+
+        $this->render('budget');
+
     }
 
     public function register_user()
