@@ -29,21 +29,11 @@ footer {
     left: 0;
     right: 0;
     display: grid;
-    grid-template-columns: 3fr 2fr 3fr;
+    grid-template-columns: 3fr 1fr 4fr;
     grid-template-areas:
          "money_to_assign h1 contact_info";
     overflow: hidden;
 }
-
-/*amount {*/
-/*    font-family: Ink Free, serif;*/
-/*    font-weight: lighter;*/
-/*    color: #707070;*/
-/*    height: 80%;*/
-/*    width: 100%;*/
-/*    text-justify: auto;*/
-/*    margin-left: 30%;*/
-/*}*/
 
 contact_info {
     height: 50%;
@@ -55,6 +45,8 @@ contact_info {
          "h2 social_media h2";
 }
 
+
+
 .social_media {
     display: grid;
     grid-template-columns: 1fr 3fr;
@@ -63,8 +55,10 @@ contact_info {
 }
 
 .social_media_img {
-    height: 50%;
-    margin-top: 30%;
+    /*height: 50%;*/
+    /*margin-top: 30%;*/
+    max-height: 50%;
+    margin-top: 10%;
 }
 
 h1 {
@@ -80,7 +74,8 @@ h2 {
     font-weight: lighter;
     color: #f7f2f2;
     text-align: center;
-    font-size: 60%;
+    font-size: 50%;
+    height: 100%;
 }
 
 button {
@@ -110,9 +105,10 @@ bookmark {
     letter-spacing: 0;
     color: #244564;
     border-radius: 30px;
-    text-align: center;
     border: none;
     height: auto;
+    font-size: 50%;
+    text-align: center;
 }
 
 .bookmark_container {
@@ -229,11 +225,6 @@ bookmark {
     display: flex;
 }
 
-h3 {
-    font-family: Segoe UI, serif;
-    color: #244564;
-}
-
 .settings_container {
     height: 100%;
     position: relative;
@@ -345,11 +336,6 @@ h3 {
     opacity: 1;
 }
 
-h3 {
-    font-family: Segoe UI, serif;
-    text-align: center;
-    font-size: 100%;
-}
 
 .add_txn_btn {
     cursor: pointer;
@@ -453,15 +439,83 @@ h3 {
     opacity: 1;
 }
 
-.delete_account_btn {
+.bookmark_btn {
     border: none;
     background-color: transparent;
-    font-family: Segoe UI, Serif;
-    letter-spacing: 0;
 }
 
-.ei {
+.statistic_img {
     max-width: 80%;
-    /*height: auto;*/
     margin-left: 10%;
+}
+
+.mobile {
+    display: none;
+}
+
+.statistic_mobile {
+    display: none;
+}
+
+.footer_mobile {
+    display: none;
+}
+
+.bookmarks_mobile {
+    display: none;
+}
+
+@media only screen and (max-device-width: 420px) {
+    .website {
+        display: none;
+    }
+
+    body {
+        background: #244564;
+    }
+    .statistic_left_container {
+        display: none;
+    }
+    .statistic_right_container {
+        display: none;
+    }
+
+    .statistic_container {
+        display: flex;
+    }
+
+    .statistic_mobile {
+        display: grid;
+        grid-template-rows: 1fr 1fr 2fr;
+        grid-template-areas:
+            "statistic"
+            "statistic"
+            "statistic";
+        overflow: auto;
+        align-items: center;
+        justify-items: center;
+    }
+
+    .statistic_img {
+        max-height: 80%;
+        margin-top: 10%;
+        margin-left: 0%;
+    }
+
+    .bookmarks_mobile {
+        display: grid;
+        height: 5%;
+        width: 90%;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+         "bookmark bookmark bookmark bookmark";
+        align-items: center;
+        margin-left: 5%;
+    }
+
+    .footer_mobile {
+        display: flex;
+        justify-content: center;
+    }
+
 }
