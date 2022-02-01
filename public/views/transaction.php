@@ -4,9 +4,13 @@
     <title>SimpleBudget</title>
 </head>
 <body>
-<header>
+<header class="website">
     <h1>Simple Budget</h1>
     <h1></h1>
+    <button class="logout_button">Log out</button>
+</header>
+<header class="mobile_header">
+    <h1>Simple Budget</h1>
     <button class="logout_button">Log out</button>
 </header>
 <content>
@@ -117,7 +121,7 @@
                 <button type="button" class="btn cancel" onclick="closeEditTxnForm()">Close</button>
             </form>
         </div>
-        <table class="budget_table">
+        <table class="transaction_table">
             <thead>
             <tr>
                 <th class="category_name">Category</th>
@@ -129,33 +133,33 @@
             </thead>
             <tbody>
             <tr>
-                <td class="sub_subcategory_name">Car maintenance</td>
-                <td class="sub_subcategory_assign">1200.00</td>
-                <td class="sub_subcategory_spent">2021-6-12</td>
-                <td class="sub_subcategory_left">Check Engine</td>
-                <td>
+                <td class="sub_subcategory">Car maintenance</td>
+                <td class="sub_subcategory">1200.00</td>
+                <td class="sub_subcategory">2021-6-12</td>
+                <td class="sub_subcategory">Check Engine</td>
+                <td class="sub_subcategory">
                     <button class="edit_button" onclick="openEditTxnForm()">
                         Edit
                     </button>
                 </td>
             </tr>
             <tr>
-                <td class="sub_subcategory_name">Fuel</td>
-                <td class="sub_subcategory_assign">650.00</td>
-                <td class="sub_subcategory_spent">2021-6-11</td>
-                <td class="sub_subcategory_left">Fill up</td>
-                <td>
+                <td class="sub_subcategory">Fuel</td>
+                <td class="sub_subcategory">650.00</td>
+                <td class="sub_subcategory">2021-6-11</td>
+                <td class="sub_subcategory">Fill up</td>
+                <td class="sub_subcategory">
                     <button class="edit_button" onclick="openEditTxnForm()">
                         Edit
                     </button>
                 </td>
             </tr>
             <tr>
-                <td class="sub_subcategory_name">Bus Ticket</td>
-                <td class="sub_subcategory_assign">650.00</td>
-                <td class="sub_subcategory_spent">2021-6-12</td>
-                <td class="sub_subcategory_left">Monthly Ticket</td>
-                <td>
+                <td class="sub_subcategory">Bus Ticket</td>
+                <td class="sub_subcategory">650.00</td>
+                <td class="sub_subcategory">2021-6-12</td>
+                <td class="sub_subcategory">Monthly Ticket</td>
+                <td class="sub_subcategory">
                     <button class="edit_button" onclick="openEditTxnForm()">
                         Edit
                     </button>
@@ -163,55 +167,55 @@
             </tr>
             <tr>
 
-                <td class="sub_subcategory_name">Netflix</td>
-                <td class="sub_subcategory_assign">1200.00</td>
-                <td class="sub_subcategory_spent">2021-6-12</td>
-                <td class="sub_subcategory_left">Subscription</td>
-                <td>
+                <td class="sub_subcategory">Netflix</td>
+                <td class="sub_subcategory">1200.00</td>
+                <td class="sub_subcategory">2021-6-12</td>
+                <td class="sub_subcategory">Subscription</td>
+                <td class="sub_subcategory">
                     <button class="edit_button" onclick="openEditTxnForm()">
                         Edit
                     </button>
                 </td>
             </tr>
             <tr>
-                <td class="sub_subcategory_name">Dinning Out</td>
-                <td class="sub_subcategory_assign">650.00</td>
-                <td class="sub_subcategory_spent">2021-6-12</td>
-                <td class="sub_subcategory_left">Pizza on date</td>
-                <td>
+                <td class="sub_subcategory">Dinning Out</td>
+                <td class="sub_subcategory">650.00</td>
+                <td class="sub_subcategory">2021-6-12</td>
+                <td class="sub_subcategory">Pizza on date</td>
+                <td class="sub_subcategory">
                     <button class="edit_button" onclick="openEditTxnForm()">
                         Edit
                     </button>
                 </td>
             </tr>
             <tr>
-                <td class="sub_subcategory_name">Clubbing</td>
-                <td class="sub_subcategory_assign">650.00</td>
-                <td class="sub_subcategory_spent">2021-6-12</td>
-                <td class="sub_subcategory_left">Drink</td>
-                <td>
+                <td class="sub_subcategory">Clubbing</td>
+                <td class="sub_subcategory">650.00</td>
+                <td class="sub_subcategory">2021-6-12</td>
+                <td class="sub_subcategory">Drink</td>
+                <td class="sub_subcategory">
                     <button class="edit_button">
                         Edit
                     </button>
                 </td>
             </tr>
             <tr>
-                <td class="sub_subcategory_name">Gaming</td>
-                <td class="sub_subcategory_assign">650.00</td>
-                <td class="sub_subcategory_spent">2021-6-12</td>
-                <td class="sub_subcategory_left">Witcher 3</td>
-                <td>
+                <td class="sub_subcategory">Gaming</td>
+                <td class="sub_subcategory">650.00</td>
+                <td class="sub_subcategory">2021-6-12</td>
+                <td class="sub_subcategory">Witcher 3</td>
+                <td class="sub_subcategory">
                     <button class="edit_button" onclick="openEditTxnForm()">
                         Edit
                     </button>
                 </td>
             </tr>
             <tr>
-                <td class="sub_subcategory_name">School Fees</td>
-                <td class="sub_subcategory_assign">1200.00</td>
-                <td class="sub_subcategory_spent">2021-6-12</td>
-                <td class="sub_subcategory_left">French Lessons</td>
-                <td>
+                <td class="sub_subcategory">School Fees</td>
+                <td class="sub_subcategory">1200.00</td>
+                <td class="sub_subcategory">2021-6-12</td>
+                <td class="sub_subcategory">French Lessons</td>
+                <td class="sub_subcategory">
                     <button class="edit_button" onclick="openEditTxnForm()">
                         Edit
                     </button>

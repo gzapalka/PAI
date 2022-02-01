@@ -45,7 +45,9 @@ contact_info {
          "h2 social_media h2";
 }
 
-
+.mobile_header {
+    display: none;
+}
 
 .social_media {
     display: grid;
@@ -115,16 +117,30 @@ bookmark {
     background-color:#E9E4E4;
     height: 100%;
     position: relative;
+    overflow: auto;
 }
 
 .budget_table {
     display:table;
     background-color: #faf4f4;
-    margin-left: 1%;
-    width: 98%;
     border-radius: 10px;
     margin-top: 1%;
-    border-collapse: collapse;
+    margin-left: 1%;
+    width: 98%;
+}
+
+.transaction_table {
+    display:table;
+    border-radius: 10px;
+    margin-top: 1%;
+    margin-left: 1%;
+    width: 98%;
+    align-items: center;
+}
+
+table {
+    overflow: scroll;
+    min-width: 350px;
 }
 
 .break {
@@ -136,56 +152,34 @@ bookmark {
     background-color: #faf4f4;
     margin-left: 1%;
     width: 98%;
-    border-radius: 30px;
     margin-top: 1%;
-    border-collapse: collapse;
 }
+
+.subtable thead {
+    background-color: #D5E6F2;
+    width: 100%;
+}
+
 .category_name {
     font-family: Segoe UI, serif;
     color: #244564;
     text-align: center;
+    width: 20%;
 }
 
 .subcategory_name {
     font-family: Segoe UI, serif;
     color: #244564;
-    text-align: left;
     font-size: 130%;
 }
 
-.sub_subcategory_name {
+.sub_subcategory {
     font-family: Segoe UI, serif;
     color: #244564;
     text-align: center;
     font-size: 100%;
-}
-
-.sub_subcategory_assign {
-    font-family: Segoe UI, serif;
-    color: #244564;
-    text-align: center;
-    font-size: 100%;
-}
-
-.sub_subcategory_spent {
-    font-family: Segoe UI, serif;
-    color: #244564;
-    text-align: center;
-    font-size: 100%;
-}
-
-.sub_subcategory_left {
-    font-family: Segoe UI, serif;
-    color: #244564;
-    text-align: center;
-    font-size: 100%;
-}
-
-.sub_subcategory_percent {
-    font-family: Segoe UI, serif;
-    color: #244564;
-    text-align: center;
-    font-size: 100%;
+    width: 20%;
+    line-break: normal;
 }
 
 .statistic_container {
@@ -227,12 +221,9 @@ bookmark {
 }
 
 .edit_button {
-    font-family: Segoe UI, serif;
     font-weight: lighter;
-    text-align: center;
     height: 4vh;
 }
-
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button {
     background-color: #555;
@@ -397,7 +388,7 @@ bookmark {
 }
 
 .transaction_container {
-    overflow: scroll;
+    overflow: auto;
 }
 
 /* Add styles to the form container */
@@ -528,6 +519,19 @@ bookmark {
 
     .mobile_transaction {
         display: flex;
+    }
+
+    .mobile_header {
+        background: #244564;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 10%;
+        right: 0;
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        grid-template-areas:
+      "h1 button";
     }
 
 }

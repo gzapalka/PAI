@@ -4,9 +4,13 @@
     <title>SimpleBudget</title>
 </head>
 <body>
-<header>
+<header class="website">
     <h1>Simple Budget</h1>
     <h1></h1>
+    <button class="logout_button">Log out</button>
+</header>
+<header class="mobile_header">
+    <h1>Simple Budget</h1>
     <button class="logout_button">Log out</button>
 </header>
 <content>
