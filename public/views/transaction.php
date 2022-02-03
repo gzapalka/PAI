@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <head>
+    <script src="public/js/search.js" defer></script>
     <link rel="stylesheet" href="public/css/budgets.css">
     <title>SimpleBudget</title>
 </head>
@@ -72,8 +73,8 @@
             <h1>Add</h1>
         </button>
         <div class="form-popup" id="deleteAccountForm">
-            <form class="form-popup" id="deleteAccountForm" action="delete_account" method="POST">
-                <h1 style="color: #244564; height: 100%">Are you sure?</h1>
+            <form action="delete_account" method="POST" class="delete_account_form-container">
+                <h1 style="color: #244564; height: 0.00%">Are you sure?</h1>
                 <button type="submit" class="submit_btn">Delete account</button>
                 <button type="button" class="btn cancel" onclick="closeSubmitDeleteAccount()">Close</button>
             </form>
@@ -81,9 +82,9 @@
         <div class="form-popup" id="addTxnForm">
             <form action="add_txn" class="add_txn_form-container" method="POST">
 
-                <label for="Category"><h3 style="text-align: left">Category</h3></label>
+                <label for="addTxnCategory"><h3 style="text-align: left">Category</h3></label>
                 <label>
-                    <textarea class="inputCategory" id="inputCategory" name="category"
+                    <textarea class="inputCategory" id="addTxnCategoryDropdown" name="category"
                               placeholder="Select from dropdown menu ->"></textarea>
                     <select id="dropdown" class="category_dropdown">
                         <option value="Rent">Rent</option>
@@ -105,7 +106,7 @@
 
                 <label for="Amount"><h3 style="text-align: left">Amount</h3></label>
                 <label>
-                    <input id="add_amount" type="number" placeholder="0.00" name="amount" onblur="checkIfDecimal()">
+                    <input id="add_amount" type="number" placeholder="0.00" name="amount">
                 </label>
 
                 <label for="Date"><h3 style="text-align: left">Date</h3></label>
@@ -123,16 +124,31 @@
             </form>
         </div>
         <div class="form-popup" id="editTxnForm">
-            <form id="edit_txn" action="edit_txn" class="edit_txn_form-container">
+            <form id="edit_txn" action="edit_txn" class="edit_txn_form-container" method="post">
                 <label for="Category"><h3 style="text-align: left">Category</h3></label>
                 <label>
-                    <input type="text" placeholder="Enter Category" name="Category">
+                    <textarea class="inputCategory" id="editTxnCategory" name="category"
+                              placeholder="Select from dropdown menu ->"></textarea>
+                    <select id="editTxnCategoryDropdown" class="category_dropdown">
+                        <option value="Rent">Rent</option>
+                        <option value="Water">Water</option>
+                        <option value="Energy">Energy</option>
+                        <option value="Groceries">Groceries</option>
+                        <option value="Internet">Internet</option>
+                        <option value="Car">Car</option>
+                        <option value="Bus Tickets">Bus Tickets</option>
+                        <option value="Fuel">Fuel</option>
+                        <option value="Netflix">Netflix</option>
+                        <option value="Dinning_out">Dinning_out</option>
+                        <option value="Clubbing">Clubbing</option>
+                        <option value="Gaming">Gaming</option>
+                        <option value="School Fees">School Fees</option>
+                    </select>
                 </label>
 
                 <label for="Amount"><h3 style="text-align: left">Amount</h3></label>
                 <label>
-                    <input id="edit_Amount" type="number" placeholder="Enter Amount" name="amount"
-                           onchange="checkIfDecimal()">
+                    <input id="edit_Amount" type="number" placeholder="Enter Amount" name="amount">
                 </label>
 
                 <label for="Date"><h3 style="text-align: left">Date</h3></label>
@@ -144,15 +160,21 @@
                 <label>
                     <input type="text" placeholder="Enter Comment" name="comment">
                 </label>
+                <label>
+                    <input type="text" id="edit_txn_id" name="id" display="none">
+                </label>
 
                 <button type="submit" class="submit_btn">Submit changes</button>
-                <button type="submit" class="btn delete">Delete transaction</button>
+                <button type="submit" class="btn delete" onclick="deleteTxn()">Delete transaction</button>
+                <a href="#" display="none" id="delete_txn_link"></a>
                 <button type="button" class="btn cancel" onclick="closeEditTxnForm()">Close</button>
             </form>
         </div>
+        <div class="search-bar">
+            <input placeholder="search transaction">
+        </div>
         <table class="input_table">
             <thead>
-
             <tr>
                 <th class="category_name">Category</th>
                 <th class="category_name">Amount</th>
@@ -166,15 +188,13 @@
             if (isset($transactions)) {
                 foreach ($transactions as $txnDate) {
                     echo '<tr>';
-                    foreach ($txnDate as $s) {
-                        echo '<td class="sub_subcategory">' . $s . '</td>';
-                    }
+                    echo '<td class="sub_subcategory" id="category">' . $txnDate[1] . '</td>';
+                    echo '<td class="sub_subcategory" id="amount">' . $txnDate[2] . '</td>';
+                    echo '<td class="sub_subcategory" id="date">' . $txnDate[3] . '</td>';
+                    echo '<td class="sub_subcategory" id="comment">' . $txnDate[4] . '</td>';
                     echo '<td class="sub_subcategory">
-                    <button class="edit_button" onclick="openEditTxnForm()">
-                        Edit
-                    </button>
-                 </td>
-                </tr>';
+                    <button class="edit_button" onclick="openEditTxnForm(' . $txnDate[0] . ')"> Edit</button>
+                     </td></tr>';
                 }
             }
             ?>
@@ -186,8 +206,8 @@
     <money_to_assign>
         <h1>Money: </h1>
         <?php
-        if(isset($moneyToSpent)){
-            echo '<h1 style="color: #555555">'.$moneyToSpent.'</h1>';
+        if (isset($moneyToSpent)) {
+            echo '<h1 style="color: #555555">' . $moneyToSpent . '</h1>';
         }
         ?>
         <h1>zł</h1>
@@ -212,15 +232,17 @@
     <money_to_assign>
         <h1>Money: </h1>
         <?php
-        if(isset($moneyToSpent)){
-            echo '<h1 style="color: #555555">'.$moneyToSpent.'</h1>';
+        if (isset($moneyToSpent)) {
+            echo '<h1 style="color: #555555">' . $moneyToSpent . '</h1>';
         }
         ?>
         <h1>zł</h1>
     </money_to_assign>
 </footer>
 <script>
-    function openEditTxnForm() {
+    function openEditTxnForm(id) {
+        document.getElementById("edit_txn_id").value = id;
+        document.getElementById("edit_txn_id").style.display = "none";
         document.getElementById("editTxnForm").style.display = "block";
     }
 
@@ -244,17 +266,38 @@
         document.getElementById("deleteAccountForm").style.display = "none";
     }
 
-    var mytextbox = document.getElementById('inputCategory');
-    var mydropdown = document.getElementById('dropdown');
+    const editTxnCategory = document.getElementById('editTxnCategory');
+    const editTxnCategoryDropdown = document.getElementById('editTxnCategoryDropdown');
 
-    mydropdown.onchange = function () {
-        mytextbox.value = this.value;
-        mytextbox.innerHTML = this.value;
+    const addTxnCategory = document.getElementById('addTxnCategory');
+    const addTxnCategoryDropdown = document.getElementById('addTxnCategoryDropdown');
+
+    editTxnCategoryDropdown.onchange = function () {
+        editTxnCategory.value = this.value;
+        editTxnCategory.innerHTML = this.value;
+    }
+    addTxnCategoryDropdown.onchange = function () {
+        addTxnCategory.value = this.value;
+        addTxnCategory.innerHTML = this.value;
     }
 
-    function isDecimal(input) {
-        let regex = new RegExp(' ^ [-+][0 - 9]\.[0 - 9][0 - 9]$');
-        return (regex.test(input));
+    function deleteTxn() {
+        document.getElementById("delete_txn_link").href = "delete_txn?id="
+            + document.getElementById("edit_txn_id").value;
+        document.getElementById("delete_txn_link").click();
+        return false;
     }
 </script>
 </body>
+
+<template id="project-template">
+    <tr>
+        <td class="sub_subcategory" id="category">category</td>
+        <td class="sub_subcategory" id="amount">amount</td>
+        <td class="sub_subcategory" id="date">date</td>
+        <td class="sub_subcategory" id="comment">comment</td>
+        <td class="sub_subcategory">
+            <button class="edit_button"> Edit</button>
+        </td>
+    </tr>
+</template>

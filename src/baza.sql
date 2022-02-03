@@ -40,22 +40,6 @@ CREATE TABLE IF NOT EXISTS category (
     ON DELETE NO ACTION
     );
 
-
--- -----------------------------------------------------
--- Table `mydb`.`debt`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS debt (
-                                    debt_id SERIAL NOT NULL,
-                                    debt_name VARCHAR(45) NULL,
-    amount_start VARCHAR(45) NULL,
-    amount_left VARCHAR(45) NULL,
-    user_id INT NOT NULL,
-    PRIMARY KEY (debt_id),
-    FOREIGN KEY (user_id) REFERENCES user_account (user_id)
-    ON DELETE NO ACTION
-    );
-
-
 -- -----------------------------------------------------
 -- Table `mydb`.`transaction`
 -- -----------------------------------------------------
@@ -67,10 +51,8 @@ CREATE TABLE IF NOT EXISTS transaction
     create_time    TIMESTAMP   NULL,
     edit_time      TIMESTAMP   NULL,
     category_id    INT         NOT NULL,
-    debt_debt_id   INT         NOT NULL,
     PRIMARY KEY (transaction_id),
-    FOREIGN KEY (category_id) REFERENCES category (category_id),
-    FOREIGN KEY (debt_debt_id) REFERENCES debt (debt_id)
+    FOREIGN KEY (category_id) REFERENCES category (category_id)
     );
 
 

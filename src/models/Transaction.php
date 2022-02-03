@@ -1,6 +1,5 @@
 <?php
 
-require_once __DIR__ . '/../models/TxnTypes.php';
 
 class Transaction
 {
@@ -10,31 +9,23 @@ class Transaction
     private DateTime $createTime;
     private DateTime $editTime;
     private string $categoryId;
-    private string $debtId;
 
 
     /**
      * Constructor to insert data to database.
      * @param $amount float
      * @param $comment String
-     * @param $txnType int determine if txn is debt or account type
-     * @param $id String id of account or debt
+     * @param $id String id of account
      * @return Transaction
      */
-    public static function insertTransaction(float $amount, String $comment, int $txnType, String $id, DateTime $date): Transaction
+    public static function insertTransaction(float $amount, String $comment, String $id, DateTime $date): Transaction
     {
         $instance = new self();
         $instance->amount = $amount;
         $instance->comment = $comment;
         $instance->createTime = $date;
+        $instance->categoryId = $id;
 
-        if ($txnType == TxnTypes::ACCOUNT){
-            $instance->categoryId = $id;
-//            $instance->debtId = null;
-        } elseif ($txnType == TxnTypes::DEBT) {
-            $instance->debtId = $id;
-            $instance->categoryId = null;
-        }
         return $instance;
     }
 
@@ -46,12 +37,10 @@ class Transaction
      * @param DateTime $create_time
      * @param DateTime $edit_time
      * @param String $categoryId
-     * @param String $debtId
      * @return Transaction new instance retrieved from database
      */
     public static function retrieveConstructor(String $txnId, float $amount, String $txnComment,
-                                               DateTime $create_time, DateTime $edit_time,String $categoryId,
-                                               String $debtId): Transaction
+                                               DateTime $create_time, DateTime $edit_time,String $categoryId,): Transaction
     {
         $instance = new self();
         $instance->txnId = $txnId;
@@ -60,7 +49,6 @@ class Transaction
         $instance->createTime = $create_time;
         $instance->editTime = $edit_time;
         $instance->categoryId = $categoryId;
-        $instance->debtId = $debtId;
 
         return $instance;
     }
@@ -92,11 +80,11 @@ class Transaction
     }
 
     /**
-     * @param String $debtId
+     * @param String $id
      */
-    public function setDebtId(string $debtId)
+    public function setId(string $id)
     {
-        $this->debtId = $debtId;
+        $this->txnId = $id;
     }
 
 
@@ -147,16 +135,5 @@ class Transaction
     {
         return $this->categoryId;
     }
-
-    /**
-     * @return String
-     */
-    public function getDebtId(): ?string
-    {
-//        return $this->debtId;
-        return null;
-    }
-
-
 
 }

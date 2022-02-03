@@ -89,6 +89,8 @@ class DefaultController extends AppController
     public function displayPageWithErrorMassage(string $template, string $message)
     {
         $this->render($template, ['message' => $message]);
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/$template");
     }
 
     public function login_user()
@@ -100,6 +102,20 @@ class DefaultController extends AppController
     public function add_txn()
     {
         $this->render('transaction');
+    }
+
+    public function delete_txn()
+    {
+        try {
+            $userId = $this->sessionUtil->getLoggedUser();
+            $this->transactionRepository->deleteTxn($_GET["id"]);
+
+        } catch (NoSuchUserException $e) {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/transaction");
+        }
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/transaction");
     }
 
 }

@@ -37,7 +37,7 @@ body {
   }
 
   .login-container {
-    width: 75%;
+    width: 100%;
     max-height: 100%;
     display: grid;
     justify-items: center;
@@ -46,8 +46,8 @@ body {
   }
 
   .login-panel {
-    width: 100%;
-    height: 400px;
+    width: 80%;
+    height: auto;
     background: #faf4f4;
     box-shadow: 0 6px 6px #00000029;
     border: 1px solid #707070;
@@ -55,10 +55,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 5%;
   }
 
   form {
-    height: 70%;
+    height: auto;
     width: 80%;
     display: grid;
     row-gap: calc(2vw + 1vh);
@@ -112,7 +113,7 @@ body {
   .number::placeholder,
   h2 {
     font-family: Ink Free, serif;
-    font-size: 5vh;
+    font-size: 100%;
     color: #707070;
     text-align: left;
   }
@@ -195,6 +196,10 @@ body {
   }
   .right-container {
     width: 100%;
+  }
+
+  h2 {
+    font-size: 200%;
   }
 }
 

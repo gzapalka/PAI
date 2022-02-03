@@ -18,11 +18,16 @@ Router::get('register_user', "DefaultController");
 Router::get('login_user', "DefaultController");
 Router::get("log_out", 'SecurityController');
 Router::get('add_txn', "DefaultController");
+Router::get('delete_txn', "DefaultController");
 
 Router::post('register_user', 'SecurityController');
 Router::post("login_user", 'SecurityController');
 Router::post("delete_account", 'SecurityController');
 Router::post("add_txn", 'TransactionController');
+Router::post("edit_txn", 'TransactionController');
+Router::post("search", 'TransactionController');
+Router::get("search", 'TransactionController');
+
 
 Router::run($path);
 

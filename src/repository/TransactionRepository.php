@@ -9,7 +9,7 @@ class TransactionRepository extends Repository
     public function getAllUsersTxns(string $userId): ?array
     {
         $stmt = $this->database->connect()->prepare('
-            select c.name, t.amount, t.create_time, t.comment from transaction t
+            select t.transaction_id, c.name, t.amount, t.create_time, t.comment from transaction t
                 join category c on c.category_id = t.category_id
                 join user_account ua on ua.user_id = c.user_id
                 where c.user_id = :userId;
@@ -27,6 +27,7 @@ class TransactionRepository extends Repository
         $myList = [];
         foreach ($txns as $txn) {
             $myList[] = [
+                $txn['transaction_id'],
                 $txn['name'],
                 $txn['amount'],
                 str_replace('00:00:00', '', $txn['create_time']),
@@ -38,25 +39,42 @@ class TransactionRepository extends Repository
     }
 
 
-
     public function addTxn(Transaction $transaction)
-    {;
+    {
+        $id = $transaction->getTxnId();
         $categoryId = $transaction->getCategoryId();
-        $debtId = 0; //$transaction->getDebtId();
         $amountAssigned = $transaction->getAmount();
         $comment = $transaction->getComment();
         $date = $transaction->getCreateTime()->format('Y-m-d H:i:s');
 
-        $stmt = $this->database->connect()->prepare('
-            INSERT INTO transaction (amount, comment, category_id, debt_debt_id, create_time, edit_time)
-            VALUES (:amount, :comment, :category_id, :debt_id, :date, LOCALTIMESTAMP)
-        ');
-
+        if ($transaction->getTxnId() == null) {
+            $stmt = $this->database->connect()->prepare('
+            INSERT INTO transaction (amount, comment, category_id, create_time, edit_time)
+            VALUES (:amount, :comment, :category_id, :date, LOCALTIMESTAMP)
+         ');
+        } else {
+            $stmt = $this->database->connect()->prepare('
+            INSERT INTO transaction (transaction_id ,amount, comment, category_id, create_time, edit_time)
+            VALUES (:txnId ,:amount, :comment, :category_id, :date, LOCALTIMESTAMP)
+         ');
+            $stmt->bindParam(':txnId', $id);
+        }
         $stmt->bindParam(':amount', $amountAssigned);
         $stmt->bindParam(':comment', $comment);
         $stmt->bindParam(':category_id', $categoryId);
-        $stmt->bindParam(':debt_id', $debtId);
         $stmt->bindParam(':date', $date);
+
+        $stmt->execute();
+    }
+
+    public function deleteTxn(int $txnId)
+    {
+
+        $stmt = $this->database->connect()->prepare('
+            DELETE FROM transaction WHERE transaction_id = :txnId;
+        ');
+
+        $stmt->bindParam(':txnId', $txnId);
 
         $stmt->execute();
     }
@@ -81,7 +99,8 @@ class TransactionRepository extends Repository
     }
 
     public function getSpentByCategory($categoryId)
-    {;
+    {
+        ;
         $stmt = $this->database->connect()->prepare('
              SELECT sum(amount) FROM transaction
                 WHERE category_id = :categoryId AND amount < 0;
@@ -137,7 +156,8 @@ class TransactionRepository extends Repository
         return $earn['sum'];
     }
 
-    public function getLeftMoneyByUser($userId): float {
+    public function getLeftMoneyByUser($userId): float
+    {
         $stmt = $this->database->connect()->prepare('
              select sum(t.amount) from transaction t
                 join category c on c.category_id = t.category_id
@@ -155,6 +175,22 @@ class TransactionRepository extends Repository
         }
 
         return $left['sum'];
+    }
+
+    public function getTxnByComment(string $searchComment)
+    {
+        $searchComment = '%'.strtolower($searchComment).'%';
+        $stmt = $this->database->connect()->prepare('
+             select c.name, t.amount, t.create_time, t.comment, t.transaction_id from transaction t
+                join category c on c.category_id = t.category_id
+                join user_account ua on ua.user_id = c.user_id
+                where LOWER(t.comment) LIKE :search
+        ');
+
+        $stmt->bindParam(':search', $searchComment, PDO::PARAM_STR);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
 }
