@@ -5,12 +5,10 @@ require_once __DIR__ . '/../models/Transaction.php';
 
 class TransactionRepository extends Repository
 {
-    private $connection = null;
 
     public function getAllUsersTxns(string $userId): ?array
     {
-        $this->checkConnection();
-        $stmt = $this->connection->prepare('
+        $stmt = $this->database->connect()->prepare('
             select c.name, t.amount, t.create_time, t.comment from transaction t
                 join category c on c.category_id = t.category_id
                 join user_account ua on ua.user_id = c.user_id
@@ -39,23 +37,17 @@ class TransactionRepository extends Repository
         return $myList;
     }
 
-    private function checkConnection()
-    {
-        if ($this->connection == null) {
-            $this->connection = $this->database->connect();
-        }
-    }
+
 
     public function addTxn(Transaction $transaction)
-    {
-        $this->checkConnection();
+    {;
         $categoryId = $transaction->getCategoryId();
         $debtId = 0; //$transaction->getDebtId();
         $amountAssigned = $transaction->getAmount();
         $comment = $transaction->getComment();
         $date = $transaction->getCreateTime()->format('Y-m-d H:i:s');
 
-        $stmt = $this->connection->prepare('
+        $stmt = $this->database->connect()->prepare('
             INSERT INTO transaction (amount, comment, category_id, debt_debt_id, create_time, edit_time)
             VALUES (:amount, :comment, :category_id, :debt_id, :date, LOCALTIMESTAMP)
         ');
@@ -71,8 +63,8 @@ class TransactionRepository extends Repository
 
     public function deleteAllUserTxns(int $userId)
     {
-        $this->checkConnection();
-        $stmt = $this->connection->prepare('
+
+        $stmt = $this->database->connect()->prepare('
             DELETE FROM transaction WHERE category_id in 
                 (SELECT category_id FROM category where user_id = :userId);
         ');
@@ -89,9 +81,8 @@ class TransactionRepository extends Repository
     }
 
     public function getSpentByCategory($categoryId)
-    {
-        $this->checkConnection();
-        $stmt = $this->connection->prepare('
+    {;
+        $stmt = $this->database->connect()->prepare('
              SELECT sum(amount) FROM transaction
                 WHERE category_id = :categoryId AND amount < 0;
         ');
@@ -110,8 +101,7 @@ class TransactionRepository extends Repository
 
     public function getAssignedByCategory($categoryId): float
     {
-        $this->checkConnection();
-        $stmt = $this->connection->prepare('
+        $stmt = $this->database->connect()->prepare('
              SELECT sum(amount_assigned) FROM category
                 WHERE category_id = :categoryId;
         ');
@@ -130,8 +120,7 @@ class TransactionRepository extends Repository
 
     public function getEarnByCategory($categoryId): float
     {
-        $this->checkConnection();
-        $stmt = $this->connection->prepare('
+        $stmt = $this->database->connect()->prepare('
              SELECT sum(amount) FROM transaction
                 WHERE category_id = :categoryId AND amount > 0;
         ');
@@ -149,8 +138,7 @@ class TransactionRepository extends Repository
     }
 
     public function getLeftMoneyByUser($userId): float {
-        $this->checkConnection();
-        $stmt = $this->connection->prepare('
+        $stmt = $this->database->connect()->prepare('
              select sum(t.amount) from transaction t
                 join category c on c.category_id = t.category_id
                 join user_account ua on ua.user_id = c.user_id

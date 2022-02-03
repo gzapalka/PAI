@@ -24,7 +24,7 @@
                 <a href="budget">Budget</a>
             </button>
         </bookmark>
-        <bookmark style="background-color:cornsilk;">
+        <bookmark style="background-color:#faf4f4;">
             <button class="bookmark_btn">
                 <a href="statistic">Statistic</a>
             </button>
@@ -46,7 +46,7 @@
                 <a href="transaction">$</a>
             </button>
         </bookmark>
-        <bookmark style="background-color:cornsilk;">
+        <bookmark style="background-color:#faf4f4;">
             <button class="bookmark_btn">%</button>
         </bookmark>
         <bookmark style="background-color:#F3E6D1;">

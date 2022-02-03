@@ -31,7 +31,7 @@
                 <a href="budget">Budget</a>
             </button>
         </bookmark>
-        <bookmark style="background-color:cornsilk;">
+        <bookmark style="background-color:#faf4f4;">
             <button class="bookmark_btn">
                 <a href="statistic">Statistic</a>
             </button>
@@ -53,7 +53,7 @@
                 <a href="transaction">$</a>
             </button>
         </bookmark>
-        <bookmark style="background-color:cornsilk;">
+        <bookmark style="background-color:#faf4f4;">
             <button class="bookmark_btn">%</button>
         </bookmark>
         <bookmark style="background-color:#F3E6D1;">
@@ -185,7 +185,11 @@
 <footer class="website">
     <money_to_assign>
         <h1>Money: </h1>
-        <h1 style="color: #555555">0.00</h1>
+        <?php
+        if(isset($moneyToSpent)){
+            echo '<h1 style="color: #555555">'.$moneyToSpent.'</h1>';
+        }
+        ?>
         <h1>zł</h1>
     </money_to_assign>
     <h1></h1>
@@ -207,7 +211,11 @@
 <footer class="footer_mobile">
     <money_to_assign>
         <h1>Money: </h1>
-        <h1 style="color: #555555">0.00</h1>
+        <?php
+        if(isset($moneyToSpent)){
+            echo '<h1 style="color: #555555">'.$moneyToSpent.'</h1>';
+        }
+        ?>
         <h1>zł</h1>
     </money_to_assign>
 </footer>
