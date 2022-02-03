@@ -40,7 +40,7 @@ class Transaction
      * @return Transaction new instance retrieved from database
      */
     public static function retrieveConstructor(String $txnId, float $amount, String $txnComment,
-                                               DateTime $create_time, DateTime $edit_time,String $categoryId,): Transaction
+                                               DateTime $create_time, DateTime $edit_time,String $categoryId): Transaction
     {
         $instance = new self();
         $instance->txnId = $txnId;

@@ -73,14 +73,14 @@
             <h1>Add</h1>
         </button>
         <div class="form-popup" id="deleteAccountForm">
-            <form action="delete_account" method="POST" class="delete_account_form-container">
+            <form action="delete_account" method="POST" class="form-container">
                 <h1 style="color: #244564; height: 0.00%">Are you sure?</h1>
                 <button type="submit" class="submit_btn">Delete account</button>
                 <button type="button" class="btn cancel" onclick="closeSubmitDeleteAccount()">Close</button>
             </form>
         </div>
         <div class="form-popup" id="addTxnForm">
-            <form action="add_txn" class="add_txn_form-container" method="POST">
+            <form action="add_txn" class="form-container" method="POST">
 
                 <label for="addTxnCategory"><h3 style="text-align: left">Category</h3></label>
                 <label>
@@ -124,7 +124,7 @@
             </form>
         </div>
         <div class="form-popup" id="editTxnForm">
-            <form id="edit_txn" action="edit_txn" class="edit_txn_form-container" method="post">
+            <form class="form-container" id="edit_txn" action="edit_txn" method="post">
                 <label for="Category"><h3 style="text-align: left">Category</h3></label>
                 <label>
                     <textarea class="inputCategory" id="editTxnCategory" name="category"
@@ -171,7 +171,7 @@
             </form>
         </div>
         <div class="search-bar">
-            <input placeholder="search transaction">
+            <input type="text" placeholder="search transaction...">
         </div>
         <table class="input_table">
             <thead>
@@ -188,11 +188,11 @@
             if (isset($transactions)) {
                 foreach ($transactions as $txnDate) {
                     echo '<tr>';
-                    echo '<td class="sub_subcategory" id="category">' . $txnDate[1] . '</td>';
-                    echo '<td class="sub_subcategory" id="amount">' . $txnDate[2] . '</td>';
-                    echo '<td class="sub_subcategory" id="date">' . $txnDate[3] . '</td>';
-                    echo '<td class="sub_subcategory" id="comment">' . $txnDate[4] . '</td>';
-                    echo '<td class="sub_subcategory">
+                    echo '<td class="category_name" id="category">' . $txnDate[1] . '</td>';
+                    echo '<td class="category_name" id="amount">' . $txnDate[2] . '</td>';
+                    echo '<td class="category_name" id="date">' . $txnDate[3] . '</td>';
+                    echo '<td class="category_name" id="comment">' . $txnDate[4] . '</td>';
+                    echo '<td class="category_name">
                     <button class="edit_button" onclick="openEditTxnForm(' . $txnDate[0] . ')"> Edit</button>
                      </td></tr>';
                 }
@@ -214,18 +214,18 @@
     </money_to_assign>
     <h1></h1>
     <contact_info>
-        <h2>About us</h2>
+        <h1>About us</h1>
         <div class="social_media">
-            <img class="social_media_img" src="public/img/fb.png" alt="FB">
-            <h2>FB</h2>
+            <img src="public/img/fb.png" alt="FB">
+            <h1>FB</h1>
         </div class="social_media">
-        <h2>123 street City, 09-732</h2>
-        <h2>Contact</h2>
+        <h1>123 street City, 09-732</h1>
+        <h1>Contact</h1>
         <div class="social_media">
-            <img class="social_media_img" src="public/img/ig.png" alt="IG">
-            <h2>IG</h2>
+            <img src="public/img/ig.png" alt="IG">
+            <h1>IG</h1>
         </div>
-        <h2>simple@mail.com</h2>
+        <h1>simple@mail.com</h1>
     </contact_info>
 </footer>
 <footer class="footer_mobile">
@@ -286,17 +286,17 @@
             + document.getElementById("edit_txn_id").value;
         document.getElementById("delete_txn_link").click();
         return false;
-    }
+    };
 </script>
 </body>
 
 <template id="project-template">
     <tr>
-        <td class="sub_subcategory" id="category">category</td>
-        <td class="sub_subcategory" id="amount">amount</td>
-        <td class="sub_subcategory" id="date">date</td>
-        <td class="sub_subcategory" id="comment">comment</td>
-        <td class="sub_subcategory">
+        <td class="category_name" id="category">category</td>
+        <td class="category_name" id="amount">amount</td>
+        <td class="category_name" id="date">date</td>
+        <td class="category_name" id="comment">comment</td>
+        <td class="category_name">
             <button class="edit_button"> Edit</button>
         </td>
     </tr>

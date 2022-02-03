@@ -1,6 +1,6 @@
 
 
-const search = document.querySelector('input[placeholder="search transaction"]');
+const search = document.querySelector('input[placeholder="search transaction..."]');
 const transactionContainer = document.querySelector(".input_table");
 
 search.addEventListener("keyup", function (event) {

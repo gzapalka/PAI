@@ -60,7 +60,7 @@
             </button>
         </bookmark>
     </bookmarks>
-    <div class="bookmark_container">
+    <div class="budget_container">
         <div class="break"></div>
         <div class="form-popup" id="deleteAccountForm">
             <form action="delete_account" method="POST" class="delete_account_form-container">
@@ -85,7 +85,7 @@
                     <table class="subtable">
                         <thead>
                         <tr>
-                            <th colspan="5" class="subcategory_name">Home</th>
+                            <th colspan="5" class="category_name">Home</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -94,7 +94,7 @@
                             foreach ($homeCategoryBudgets as $budget) {
                                 echo '<tr>';
                                 foreach ($budget as $s) {
-                                    echo '<td class="sub_subcategory">'.$s.'</td>';
+                                    echo '<td class="category_name">'.$s.'</td>';
                                 }
                                 echo '</tr>';
                             }
@@ -108,7 +108,7 @@
                     <table class="subtable">
                         <thead>
                         <tr>
-                            <th colspan="5" class="subcategory_name">Transport</th>
+                            <th colspan="5" class="category_name">Transport</th>
                         </tr>
                         </thead>
                         <?php
@@ -116,7 +116,7 @@
                             foreach ($transportCategoryBudgets as $budget) {
                                 echo '<tr>';
                                 foreach ($budget as $s) {
-                                    echo '<td class="sub_subcategory">'.$s.'</td>';
+                                    echo '<td class="category_name">'.$s.'</td>';
                                 }
                                 echo '</tr>';
                             }
@@ -130,7 +130,7 @@
                     <table class="subtable">
                         <thead>
                         <tr>
-                            <th colspan="5" class="subcategory_name">Just for fun</th>
+                            <th colspan="5" class="category_name">Just for fun</th>
                         </tr>
                         </thead>
                         <?php
@@ -138,7 +138,7 @@
                             foreach ($funCategoryBudgets as $budget) {
                                 echo '<tr>';
                                 foreach ($budget as $s) {
-                                    echo '<td class="sub_subcategory">'.$s.'</td>';
+                                    echo '<td class="category_name">'.$s.'</td>';
                                 }
                                 echo '</tr>';
                             }
@@ -152,7 +152,7 @@
                     <table class="subtable">
                         <thead>
                         <tr>
-                            <th colspan="5" class="subcategory_name">Education</th>
+                            <th colspan="5" class="category_name">Education</th>
                         </tr>
                         </thead>
                         <?php
@@ -160,7 +160,7 @@
                             foreach ($educationCategoryBudgets as $budget) {
                                 echo '<tr>';
                                 foreach ($budget as $s) {
-                                    echo '<td class="sub_subcategory">'.$s.'</td>';
+                                    echo '<td class="category_name">'.$s.'</td>';
                                 }
                                 echo '</tr>';
                             }
@@ -185,18 +185,18 @@
     </money_to_assign>
     <h1></h1>
     <contact_info>
-        <h2>About us</h2>
+        <h1>About us</h1>
         <div class="social_media">
-            <img class="social_media_img" src="public/img/fb.png" alt="FB">
-            <h2>FB</h2>
+            <img src="public/img/fb.png" alt="FB">
+            <h1>FB</h1>
         </div class="social_media">
-        <h2>123 street City, 09-732</h2>
-        <h2>Contact</h2>
+        <h1>123 street City, 09-732</h1>
+        <h1>Contact</h1>
         <div class="social_media">
-            <img class="social_media_img" src="public/img/ig.png" alt="IG">
-            <h2>IG</h2>
+            <img src="public/img/ig.png" alt="IG">
+            <h1>IG</h1>
         </div>
-        <h2>simple@mail.com</h2>
+        <h1>simple@mail.com</h1>
     </contact_info>
 </footer>
 <footer class="footer_mobile">
