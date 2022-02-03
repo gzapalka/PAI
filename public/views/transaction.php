@@ -14,11 +14,15 @@
             ?>
         </div>
     </h1>
-    <button class="logout_button">Log out</button>
+    <button class="logout_button" type="submit">
+        <a href="log_out">Log out</a>
+    </button>
 </header>
 <header class="mobile_header">
     <h1>Simple Budget</h1>
-    <button class="logout_button">Log out</button>
+    <button class="logout_button" type="submit">
+        <a href="log_out">Log out</a>
+    </button>
 </header>
 <content>
     <bookmarks class="website">
@@ -146,7 +150,7 @@
                 <button type="button" class="btn cancel" onclick="closeEditTxnForm()">Close</button>
             </form>
         </div>
-        <table class="transaction_table">
+        <table class="input_table">
             <thead>
 
             <tr>
@@ -161,11 +165,11 @@
             <?php
             if (isset($transactions)) {
                 foreach ($transactions as $txnDate) {
-                echo '<tr>';
-                foreach ($txnDate as $s) {
-                    echo '<td class="sub_subcategory">'.$s.'</td>';
-                }
-                echo '<td class="sub_subcategory">
+                    echo '<tr>';
+                    foreach ($txnDate as $s) {
+                        echo '<td class="sub_subcategory">' . $s . '</td>';
+                    }
+                    echo '<td class="sub_subcategory">
                     <button class="edit_button" onclick="openEditTxnForm()">
                         Edit
                     </button>
@@ -174,95 +178,6 @@
                 }
             }
             ?>
-<!--            <tr>-->
-<!--                <td class="sub_subcategory">Car maintenance</td>-->
-<!--                <td class="sub_subcategory">1200.00</td>-->
-<!--                <td class="sub_subcategory">2021-6-12</td>-->
-<!--                <td class="sub_subcategory">Check Engine</td>-->
-<!--                <td class="sub_subcategory">-->
-<!--                    <button class="edit_button" onclick="openEditTxnForm()">-->
-<!--                        Edit-->
-<!--                    </button>-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td class="sub_subcategory">Fuel</td>-->
-<!--                <td class="sub_subcategory">650.00</td>-->
-<!--                <td class="sub_subcategory">2021-6-11</td>-->
-<!--                <td class="sub_subcategory">Fill up</td>-->
-<!--                <td class="sub_subcategory">-->
-<!--                    <button class="edit_button" onclick="openEditTxnForm()">-->
-<!--                        Edit-->
-<!--                    </button>-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td class="sub_subcategory">Bus Ticket</td>-->
-<!--                <td class="sub_subcategory">650.00</td>-->
-<!--                <td class="sub_subcategory">2021-6-12</td>-->
-<!--                <td class="sub_subcategory">Monthly Ticket</td>-->
-<!--                <td class="sub_subcategory">-->
-<!--                    <button class="edit_button" onclick="openEditTxnForm()">-->
-<!--                        Edit-->
-<!--                    </button>-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!---->
-<!--                <td class="sub_subcategory">Netflix</td>-->
-<!--                <td class="sub_subcategory">1200.00</td>-->
-<!--                <td class="sub_subcategory">2021-6-12</td>-->
-<!--                <td class="sub_subcategory">Subscription</td>-->
-<!--                <td class="sub_subcategory">-->
-<!--                    <button class="edit_button" onclick="openEditTxnForm()">-->
-<!--                        Edit-->
-<!--                    </button>-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td class="sub_subcategory">Dinning Out</td>-->
-<!--                <td class="sub_subcategory">650.00</td>-->
-<!--                <td class="sub_subcategory">2021-6-12</td>-->
-<!--                <td class="sub_subcategory">Pizza on date</td>-->
-<!--                <td class="sub_subcategory">-->
-<!--                    <button class="edit_button" onclick="openEditTxnForm()">-->
-<!--                        Edit-->
-<!--                    </button>-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td class="sub_subcategory">Clubbing</td>-->
-<!--                <td class="sub_subcategory">650.00</td>-->
-<!--                <td class="sub_subcategory">2021-6-12</td>-->
-<!--                <td class="sub_subcategory">Drink</td>-->
-<!--                <td class="sub_subcategory">-->
-<!--                    <button class="edit_button">-->
-<!--                        Edit-->
-<!--                    </button>-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td class="sub_subcategory">Gaming</td>-->
-<!--                <td class="sub_subcategory">650.00</td>-->
-<!--                <td class="sub_subcategory">2021-6-12</td>-->
-<!--                <td class="sub_subcategory">Witcher 3</td>-->
-<!--                <td class="sub_subcategory">-->
-<!--                    <button class="edit_button" onclick="openEditTxnForm()">-->
-<!--                        Edit-->
-<!--                    </button>-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td class="sub_subcategory">School Fees</td>-->
-<!--                <td class="sub_subcategory">1200.00</td>-->
-<!--                <td class="sub_subcategory">2021-6-12</td>-->
-<!--                <td class="sub_subcategory">French Lessons</td>-->
-<!--                <td class="sub_subcategory">-->
-<!--                    <button class="edit_button" onclick="openEditTxnForm()">-->
-<!--                        Edit-->
-<!--                    </button>-->
-<!--                </td>-->
-<!--            </tr>-->
             </tbody>
         </table>
     </div>
@@ -324,21 +239,14 @@
     var mytextbox = document.getElementById('inputCategory');
     var mydropdown = document.getElementById('dropdown');
 
-    mydropdown.onchange = function(){
+    mydropdown.onchange = function () {
         mytextbox.value = this.value;
         mytextbox.innerHTML = this.value;
     }
 
-    function isDecimal(input){
+    function isDecimal(input) {
         let regex = new RegExp(' ^ [-+][0 - 9]\.[0 - 9][0 - 9]$');
         return (regex.test(input));
-    }
-
-    function checkIfDecimal() {
-        // if (!isDecimal(document.getElementById("add_amount").value)) {
-        //     alert("Please input a decimal!")
-        //     document.getElementById("add_amount").value = "0.00";
-        // }
     }
 </script>
 </body>

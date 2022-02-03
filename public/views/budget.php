@@ -7,11 +7,15 @@
 <header class="website">
     <h1>Simple Budget</h1>
     <h1></h1>
-    <button class="logout_button">Log out</button>
+    <button class="logout_button" type="submit">
+        <a href="log_out">Log out</a>
+    </button>
 </header>
 <header class="mobile_header">
     <h1>Simple Budget</h1>
-    <button class="logout_button" type="submit">Log out</button>
+    <button class="logout_button" type="submit">
+        <a href="log_out">Log out</a>
+    </button>
 </header>
 <content>
     <bookmarks class="website">
@@ -65,7 +69,7 @@
                 <button type="button" class="btn cancel" onclick="closeSubmitDeleteAccount()">Close</button>
             </form>
         </div>
-        <table class="budget_table">
+        <table class="input_table">
             <thead>
             <tr>
                 <th class="category_name">Category</th>

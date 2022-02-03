@@ -16,7 +16,7 @@ class SessionUtil
      */
     public function createNewSession(User $user)
     {
-        $this->logOutUser($user);
+        $this->logOutUser($user->getUserId());
         $cookie_name = "Token";
         $cookie_value = bin2hex(random_bytes(16));
         setcookie($cookie_name, $cookie_value, time() + 1200);
@@ -24,7 +24,7 @@ class SessionUtil
         $this->repository->createSession($user, $cookie_value);
     }
 
-    public function logOutUser(User $user)
+    public function logOutUser(int $user)
     {
         setcookie("Token", "", time() - 3600);
         $this->repository->logOutUser($user);

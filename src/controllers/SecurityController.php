@@ -25,6 +25,23 @@ class SecurityController extends AppController
         $this->sessionUtil = new SessionUtil();
     }
 
+    public function log_out() {
+        if (!$this->isGet()) {
+            return $this->render('login');
+        }
+        try {
+            $userId = $this->sessionUtil->getLoggedUser();
+            $this->sessionUtil->logOutUser($userId);
+
+        } catch (NoSuchUserException $e) {
+        } finally {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/login");
+        }
+
+
+    }
+
     public function login_user()
     {
         if (!$this->isPost()) {
