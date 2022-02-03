@@ -3,14 +3,13 @@ require_once __DIR__ . '/../controllers/exceptions/NoSuchUserException.php';
 
 class SessionRepository extends Repository
 {
-    public function logOutUser(User $user): void
+    public function logOutUser(int $userId): void
     {
         $stmt = $this->database->connect()->prepare('
                 DELETE FROM session
                 WHERE session."userId" = :userId;
         ');
 
-        $userId = $user->getUserId();
         $stmt->bindParam(':userId', $userId);
         $stmt->execute();
     }

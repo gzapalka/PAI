@@ -6,12 +6,23 @@
 <body>
 <header class="website">
     <h1>Simple Budget</h1>
-    <h1></h1>
-    <button class="logout_button">Log out</button>
+    <h1>
+        <div class="error-code">
+            <?php if (isset($message)) {
+                echo $message;
+            }
+            ?>
+        </div>
+    </h1>
+    <button class="logout_button" type="submit">
+        <a href="log_out">Log out</a>
+    </button>
 </header>
 <header class="mobile_header">
     <h1>Simple Budget</h1>
-    <button class="logout_button">Log out</button>
+    <button class="logout_button" type="submit">
+        <a href="log_out">Log out</a>
+    </button>
 </header>
 <content>
     <bookmarks class="website">
@@ -59,7 +70,7 @@
 
     <div class="statistic_container">
         <div class="form-popup" id="deleteAccountForm">
-            <div class="form-popup" id="deleteAccountForm" action="delete_account" method="POST">
+            <form class="form-popup" id="deleteAccountForm" action="delete_account" method="POST">
                 <h1 style="color: #244564; height: 100%">Are you sure?</h1>
                 <button type="submit" class="submit_btn">Delete account</button>
                 <button type="button" class="btn cancel" onclick="closeSubmitDeleteAccount()">Close</button>

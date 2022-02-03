@@ -13,6 +13,7 @@ class SecurityController extends AppController
 {
     private UserRepository $userRepository;
     private CategoryRepository $categoryRepository;
+    private TransactionRepository $transactionRepository;
     private SessionUtil $sessionUtil;
 
     public function __construct()
@@ -20,7 +21,25 @@ class SecurityController extends AppController
         parent::__construct();
         $this->userRepository = new UserRepository();
         $this->categoryRepository = new CategoryRepository();
+        $this->transactionRepository = new TransactionRepository();
         $this->sessionUtil = new SessionUtil();
+    }
+
+    public function log_out() {
+        if (!$this->isGet()) {
+            return $this->render('login');
+        }
+        try {
+            $userId = $this->sessionUtil->getLoggedUser();
+            $this->sessionUtil->logOutUser($userId);
+
+        } catch (NoSuchUserException $e) {
+        } finally {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/login");
+        }
+
+
     }
 
     public function login_user()
@@ -53,7 +72,8 @@ class SecurityController extends AppController
             return;
         }
 
-        $this->render('budget');
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/budget");
     }
 
     public function register_user()
@@ -83,6 +103,8 @@ class SecurityController extends AppController
         $userId = $this->userRepository->addUser($user);
         $this->categoryRepository->addCategoryForNewUser($userId);
 
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/login");
         return $this->render('login', ['messages' => ['You\'ve been succesfully registrated!']]);
     }
 
@@ -93,8 +115,13 @@ class SecurityController extends AppController
              $this->render('login');
              return;
          }
+         $this->transactionRepository->deleteAllUserTxns($userId);
          $this->categoryRepository->deleteCategoriesByUser($userId);
          $this->userRepository->deleteUser($userId);
-         $this->render('login');
+
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/login");
     }
+
+
 }

@@ -33,18 +33,19 @@ class TransactionController extends AppController
             return;
         }
 
-//        try {
+        try {
             $amount = InputValidator::validateDecimal($_POST["amount"]);
             $date = InputValidator::validateDate($_POST["date"]);
             $comment = InputValidator::validateText($_POST["comment"]);
             $categoryId = InputValidator::validateCategory($_POST["category"], $userId);
-//        } catch (Exception $e) {
-//            $controller->displayPageWithErrorMassage('transaction',"Bad input");
-//            return;
-//        }
+        } catch (Exception $e) {
+            $controller->displayPageWithErrorMassage('transaction',"Bad input");
+            return;
+        }
         $txn = Transaction::insertTransaction($amount, $comment, TxnTypes::ACCOUNT,  $categoryId, $date);
         $this->repository->addTxn($txn);
 
-        $this->render('transaction');
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/transaction");
     }
 }

@@ -25,9 +25,6 @@ class Router {
         $controller = self::$routes[$action];
         $object = new $controller;
         $action = $action ?: 'login';
-        $action = $action ?: 'register_user';
-        $action = $action ?: 'delete_account';
-        $action = $action ?: 'add_txn';
 
         $object->$action();
     }

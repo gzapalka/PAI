@@ -7,11 +7,15 @@
 <header class="website">
     <h1>Simple Budget</h1>
     <h1></h1>
-    <button class="logout_button">Log out</button>
+    <button class="logout_button" type="submit">
+        <a href="log_out">Log out</a>
+    </button>
 </header>
 <header class="mobile_header">
     <h1>Simple Budget</h1>
-    <button class="logout_button" type="submit">Log out</button>
+    <button class="logout_button" type="submit">
+        <a href="log_out">Log out</a>
+    </button>
 </header>
 <content>
     <bookmarks class="website">
@@ -65,7 +69,7 @@
                 <button type="button" class="btn cancel" onclick="closeSubmitDeleteAccount()">Close</button>
             </form>
         </div>
-        <table class="budget_table">
+        <table class="input_table">
             <thead>
             <tr>
                 <th class="category_name">Category</th>
@@ -85,41 +89,17 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td class="sub_subcategory">Rent</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                        </tr>
-                        <tr>
-                            <td class="sub_subcategory">Water</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                        </tr>
-                        <tr>
-                            <td class="sub_subcategory">Energy</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                        <tr>
-                        <tr>
-                            <td class="sub_subcategory">Groceries</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                        </tr>
-                        <tr>
-                            <td class="sub_subcategory">Internet</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                        </tr>
+                        <?php
+                        if (isset($homeCategoryBudgets)) {
+                            foreach ($homeCategoryBudgets as $budget) {
+                                echo '<tr>';
+                                foreach ($budget as $s) {
+                                    echo '<td class="sub_subcategory">'.$s.'</td>';
+                                }
+                                echo '</tr>';
+                            }
+                        }
+                        ?>
                         </tbody>
                     </table>
                 </td>
@@ -131,27 +111,17 @@
                             <th colspan="5" class="subcategory_name">Transport</th>
                         </tr>
                         </thead>
-                        <tr>
-                            <td class="sub_subcategory">Car</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                        </tr>
-                        <tr>
-                            <td class="sub_subcategory">Fuel</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                        </tr>
-                        <tr>
-                            <td class="sub_subcategory">Bus Ticket</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                        <tr>
+                        <?php
+                        if (isset($transportCategoryBudgets)) {
+                            foreach ($transportCategoryBudgets as $budget) {
+                                echo '<tr>';
+                                foreach ($budget as $s) {
+                                    echo '<td class="sub_subcategory">'.$s.'</td>';
+                                }
+                                echo '</tr>';
+                            }
+                        }
+                        ?>
                     </table>
                 </td>
             </tr>
@@ -163,34 +133,17 @@
                             <th colspan="5" class="subcategory_name">Just for fun</th>
                         </tr>
                         </thead>
-                        <tr>
-                            <td class="sub_subcategory">Netflix</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                        </tr>
-                        <tr>
-                            <td class="sub_subcategory">Dinning Out</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                        </tr>
-                        <tr>
-                            <td class="sub_subcategory">Clubbing</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                        <tr>
-                        <tr>
-                            <td class="sub_subcategory">Gaming</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                        <tr>
+                        <?php
+                        if (isset($funCategoryBudgets)) {
+                            foreach ($funCategoryBudgets as $budget) {
+                                echo '<tr>';
+                                foreach ($budget as $s) {
+                                    echo '<td class="sub_subcategory">'.$s.'</td>';
+                                }
+                                echo '</tr>';
+                            }
+                        }
+                        ?>
                     </table>
                 </td>
             </tr>
@@ -202,13 +155,17 @@
                             <th colspan="5" class="subcategory_name">Education</th>
                         </tr>
                         </thead>
-                        <tr>
-                            <td class="sub_subcategory">School Fees</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                            <td class="sub_subcategory">0.00</td>
-                        </tr>
+                        <?php
+                        if (isset($educationCategoryBudgets)) {
+                            foreach ($educationCategoryBudgets as $budget) {
+                                echo '<tr>';
+                                foreach ($budget as $s) {
+                                    echo '<td class="sub_subcategory">'.$s.'</td>';
+                                }
+                                echo '</tr>';
+                            }
+                        }
+                        ?>
                     </table>
                 </td>
             </tr>
@@ -219,7 +176,11 @@
 <footer class="website">
     <money_to_assign>
         <h1>Money: </h1>
-        <h1 style="color: #555555">0.00</h1>
+        <?php
+        if(isset($moneyToSpent)){
+            echo '<h1 style="color: #555555">'.$moneyToSpent.'</h1>';
+        }
+        ?>
         <h1>zł</h1>
     </money_to_assign>
     <h1></h1>
@@ -241,7 +202,11 @@
 <footer class="footer_mobile">
     <money_to_assign>
         <h1>Money: </h1>
-        <h1 style="color: #555555">0.00</h1>
+        <?php
+        if(isset($moneyToSpent)){
+            echo '<h1 style="color: #555555">'.$moneyToSpent.'</h1>';
+        }
+        ?>
         <h1>zł</h1>
     </money_to_assign>
 </footer>
