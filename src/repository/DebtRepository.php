@@ -28,7 +28,7 @@ class DebtRepository extends Repository
     public function addDebt(Debt $debt)
     {
         $stmt = $this->database->connect()->prepare('
-            INSERT INTO user (debt_name, amount_start, user_id) VALUES (:debtName, :amountStart, :userId)
+            INSERT INTO user_account (debt_name, amount_start, user_id) VALUES (:debtName, :amountStart, :userId)
         ');
 
         $userId = $debt->getUserId();

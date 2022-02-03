@@ -1,6 +1,7 @@
 <?php
 
 require_once 'AppController.php';
+require_once __DIR__ . '/../controllers/StatisticController.php';
 
 class DefaultController extends AppController
 {
@@ -41,7 +42,8 @@ class DefaultController extends AppController
                 'moneyToSpent' => $left]);
 
         } catch (NoSuchUserException $e) {
-            $this->render('login');
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/login");
         }
 
     }
@@ -50,27 +52,39 @@ class DefaultController extends AppController
     {
         try {
             $userId = $this->sessionUtil->getLoggedUser();
+            $left = $this->transactionRepository->getLeftMoneyByUser($userId);
             $transactions = $this->transactionRepository->getAllUsersTxns($userId);
-            $this->render('transaction', ['transactions' => $transactions]);
+            $this->render('transaction', ['transactions' => $transactions,'moneyToSpent' => $left]);
         } catch (NoSuchUserException $e) {
-            $this->render('login');
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/login");
         }
 
     }
 
     public function statistic()
     {
-        $this->render('statistic');
+        try {
+        $userId = $this->sessionUtil->getLoggedUser();
+        $stats = new StatisticController();
+        $left = $this->transactionRepository->getLeftMoneyByUser($userId);
+        $expendituresPerCategory = $stats->getExpendituresPerCategory();
+        $incomeVsExpenditure = $stats->getIncomeVsExpenditures();
+        $expenditures_per_month = $stats->getExpendituresPerMonth();
+        $this->render('statistic', ['E_PER_M' => $expenditures_per_month,
+            'I_VS_E' => $incomeVsExpenditure,
+            'E_PER_C' => $expendituresPerCategory,
+            'moneyToSpent' => $left]);
+        } catch (NoSuchUserException $e) {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/login");
+        }
     }
 
     public function mailVerification()
     {
         $this->render("mailVerification");
     }
-
-//    public function displayLoginPageWithErrorMassage(string $message){
-//        $this->render('login', ['message' => $message]);
-//    }
 
     public function displayPageWithErrorMassage(string $template, string $message)
     {

@@ -17,7 +17,7 @@ a {
 }
 
 content {
-    background: #faf4f4;
+    background: white;
     position: absolute;
     top: 10%;
     bottom: 10%;
@@ -176,8 +176,9 @@ table {
 .statistic_container {
     height: 100%;
     position: relative;
-    background-color: cornsilk;
+    background-color: #faf4f4;
     display: grid;
+    overflow: auto;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
          "statistic_left_container statistic_right_container";

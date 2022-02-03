@@ -1,4 +1,6 @@
 <?php
+
+require_once 'Repository.php';
 require_once __DIR__ . '/../controllers/exceptions/NoSuchUserException.php';
 
 class SessionRepository extends Repository

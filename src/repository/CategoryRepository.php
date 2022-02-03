@@ -3,6 +3,7 @@
 require_once 'Repository.php';
 require_once __DIR__ . '/../models/Category.php';
 require_once __DIR__ . '/../models/Categories.php';
+require_once __DIR__ . '/../controllers/util/DatabaseUtil.php';
 
 class CategoryRepository extends Repository
 {
@@ -12,18 +13,11 @@ class CategoryRepository extends Repository
     const transportCategories = [ "Car", "Fuel", "Bus Ticket"];
     const funCategories = ["Netflix", "Dinning Out", "Clubbing", "Gaming"];
     const educationCategories = ["School Fees"];
-    private $connection = null;
 
-    private function checkConnection() {
-        if($this->connection == null) {
-            $this->connection = $this->database->connect();
-        }
-    }
 
     public function getCategory(int $userId, string $name): ?Category
     {
-        $this->checkConnection();
-        $stmt = $this->connection->prepare('
+        $stmt = $this->database->connect()->prepare('
             SELECT user_id, category_id, name, amount_assigned, amount_spent, amount_last
             FROM category WHERE user_id = :user_id AND name =:name
         ');
@@ -50,8 +44,7 @@ class CategoryRepository extends Repository
 
     public function addCategory(Category $category)
     {
-        $this->checkConnection();
-        $stmt = $this->connection->prepare('
+        $stmt = $this->database->connect()->prepare('
             INSERT INTO category (name, amount_assigned, user_id, amount_spent, amount_last)
              VALUES (:categoryName, :amountAssigned, :userId, :amountSpent, :amountLast)
         ');
@@ -78,8 +71,7 @@ class CategoryRepository extends Repository
     }
 
     public function deleteCategoriesByUser(int $userId) {
-        $this->checkConnection();
-        $stmt = $this->connection->prepare('
+        $stmt = $this->database->connect()->prepare('
             DELETE FROM category WHERE user_id = :userId;
         ');
 
@@ -88,8 +80,7 @@ class CategoryRepository extends Repository
     }
 
     private function getBudgetByName(int $userId,string $name): ?array {
-        $this->checkConnection();
-        $stmt = $this->connection->prepare('
+        $stmt = $this->database->connect()->prepare('
             SELECT category_id, amount_assigned FROM category WHERE user_id = :user_id AND name = :name
         ');
 
