@@ -56,7 +56,6 @@ class StatisticController
     private function generateExpendituresByCategory($data) {
         $graph = new PieGraph(500,250);
         $graph->SetShadow();
-
         $graph->title->Set("Expenditures per category");
 
         $dataY = [];
@@ -107,7 +106,7 @@ class StatisticController
         $graph = new Graph(350,400,'auto');
         $graph->SetScale("textlin");
 
-        $theme_class=new UniversalTheme;
+        $theme_class=new PastelTheme();
         $graph->SetTheme($theme_class);
 
         $graph->SetBox(false);
