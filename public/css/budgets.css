@@ -37,7 +37,7 @@ footer {
     grid-template-columns: 3fr 1fr 4fr;
     grid-template-areas:
          "money_to_assign h1 contact_info";
-    overflow: hidden;
+    overflow: auto;
 }
 
 contact_info {
@@ -46,8 +46,8 @@ contact_info {
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 2fr 1fr 2fr;
     grid-template-areas:
-         "h2 social_media h2"
-         "h2 social_media h2";
+         "h1 social_media h1"
+         "h1 social_media h1";
 }
 
 .mobile_header {
@@ -58,10 +58,10 @@ contact_info {
     display: grid;
     grid-template-columns: 1fr 3fr;
     grid-template-areas:
-         "img h2";
+         "img h1";
 }
 
-.social_media_img {
+.social_media img {
     max-height: 50%;
     margin-top: 10%;
 }
@@ -74,12 +74,14 @@ h1 {
     font-size: 150%;
 }
 
-h2 {
-    font-family: Ink Free, serif;
-    font-weight: lighter;
-    color: #f7f2f2;
+contact_info h1 {
     text-align: center;
-    font-size: 50%;
+    font-size: 70%;
+    height: 100%;
+}
+
+money_to_assign h1 {
+    font-size: 200%;
     height: 100%;
 }
 
@@ -113,20 +115,18 @@ bookmark {
     text-align: center;
 }
 
-.bookmark_container {
+.budget_container {
     background-color:#E9E4E4;
     height: 100%;
     position: relative;
     overflow: auto;
 }
 
-.input_table {
-    display:table;
-    background-color: #faf4f4;
-    border-radius: 10px;
-    margin-top: 1%;
-    margin-left: 1%;
-    width: 98%;
+
+
+
+.break {
+    height: 1%;
 }
 
 table {
@@ -134,13 +134,7 @@ table {
     min-width: 350px;
 }
 
-.break {
-    height: 1%;
-}
-
 .subtable {
-    display:table;
-    background-color: #faf4f4;
     margin-left: 1%;
     width: 98%;
     margin-top: 1%;
@@ -151,6 +145,14 @@ table {
     width: 100%;
 }
 
+.input_table {
+    background-color: #faf4f4;
+    border-radius: 10px;
+    margin-top: 1%;
+    margin-left: 1%;
+    width: 98%;
+}
+
 .category_name {
     font-family: Segoe UI, serif;
     color: #244564;
@@ -158,24 +160,17 @@ table {
     width: 20%;
 }
 
-.subcategory_name {
-    font-family: Segoe UI, serif;
-    color: #244564;
-    font-size: 130%;
+.subtable .category_name {
+    font-size: 100%;
 }
 
-.sub_subcategory {
-    font-family: Segoe UI, serif;
-    color: #244564;
-    text-align: center;
-    font-size: 100%;
+th .category_name {
+    font-size: 90%;
     width: 20%;
-    line-break: normal;
 }
 
 .statistic_container {
     height: 100%;
-    position: relative;
     background-color: #faf4f4;
     display: grid;
     overflow: auto;
@@ -239,7 +234,6 @@ table {
     font-size: 150%;
 }
 
-/* The popup form - hidden by default */
 .form-popup {
     display: none;
     position: fixed;
@@ -249,15 +243,13 @@ table {
     z-index: 9;
 }
 
-/* Add styles to the form container */
-.edit_txn_form-container {
+.form-container {
     max-width: 300px;
     padding: 10px;
     background-color: white;
 }
 
-/* Full-width input fields */
-.edit_txn_form-container input[type=text], .edit_txn_form-container input[type=password] {
+.form-container input[type=text], .form-container input[type=password] {
     width: 100%;
     padding: 15px;
     border: none;
@@ -265,16 +257,14 @@ table {
     font-family: Segoe UI, serif;
 }
 
-/* When the inputs get focus, do something */
-.edit_txn_form-container input[type=text]:focus, .edit_txn_form-container input[type=password]:focus {
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
     background-color: #ddd;
     outline: none;
     color: #244564;
     font-family: Segoe UI, serif;
 }
 
-/* Set a style for the submit/login button */
-.edit_txn_form-container .submit_btn {
+.form-container .submit_btn {
     background-color: #E9E4E4;
     color: #244564;
     padding: 16px 20px;
@@ -285,7 +275,7 @@ table {
     opacity: 0.8;
 }
 
-.edit_txn_form-container .delete {
+.form-container .delete {
     background-color: #F3E6D1;
     color: #244564;
     padding: 16px 20px;
@@ -296,8 +286,7 @@ table {
     opacity: 0.8;
 }
 
-/* Add a red background color to the cancel button */
-.edit_txn_form-container .cancel {
+.form-container .cancel {
     background-color: #D5E6F2;
     color: #244564;
     padding: 16px 20px;
@@ -308,10 +297,10 @@ table {
     opacity: 0.8;
 }
 
-/* Add some hover effects to buttons */
-.edit_txn_form-container .btn:hover, .open-button:hover {
+.form-container .btn:hover, .open-button:hover {
     opacity: 1;
 }
+
 
 
 .add_txn_btn {
@@ -325,18 +314,10 @@ table {
     display: flex;
     position: absolute;
     margin-top: 70vh;
-    margin-left: 90%;
+    margin-left: 85vw;
 }
 
-/* Add styles to the form container */
-.add_txn_form-container {
-    max-width: 300px;
-    padding: 10px;
-    background-color: white;
-}
-
-/* Full-width input fields */
-.add_txn_form-container input[type=text], .edit_txn_form-container input[type=password] {
+.form-container input[type=password] {
     width: 100%;
     padding: 15px;
     border: none;
@@ -344,83 +325,17 @@ table {
     font-family: Segoe UI, serif;
 }
 
-/* When the inputs get focus, do something */
-.add_txn_form-container input[type=text]:focus, .edit_txn_form-container input[type=password]:focus {
+.form-container input[type=password]:focus {
     background-color: #ddd;
     outline: none;
     color: #244564;
     font-family: Segoe UI, serif;
 }
 
-/* Set a style for the submit/login button */
-.add_txn_form-container .submit_btn {
-    background-color: #E9E4E4;
-    color: #244564;
-    padding: 16px 20px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    margin-bottom:10px;
-    opacity: 0.8;
-}
-
-/* Add a red background color to the cancel button */
-.add_txn_form-container .cancel {
-    background-color: #D5E6F2;
-    color: #244564;
-    padding: 16px 20px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    margin-bottom:10px;
-    opacity: 0.8;
-}
-
-/* Add some hover effects to buttons */
-.add_txn_form-container .btn:hover, .open-button:hover {
-    opacity: 1;
-}
-
 .transaction_container {
     background-color: #F3E6D1;
     overflow: auto;
     height: 100%;
-}
-
-/* Add styles to the form container */
-.delete_account_form-container {
-    max-width: 300px;
-    padding: 10px;
-    background-color: white;
-}
-
-/* Set a style for the submit/login button */
-.delete_account_form-container .submit_btn {
-    background-color: #E9E4E4;
-    color: #244564;
-    padding: 16px 20px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    margin-bottom:10px;
-    opacity: 0.8;
-}
-
-/* Add a red background color to the cancel button */
-.delete_account_form-container .cancel {
-    background-color: #D5E6F2;
-    color: #244564;
-    padding: 16px 20px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    margin-bottom:10px;
-    opacity: 0.8;
-}
-
-/* Add some hover effects to buttons */
-.delete_account_form-container .btn:hover, .open-button:hover {
-    opacity: 1;
 }
 
 .bookmark_btn {
@@ -462,6 +377,18 @@ table {
     color: darkred;
     text-align: left;
 }
+
+.search-bar input[type=text] {
+    float: right;
+    padding: 6px;
+    margin-top: 8px;
+    margin-right: 16px;
+    border: none;
+    font-size: 17px;
+    background-color: transparent;
+    border-bottom: 1px solid #707070;
+}
+
 
 @media only screen and (max-device-width: 420px) {
     .website {
@@ -540,6 +467,13 @@ table {
       "h1 button";
     }
 
-
+    .search-bar input[type=text] {
+        float: none;
+        display: block;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+        padding: 14px;
+    }
 
 }

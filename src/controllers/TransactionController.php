@@ -42,10 +42,66 @@ class TransactionController extends AppController
             $controller->displayPageWithErrorMassage('transaction',"Bad input");
             return;
         }
-        $txn = Transaction::insertTransaction($amount, $comment, TxnTypes::ACCOUNT,  $categoryId, $date);
+        $txn = Transaction::insertTransaction($amount, $comment, $categoryId, $date);
         $this->repository->addTxn($txn);
 
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/transaction");
     }
+
+    public function edit_txn()
+    {
+        if (!$this->isPost()) {
+            return $this->render('transaction');
+        }
+
+        $controller = new DefaultController();
+
+        try {
+            $userId = $this->sessionUtil->getLoggedUser();
+        } catch (NoSuchUserException $e) {
+            $this->render('login');
+            return;
+        }
+
+        try {
+            $id = (int) $_POST["id"];
+            $amount = InputValidator::validateDecimal($_POST["amount"]);
+            $date = InputValidator::validateDate($_POST["date"]);
+            $comment = InputValidator::validateText($_POST["comment"]);
+            $categoryId = InputValidator::validateCategory($_POST["category"], $userId);
+        } catch (Exception $e) {
+            $controller->displayPageWithErrorMassage('transaction',"Bad input");
+            return;
+        }
+        $this->repository->deleteTxn($id);
+        $txn = Transaction::insertTransaction($amount, $comment, $categoryId, $date);
+        $txn->setId($id);
+        $this->repository->addTxn($txn);
+
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/transaction");
+    }
+
+    public function delete_txn(int $txnId){
+        $this->repository->deleteTxn($txnId);
+
+    }
+
+    public function search()
+    {
+        $content_type = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : "";
+
+        if($content_type === "application/json") {
+            $content = trim(file_get_contents("php://input"));
+            $decoded = json_decode($content, true);
+            header('Content_type: application/json');
+            http_response_code(200);
+            echo json_encode($this->repository->getTxnByComment($decoded['search']));
+        }
+
+    }
+
+
+
 }
